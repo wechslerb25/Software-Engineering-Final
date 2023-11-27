@@ -3,7 +3,7 @@ package picasso.parser;
 import java.util.Stack;
 
 import picasso.parser.language.ExpressionTreeNode;
-import picasso.parser.language.expressions.Floor;
+import picasso.parser.language.expressions.Exp;
 import picasso.parser.tokens.Token;
 
 /**
@@ -18,6 +18,6 @@ public class ExpAnalyzer extends UnaryFunctionAnalyzer {
 		// the parameter is the next token(s) on the stack.
 		// But, it needs to be processed
 		ExpressionTreeNode paramETN = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
-		return new Floor(paramETN);
+		return new Exp(paramETN);
 	}
 }
