@@ -23,6 +23,6 @@ public class PlusAnalyzer implements SemanticAnalyzerInterface {
 		// But, they need to be processed
 		ExpressionTreeNode param1 = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
 		ExpressionTreeNode param2 = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
-		return new Plus(param1, param2);
+		return new Plus(param2, param1);
 	}
 }
