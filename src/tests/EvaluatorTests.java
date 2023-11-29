@@ -67,6 +67,11 @@ public class EvaluatorTests {
 		}
 	}
 
+	// public void testTanEvaluation(){
+	// 	Tan myTree = new Tan(new X());
+	// 	assertEquals(new RGBColor(Math.tan(r), Math.tan(g), Math.tan(b)),  )
+	// }
+
 	// TODO: More tests of evaluation
 
 }
