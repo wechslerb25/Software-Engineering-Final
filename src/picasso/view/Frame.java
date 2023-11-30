@@ -1,6 +1,7 @@
 package picasso.view;
 
 import java.awt.BorderLayout;
+import javax.swing.JTextField;
 import java.awt.Dimension;
 import javax.swing.JFrame;
 
@@ -22,16 +23,20 @@ public class Frame extends JFrame {
 		// create GUI components
 		Canvas canvas = new Canvas(this);
 		canvas.setSize(size);
+		JTextField text = new JTextField("Press Return", 20);
+		
 
 		// add commands to test here
 		ButtonPanel commands = new ButtonPanel(canvas);
 		commands.add("Open", new Reader());
-		commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas, new Evaluator()));
+		commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas, new Evaluator(text)));
 		commands.add("Save", new Writer());
 
 		// add our container to Frame and show it
+	    getContentPane().add(text, BorderLayout.SOUTH);
 		getContentPane().add(canvas, BorderLayout.CENTER);
 		getContentPane().add(commands, BorderLayout.NORTH);
+
 		pack();
 	}
 }
