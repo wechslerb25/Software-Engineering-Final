@@ -91,4 +91,14 @@ public class ExpressionTreeGeneratorTests {
 		assertEquals(new Floor(new Plus(new X(), new Y())), e);
 	}
 
+	@Test
+	public void tanFunctionTests() {
+		ExpressionTreeNode e = parser.makeExpression("tan(x)");
+		assertEquals(new Tan(new X()), e);
+
+		e = parser.makeExpression("tan( x + y )");
+		assertEquals(new Tan(new Plus(new X(), new Y())), e);
+
+	}
+
 }
