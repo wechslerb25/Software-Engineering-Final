@@ -65,6 +65,16 @@ public class EvaluatorTests {
 			assertEquals(new RGBColor(floorOfTestVal, floorOfTestVal, floorOfTestVal),
 					myTree.evaluate(testVal, testVal));
 		}
+	@Test
+	public void testCosEvaluation() {
+	    Cosine myTree = new Cosine(new X());
+
+	    double[] testVals = { -1.0, 0.12, 1.0 };
+
+	    for (double val : testVals) {
+	        double cosVal = Math.cos(val);
+	        assertEquals(new RGBColor(cosVal, cosVal, cosVal), myTree.evaluate(val, val));
+	    }
 	}
 
 	// TODO: More tests of evaluation
