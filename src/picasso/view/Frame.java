@@ -23,12 +23,12 @@ public class Frame extends JFrame {
 		// create GUI components
 		Canvas canvas = new Canvas(this);
 		canvas.setSize(size);
-		JTextField text = new JTextField("Press Return", 20);
-		
-
+		// Text Box
+		JTextField text = new JTextField("x+y", 20);
 		// add commands to test here
 		ButtonPanel commands = new ButtonPanel(canvas);
 		commands.add("Open", new Reader());
+		// Evaluator gets refrence to TextBox so it can call .getText() from it. 
 		commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas, new Evaluator(text)));
 		commands.add("Save", new Writer());
 
