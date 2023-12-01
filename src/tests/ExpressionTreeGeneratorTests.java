@@ -126,5 +126,15 @@ public class ExpressionTreeGeneratorTests {
 		assertEquals(new Sin(new Plus(new X(), new Y())), e);
 
 	}
+	
+	@Test
+	public void incrementFunctionTests() {
+		ExpressionTreeNode e = parser.makeExpression("increment(x)");
+		assertEquals(new Increment(new X()), e);
+
+		e = parser.makeExpression("increment( x + y )");
+		assertEquals(new Increment(new Plus(new X(), new Y())), e);
+
+	}
 
 }
