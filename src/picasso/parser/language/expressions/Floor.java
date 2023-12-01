@@ -3,16 +3,13 @@ package picasso.parser.language.expressions;
 import picasso.parser.language.ExpressionTreeNode;
 
 /**
- * Represents the floor function in the Picasso language.
- * 
- * @author Robert C. Duvall
- * @author Sara Sprenkle
- * 
+ * Represents the exp function in the Picasso language.
+ * @author AJ Thomas
  */
 public class Floor extends UnaryFunction {
 
 	/**
-	 * Create a floor expression that takes as a parameter the given expression
+	 * Create an floor expression that takes as a parameter the given expression
 	 * 
 	 * @param param the expression to floor
 	 */
@@ -35,5 +32,4 @@ public class Floor extends UnaryFunction {
 
 		return new RGBColor(red, green, blue);
 	}
-
 }
