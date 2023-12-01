@@ -51,6 +51,11 @@ public class EvaluatorTests {
 		assertEquals(new RGBColor(0, 0, 0), myTree.evaluate(.999, -1));
 		assertEquals(new RGBColor(-1, -1, -1), myTree.evaluate(-.7, -1));
 
+		// additional tests
+		assertEquals(new RGBColor(0, 0, 0), myTree.evaluate(0, 0));
+		assertEquals(new RGBColor(1, 1, 1), myTree.evaluate(1.5, 2.7));
+		assertEquals(new RGBColor(-3, -3, -3), myTree.evaluate(-2.3, -3.8));
+
 		// test the ints; remember that y's value doesn't matter
 		for (int i = -1; i <= 1; i++) {
 			assertEquals(new RGBColor(i, i, i), myTree.evaluate(i, -i));
@@ -65,6 +70,17 @@ public class EvaluatorTests {
 			assertEquals(new RGBColor(floorOfTestVal, floorOfTestVal, floorOfTestVal),
 					myTree.evaluate(testVal, testVal));
 		}
+	}
+	@Test
+	public void testCosEvaluation() {
+	    Cosine myTree = new Cosine(new X());
+
+	    double[] testVals = { -1.0, 0.12, 1.0 };
+
+	    for (double val : testVals) {
+	        double cosVal = Math.cos(val);
+	        assertEquals(new RGBColor(cosVal, cosVal, cosVal), myTree.evaluate(val, val));
+	    }
 	}
 	
 	@Test
@@ -81,8 +97,7 @@ public class EvaluatorTests {
 	@Test
 	public void testSinEvaluation() {
 		Sin myTree = new Sin(new X());
-		
-		assertEquals(0, myTree.evaluate(-Math.PI,-Math.PI).getRed(), 0.01);
+    assertEquals(0, myTree.evaluate(-Math.PI,-Math.PI).getRed(), 0.01);
 		assertEquals(0, myTree.evaluate(-Math.PI,-Math.PI).getGreen(), 0.01);
 		assertEquals(0, myTree.evaluate(-Math.PI,-Math.PI).getBlue(), 0.01);
 		
@@ -92,20 +107,36 @@ public class EvaluatorTests {
 			assertEquals(0, myTree.evaluate(-i,-i).getBlue(), 0.01);
 		}
 	}
-	/*
-    	@Test
+
 	public void testTanEvaluation() {
 		Tan myTree = new Tan(new X());
-		double vals[] = { -1.0, 0.12, 1.0};
+		double vals[] = { -1.0, 0.12, 1.0, 0.5, 0, Math.PI / 2};
 		double tan_val;
 		for (double val : vals) {
-			tan_val = Math.floor(val);
+			tan_val = Math.tan(val);
 			assertEquals(new RGBColor(tan_val, tan_val, tan_val), myTree.evaluate(val, val));
 		}
 		return;
 	}
 	*/
 	
+	@Test
+	public void testIncrementEvaluation() {
+		Increment myTree = new Increment(new X());
+	
+		// Test cases for different inputs
+		assertEquals(new RGBColor(1, 1, 1), myTree.evaluate(0, 0));
+		assertEquals(new RGBColor(-2, -2, -2), myTree.evaluate(-3, -3));
+		assertEquals(new RGBColor(5, 5, 5), myTree.evaluate(4, 4));
+		
+		// Test cases for integers
+		for (int i = -1; i <= 1; i++) {
+			assertEquals(new RGBColor(i + 1, i + 1, i + 1), myTree.evaluate(i, -i));
+			assertEquals(new RGBColor(i + 1, i + 1, i + 1), myTree.evaluate(i, i));
+		}
+	
+	}
+
 	@Test
 	public void testPlusEvaluation() {
 		Plus myTree = new Plus(new X(), new Y());
