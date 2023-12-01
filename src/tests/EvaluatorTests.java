@@ -65,6 +65,7 @@ public class EvaluatorTests {
 			assertEquals(new RGBColor(floorOfTestVal, floorOfTestVal, floorOfTestVal),
 					myTree.evaluate(testVal, testVal));
 		}
+	}
 	@Test
 	public void testCosEvaluation() {
 	    Cosine myTree = new Cosine(new X());
@@ -97,14 +98,15 @@ public class EvaluatorTests {
 		assertEquals(new RGBColor(0.479425538604203,0.479425538604203,0.479425538604203), myTree.evaluate(0.5,0.5));
 		assertEquals(new RGBColor(0.479425538604203,0.479425538604203,0.479425538604203), myTree.evaluate(0.5,0.5));
 		assertEquals(new RGBColor(0, 0, 0), myTree.evaluate(0,0));
+	}
     
-    	@Test
+    @Test
 	public void testTanEvaluation() {
 		Tan myTree = new Tan(new X());
-		double vals[] = { -1.0, 0.12, 1.0};
+		double vals[] = { -1.0, 0.12, 1.0, 0.5, 0, Math.PI / 2};
 		double tan_val;
 		for (double val : vals) {
-			tan_val = Math.floor(val);
+			tan_val = Math.tan(val);
 			assertEquals(new RGBColor(tan_val, tan_val, tan_val), myTree.evaluate(val, val));
 		}
 		return;
