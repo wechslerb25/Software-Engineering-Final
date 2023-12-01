@@ -14,6 +14,7 @@ import picasso.parser.SemanticAnalyzer;
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.language.expressions.*;
 import picasso.parser.tokens.*;
+import picasso.parser.tokens.functions.SinToken;
 import picasso.parser.tokens.operations.*;
 
 /**
@@ -46,6 +47,19 @@ class SemanticAnalyzerTest {
 		ExpressionTreeNode actual = semAnalyzer.generateExpressionTree(tokens);
 
 		assertEquals(new Plus(new X(), new Y()), actual);
+	}
+	
+	@Test
+	void testSinFunction() {
+		Stack<Token> tokens = new Stack<>();
+		tokens.push(new IdentifierToken("x"));
+		tokens.push(new SinToken());
+		
+		ExpressionTreeNode actual = semAnalyzer.generateExpressionTree(tokens);
+		
+		assertEquals(new Sin(new X()), actual);
+		
+		
 	}
 
 }
