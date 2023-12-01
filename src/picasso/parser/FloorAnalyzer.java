@@ -10,7 +10,7 @@ import picasso.parser.tokens.Token;
  * Handles parsing the floor function.
  * 
  * @author Sara Sprenkle
- * 
+ * @author AJ Thomas
  */
 public class FloorAnalyzer extends UnaryFunctionAnalyzer {
 
