@@ -66,8 +66,18 @@ public class EvaluatorTests {
 					myTree.evaluate(testVal, testVal));
 		}
 	}
-
 	
+	@Test
+	public void testExpEvaluation() {
+		Exp myTree = new Exp(new X());
+		double e = Math.E;
+
+		assertEquals(new RGBColor(1,1,1), myTree.evaluate(0, 0));
+		assertEquals(e, myTree.evaluate(1, 0).getRed(), 0.01);
+		assertEquals(e, myTree.evaluate(1, 0).getGreen(), 0.01);
+		assertEquals(e, myTree.evaluate(1, 0).getBlue(), 0.01);
+	}
+
 	@Test
 	public void testSinEvaluation() {
 		Sin myTree = new Sin(new X());
@@ -77,6 +87,32 @@ public class EvaluatorTests {
 		assertEquals(new RGBColor(0.479425538604203,0.479425538604203,0.479425538604203), myTree.evaluate(0.5,0.5));
 		assertEquals(new RGBColor(0.479425538604203,0.479425538604203,0.479425538604203), myTree.evaluate(0.5,0.5));
 		assertEquals(new RGBColor(0, 0, 0), myTree.evaluate(0,0));
+    
+    	@Test
+	public void testTanEvaluation() {
+		Tan myTree = new Tan(new X());
+		double vals[] = { -1.0, 0.12, 1.0};
+		double tan_val;
+		for (double val : vals) {
+			tan_val = Math.floor(val);
+			assertEquals(new RGBColor(tan_val, tan_val, tan_val), myTree.evaluate(val, val));
+		}
+		return;
+	}
+	
+	@Test
+	public void testPlusEvaluation() {
+		Plus myTree = new Plus(new X(), new Y());
+
+		assertEquals(new RGBColor(1,1,1), myTree.evaluate(0.5, 0.5));
+		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(-0.5, -0.5));
+		assertEquals(new RGBColor(0,0,0), myTree.evaluate(-0.5, 0.5));
+		assertEquals(new RGBColor(0,0,0), myTree.evaluate(0.5, -0.5));
+		assertEquals(new RGBColor(1,1,1), myTree.evaluate(1, 0));
+		assertEquals(new RGBColor(1,1,1), myTree.evaluate(0, 1));
+		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(-1, 0));
+		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(0, -1));
+		assertEquals(new RGBColor(-1.5,-1.5,-1.5), myTree.evaluate(-2, 0.5)); //this test is accurate assuming the range clamping does not happen at this step.
 	}
 	// TODO: More tests of evaluation
 
