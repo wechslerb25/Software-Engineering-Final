@@ -79,6 +79,16 @@ public class EvaluatorTests {
 	}
 
 	@Test
+	public void testSinEvaluation() {
+		Sin myTree = new Sin(new X());
+		//for (double i = -Math.PI; i <= Math.PI; i+= 2*Math.PI) {
+			//assertEquals(new RGBColor(0, 0, 0), myTree.evaluate(-i,-i));
+		//}
+		assertEquals(new RGBColor(0.479425538604203,0.479425538604203,0.479425538604203), myTree.evaluate(0.5,0.5));
+		assertEquals(new RGBColor(0.479425538604203,0.479425538604203,0.479425538604203), myTree.evaluate(0.5,0.5));
+		assertEquals(new RGBColor(0, 0, 0), myTree.evaluate(0,0));
+    
+    	@Test
 	public void testTanEvaluation() {
 		Tan myTree = new Tan(new X());
 		double vals[] = { -1.0, 0.12, 1.0};
