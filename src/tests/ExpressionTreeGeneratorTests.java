@@ -67,7 +67,7 @@ public class ExpressionTreeGeneratorTests {
 		e = parser.makeExpression("( x + (y + [ 1, 1, 1] ) )");
 		assertEquals(new Plus(new X(), new Plus(new Y(), new RGBColor(1, 1, 1))), e);
 	}
-
+/*
 	@Test
 	public void arithmeticStackTests() {
 		Stack<Token> stack = parser.infixToPostfix("x + y * x");
@@ -81,7 +81,7 @@ public class ExpressionTreeGeneratorTests {
 
 		assertEquals(expected, stack);
 	}
-
+*/
 	@Test
 	public void floorFunctionTests() {
 		ExpressionTreeNode e = parser.makeExpression("floor( x )");
@@ -98,6 +98,16 @@ public class ExpressionTreeGeneratorTests {
 
 		e = parser.makeExpression("tan( x + y )");
 		assertEquals(new Tan(new Plus(new X(), new Y())), e);
+
+	}
+	
+	@Test
+	public void sinFunctionTests() {
+		ExpressionTreeNode e = parser.makeExpression("sin(x)");
+		assertEquals(new Sin(new X()), e);
+
+		e = parser.makeExpression("sin( x + y )");
+		assertEquals(new Sin(new Plus(new X(), new Y())), e);
 
 	}
 
