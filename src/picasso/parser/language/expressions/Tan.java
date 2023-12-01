@@ -13,7 +13,7 @@ public class Tan extends UnaryFunction {
 	/**
 	 * Create a Tan expression that takes as a parameter the given expression
 	 * 
-	 * @param param the expression to floor
+	 * @param param the expression to tan
 	 */
 	public Tan(ExpressionTreeNode param) {
 		super(param);
