@@ -118,7 +118,6 @@ public class EvaluatorTests {
 		}
 		return;
 	}
-	*/
 	
 	@Test
 	public void testIncrementEvaluation() {
