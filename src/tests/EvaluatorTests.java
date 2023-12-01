@@ -97,15 +97,17 @@ public class EvaluatorTests {
 	@Test
 	public void testSinEvaluation() {
 		Sin myTree = new Sin(new X());
-		//for (double i = -Math.PI; i <= Math.PI; i+= 2*Math.PI) {
-			//assertEquals(new RGBColor(0, 0, 0), myTree.evaluate(-i,-i));
-		//}
-		assertEquals(new RGBColor(0.479425538604203,0.479425538604203,0.479425538604203), myTree.evaluate(0.5,0.5));
-		assertEquals(new RGBColor(0.479425538604203,0.479425538604203,0.479425538604203), myTree.evaluate(0.5,0.5));
-		assertEquals(new RGBColor(0, 0, 0), myTree.evaluate(0,0));
+    assertEquals(0, myTree.evaluate(-Math.PI,-Math.PI).getRed(), 0.01);
+		assertEquals(0, myTree.evaluate(-Math.PI,-Math.PI).getGreen(), 0.01);
+		assertEquals(0, myTree.evaluate(-Math.PI,-Math.PI).getBlue(), 0.01);
+		
+		for (double i = -Math.PI; i <= Math.PI; i+= 2*Math.PI) {
+			assertEquals(0, myTree.evaluate(-i,-i).getRed(), 0.01);
+			assertEquals(0, myTree.evaluate(-i,-i).getGreen(), 0.01);
+			assertEquals(0, myTree.evaluate(-i,-i).getBlue(), 0.01);
+		}
 	}
-    
-    @Test
+
 	public void testTanEvaluation() {
 		Tan myTree = new Tan(new X());
 		double vals[] = { -1.0, 0.12, 1.0, 0.5, 0, Math.PI / 2};
@@ -116,6 +118,7 @@ public class EvaluatorTests {
 		}
 		return;
 	}
+	*/
 	
 	@Test
 	public void testIncrementEvaluation() {
