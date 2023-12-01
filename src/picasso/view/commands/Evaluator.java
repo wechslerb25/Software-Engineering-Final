@@ -11,7 +11,7 @@ import picasso.util.Command;
 import javax.swing.JTextField;
 /**
  * Evaluate an expression for each pixel in a image.
- * 
+ * 	
  * @author Robert C Duvall
  * @author Sara Sprenkle
  */
