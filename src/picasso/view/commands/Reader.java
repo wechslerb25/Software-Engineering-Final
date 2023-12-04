@@ -34,7 +34,7 @@ public class Reader extends FileCommand<Pixmap> {
 		    extension = extension.toLowerCase();
 		    System.out.println(extension);
 		    
-	    	if (extension.equals("txt")) {
+	    	if (extension.equals("exp")) {
 	    		System.out.println(fileName);
 	    		File file = new File("/Users/bwech/Documents/School_stuff/Software_Development/picasso-codecatalysts/sin(x).txt");
 	    		Scanner scan = new Scanner(file);
