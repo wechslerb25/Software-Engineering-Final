@@ -9,7 +9,7 @@ import picasso.parser.language.ExpressionTreeNode;
  * Represents the addition binary operator in the Picasso language.
  * @author Reese Nelson
  */
-public class Plus extends BinaryOperator{
+public class Addition extends BinaryOperator{
 	
 	ExpressionTreeNode param;
 
@@ -18,7 +18,7 @@ public class Plus extends BinaryOperator{
 	 * 
 	 * @param param the expressions to add
 	 */
-	public Plus(ExpressionTreeNode param1, ExpressionTreeNode param2) {
+	public Addition(ExpressionTreeNode param1, ExpressionTreeNode param2) {
 		super(param1, param2);
 	}
 
