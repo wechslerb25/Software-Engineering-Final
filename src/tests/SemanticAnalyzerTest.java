@@ -77,6 +77,19 @@ class SemanticAnalyzerTest {
 	}
 	
 	@Test
+	void testParseDivision() {
+
+		Stack<Token> tokens = new Stack<>();
+		tokens.push(new IdentifierToken("x"));
+		tokens.push(new IdentifierToken("y"));
+		tokens.push(new SlashToken());
+
+		ExpressionTreeNode actual = semAnalyzer.generateExpressionTree(tokens);
+
+		assertEquals(new Division(new X(), new Y()), actual);
+	}
+	
+	@Test
 	void testSinFunction() {
 		Stack<Token> tokens = new Stack<>();
 		tokens.push(new IdentifierToken("x"));

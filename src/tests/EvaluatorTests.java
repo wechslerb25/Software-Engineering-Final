@@ -177,6 +177,18 @@ public class EvaluatorTests {
 		assertEquals(new RGBColor(1,1,1), myTree.evaluate(-1, -1));
 		assertEquals(new RGBColor(-0.25,-0.25,-0.25), myTree.evaluate(-0.5, 0.5));
 	}
+	
+	@Test
+	public void testDivisionEvaluation() {
+		Division myTree = new Division(new X(), new Y());
+		
+		assertEquals(new RGBColor(4,4,4), myTree.evaluate(2, 0.5));
+		assertEquals(new RGBColor(0.25,0.25,0.25), myTree.evaluate(0.5, 2));
+		//TODO: assertThrows(new RGBColor(0,0,0), myTree.evaluate(1, 0));
+		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(-1, 1));
+		assertEquals(new RGBColor(1,1,1), myTree.evaluate(-1, -1));
+		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(-0.5, 0.5));
+	}
 	// TODO: More tests of evaluation
 
 }
