@@ -22,15 +22,15 @@ public abstract class UnaryFunction extends ExpressionTreeNode {
 	}
 
 	/**
-	 * Returns the string representation of the function in the format "<ClassName>:
-	 * <parameter>"
+	 * Returns the string representation of the function in the format 
+	 * "<ClassName>(<parameter>)"
 	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
 		String classname = this.getClass().getName();
-		return classname.substring(classname.lastIndexOf(".") + 1) + "(" + param + ")";
+		return classname.substring(classname.lastIndexOf(".") + 1).toLowerCase() + "(" + param + ")";
 	}
 
 	@Override
