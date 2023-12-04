@@ -9,7 +9,6 @@ import picasso.parser.tokens.chars.CharToken;
  * @author Reese Nelson
  */
 public class MinusToken extends CharToken implements OperationInterface {
-	
 	public MinusToken() {
 		super(CharConstants.MINUS);
 	}

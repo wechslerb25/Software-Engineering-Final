@@ -7,12 +7,9 @@ import picasso.parser.language.expressions.Addition;
 import picasso.parser.tokens.Token;
 
 /**
- * Handles parsing the plus or "addition function".
+ * Handles parsing the addition binary operator.
  * 
- * @author Robert C. Duvall
- * @author Sara Sprenkle
  * @author Reese Nelson
- * 
  */
 public class PlusAnalyzer implements SemanticAnalyzerInterface {
 
@@ -21,8 +18,8 @@ public class PlusAnalyzer implements SemanticAnalyzerInterface {
 		tokens.pop(); // Remove the plus token
 		// the parameters are the next tokens on the stack.
 		// But, they need to be processed
-		ExpressionTreeNode param1 = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
-		ExpressionTreeNode param2 = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
-		return new Addition(param2, param1);
+		ExpressionTreeNode exp1 = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
+		ExpressionTreeNode exp2 = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
+		return new Addition(exp2, exp1);
 	}
 }

@@ -3,6 +3,7 @@
  */
 package picasso.parser.language.expressions;
 
+import picasso.parser.language.CharConstants;
 import picasso.parser.language.ExpressionTreeNode;
 
 /**
@@ -11,21 +12,22 @@ import picasso.parser.language.ExpressionTreeNode;
  */
 public class Addition extends BinaryOperator{
 	
-	ExpressionTreeNode param;
+	String operator = "" + CharConstants.PLUS;
 
 	/**
-	 * Create a plus expression that takes as a parameter the given expression
+	 * Create an addition expression that takes as a parameter the given expressions
 	 * 
-	 * @param param the expressions to add
+	 * @param exp1 the first expression to add
+	 * @param exp2 the second expression to add
 	 */
-	public Addition(ExpressionTreeNode param1, ExpressionTreeNode param2) {
-		super(param1, param2);
+	public Addition(ExpressionTreeNode exp1, ExpressionTreeNode exp2) {
+		super(exp1, exp2);
 	}
 
 	@Override
 	public RGBColor evaluate(double x, double y) {
-		RGBColor result1 = param1.evaluate(x, y);
-		RGBColor result2 = param2.evaluate(x, y);
+		RGBColor result1 = exp1.evaluate(x, y);
+		RGBColor result2 = exp2.evaluate(x, y);
 		double red = result1.getRed() + result2.getRed();
 		double green = result1.getGreen() + result2.getGreen();
 		double blue = result1.getBlue() + result2.getBlue();

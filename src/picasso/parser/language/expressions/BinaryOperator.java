@@ -6,37 +6,40 @@ package picasso.parser.language.expressions;
 import picasso.parser.language.ExpressionTreeNode;
 
 /**
- * Represents an operation that takes two arguments.
+ * Represents an operation that takes two expressions as arguments.
  * 
  * @author Reese Nelson
  */
 public abstract class BinaryOperator extends ExpressionTreeNode{
 	
-	ExpressionTreeNode param1;
-	ExpressionTreeNode param2;
+	ExpressionTreeNode exp1;
+	ExpressionTreeNode exp2;
+	private String operator = "bop";
 
 	/**
 	 * 
-	 * @param param1
+	 * @param exp1
 	 * @param param2
 	 */
-	public BinaryOperator(ExpressionTreeNode param1, ExpressionTreeNode param2) {
-		this.param1 = param1;
-		this.param2 = param2;
+	public BinaryOperator(ExpressionTreeNode exp1, ExpressionTreeNode exp2) {
+		this.exp1 = exp1;
+		this.exp2 = exp2;
 	}
 	
 	/**
 	 * Returns the string representation of the operation in the format 
-	 * "<ClassName>: <parameter1>, <parameter2>"
+	 * "<exp1> <operator> <exp2>"
 	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		String classname = this.getClass().getName();
-		return classname.substring(classname.lastIndexOf(".") + 1) + ": " + param1 + ", " + param2;
+		return exp1 + " " + operator + " " + exp2;
 	}
 	
+	/*
+	 * Determines whether a BinaryOperator node is equal to another.
+	 */
 	@Override
 	public boolean equals(Object o) {
 		if (o == this) {
@@ -56,7 +59,7 @@ public abstract class BinaryOperator extends ExpressionTreeNode{
 		BinaryOperator b = (BinaryOperator) o;
 
 		// check if their parameters are equal
-		if (!this.param1.equals(b.param1) || !this.param2.equals(b.param2)) {
+		if (!this.exp1.equals(b.exp1) || !this.exp2.equals(b.exp2)) {
 			return false;
 		}
 		return true;
