@@ -90,6 +90,19 @@ class SemanticAnalyzerTest {
 	}
 	
 	@Test
+	void testParseModulo() {
+
+		Stack<Token> tokens = new Stack<>();
+		tokens.push(new IdentifierToken("x"));
+		tokens.push(new IdentifierToken("y"));
+		tokens.push(new ModToken());
+
+		ExpressionTreeNode actual = semAnalyzer.generateExpressionTree(tokens);
+
+		assertEquals(new Modulo(new X(), new Y()), actual);
+	}
+	
+	@Test
 	void testParseExponent() {
 
 		Stack<Token> tokens = new Stack<>();

@@ -191,6 +191,18 @@ public class EvaluatorTests {
 	}
 	
 	@Test
+	public void testModuloEvaluation() {
+		Modulo myTree = new Modulo(new X(), new Y());
+		
+		assertEquals(new RGBColor(0,0,0), myTree.evaluate(4, 0.5));
+		assertEquals(new RGBColor(0.5,0.5,0.5), myTree.evaluate(0.5, 2));
+		//TODO: assertThrows(new RGBColor(0,0,0), myTree.evaluate(1, 0));
+		assertEquals(new RGBColor(0,0,0), myTree.evaluate(-1, 1));
+		assertEquals(new RGBColor(1,1,1), myTree.evaluate(7, 3));
+		assertEquals(new RGBColor(0,0,0), myTree.evaluate(4, -2));
+	}
+	
+	@Test
 	public void testExponentiateEvaluation() {
 		Exponentiate myTree = new Exponentiate(new X(), new Y());
 		

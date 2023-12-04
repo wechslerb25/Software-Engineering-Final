@@ -196,7 +196,7 @@ public class ExpressionTreeGenerator {
 
 		if (token instanceof PlusToken || token instanceof MinusToken)
 			return ADD_OR_SUBTRACT;
-		else if (token instanceof StarToken || token instanceof SlashToken) {
+		else if (token instanceof StarToken || token instanceof SlashToken || token instanceof ModToken) {
 			return MULTIPLY_DIVIDE_OR_MOD;
 		}
 		else if (token instanceof CaretToken) {

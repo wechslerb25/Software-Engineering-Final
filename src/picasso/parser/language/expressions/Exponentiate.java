@@ -12,7 +12,7 @@ import picasso.parser.language.ExpressionTreeNode;
  */
 public class Exponentiate extends BinaryOperator{
 	
-	String operator = "" + CharConstants.SLASH;
+	String operator = "" + CharConstants.CARET;
 
 	/**
 	 * Create an exponentiate expression that takes as a parameter the given expressions
