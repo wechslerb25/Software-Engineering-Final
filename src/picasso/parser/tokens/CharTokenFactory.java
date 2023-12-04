@@ -39,6 +39,7 @@ public class CharTokenFactory {
 		tokenList[CharConstants.MINUS] = new MinusToken();
 		tokenList[CharConstants.STAR] = new StarToken();
 		tokenList[CharConstants.SLASH] = new SlashToken();
+		tokenList[CharConstants.MOD] = new ModToken();
 		tokenList[CharConstants.CARET] = new CaretToken();
 
 		// TODO: What other tokens should be in here?
