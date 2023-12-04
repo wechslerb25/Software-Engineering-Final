@@ -32,7 +32,6 @@ public class Frame extends JFrame {
 		commands.add("Open", read);
 		//gets the expression from the reader class
 		String expression = read.getExpression();
-		System.out.println(expression);
 		// Evaluator gets refrence to TextBox so it can call .getText() from it.
 		if (expression == null) {
 			commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas, new Evaluator(text)));
