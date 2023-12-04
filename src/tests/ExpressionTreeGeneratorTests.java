@@ -4,16 +4,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Stack;
-
 import org.junit.jupiter.api.BeforeEach;
 
 import picasso.parser.ExpressionTreeGenerator;
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.language.expressions.*;
-import picasso.parser.tokens.IdentifierToken;
-import picasso.parser.tokens.Token;
-import picasso.parser.tokens.operations.PlusToken;
 
 /**
  * Tests of creating an expression tree from a string expression. Will have
@@ -46,26 +41,26 @@ public class ExpressionTreeGeneratorTests {
 	@Test
 	public void additionExpressionTests() {
 		ExpressionTreeNode e = parser.makeExpression("x + y");
-		assertEquals(new Plus(new X(), new Y()), e);
+		assertEquals(new Addition(new X(), new Y()), e);
 
 		// no spaces!
 		e = parser.makeExpression("x+y");
-		assertEquals(new Plus(new X(), new Y()), e);
+		assertEquals(new Addition(new X(), new Y()), e);
 
 		e = parser.makeExpression("[1,.3,-1] + y");
-		assertEquals(new Plus(new RGBColor(1, .3, -1), new Y()), e);
+		assertEquals(new Addition(new RGBColor(1, .3, -1), new Y()), e);
 
 		e = parser.makeExpression("x + y + [ -.51, 0, 1]");
-		assertEquals(new Plus(new Plus(new X(), new Y()), new RGBColor(-.51, 0, 1)), e);
+		assertEquals(new Addition(new Addition(new X(), new Y()), new RGBColor(-.51, 0, 1)), e);
 	}
 
 	@Test
 	public void parenthesesExpressionTests() {
 		ExpressionTreeNode e = parser.makeExpression("( x + y )");
-		assertEquals(new Plus(new X(), new Y()), e);
+		assertEquals(new Addition(new X(), new Y()), e);
 
 		e = parser.makeExpression("( x + (y + [ 1, 1, 1] ) )");
-		assertEquals(new Plus(new X(), new Plus(new Y(), new RGBColor(1, 1, 1))), e);
+		assertEquals(new Addition(new X(), new Addition(new Y(), new RGBColor(1, 1, 1))), e);
 	}
 /*
 	@Test
@@ -88,7 +83,7 @@ public class ExpressionTreeGeneratorTests {
 		assertEquals(new Floor(new X()), e);
 
 		e = parser.makeExpression("floor( x + y )");
-		assertEquals(new Floor(new Plus(new X(), new Y())), e);
+		assertEquals(new Floor(new Addition(new X(), new Y())), e);
 	}
 	@Test
 	public void expFunctionTests() {
@@ -96,7 +91,7 @@ public class ExpressionTreeGeneratorTests {
 		assertEquals(new Exp(new X()), e);
 
 		e = parser.makeExpression("exp( x + y )");
-		assertEquals(new Exp(new Plus(new X(), new Y())), e);
+		assertEquals(new Exp(new Addition(new X(), new Y())), e);
 	}
 	@Test
 	public void cosFunctionTests() {
@@ -104,7 +99,7 @@ public class ExpressionTreeGeneratorTests {
 		assertEquals(new Cosine(new X()), e);
 
 		e = parser.makeExpression("cos( x + y )");
-		assertEquals(new Cosine(new Plus(new X(), new Y())), e);
+		assertEquals(new Cosine(new Addition(new X(), new Y())), e);
 	}
 
 	@Test
@@ -113,7 +108,7 @@ public class ExpressionTreeGeneratorTests {
 		assertEquals(new Tan(new X()), e);
 
 		e = parser.makeExpression("tan( x + y )");
-		assertEquals(new Tan(new Plus(new X(), new Y())), e);
+		assertEquals(new Tan(new Addition(new X(), new Y())), e);
 
 	}
 	
@@ -123,7 +118,7 @@ public class ExpressionTreeGeneratorTests {
 		assertEquals(new Sin(new X()), e);
 
 		e = parser.makeExpression("sin( x + y )");
-		assertEquals(new Sin(new Plus(new X(), new Y())), e);
+		assertEquals(new Sin(new Addition(new X(), new Y())), e);
 
 	}
 	
@@ -133,7 +128,7 @@ public class ExpressionTreeGeneratorTests {
 		assertEquals(new Increment(new X()), e);
 
 		e = parser.makeExpression("increment( x + y )");
-		assertEquals(new Increment(new Plus(new X(), new Y())), e);
+		assertEquals(new Increment(new Addition(new X(), new Y())), e);
 
 	}
 
