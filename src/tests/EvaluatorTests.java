@@ -137,7 +137,7 @@ public class EvaluatorTests {
 	}
 
 	@Test
-	public void testPlusEvaluation() {
+	public void testAdditionEvaluation() {
 		Addition myTree = new Addition(new X(), new Y());
 
 		assertEquals(new RGBColor(1,1,1), myTree.evaluate(0.5, 0.5));
@@ -149,6 +149,21 @@ public class EvaluatorTests {
 		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(-1, 0));
 		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(0, -1));
 		assertEquals(new RGBColor(-1.5,-1.5,-1.5), myTree.evaluate(-2, 0.5)); //this test is accurate assuming the range clamping does not happen at this step.
+	}
+	
+	@Test
+	public void testSubtractionEvaluation() {
+		Subtraction myTree = new Subtraction(new X(), new Y());
+
+		assertEquals(new RGBColor(0,0,0), myTree.evaluate(0.5, 0.5));
+		assertEquals(new RGBColor(0,0,0), myTree.evaluate(-0.5, -0.5));
+		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(-0.5, 0.5));
+		assertEquals(new RGBColor(1,1,1), myTree.evaluate(0.5, -0.5));
+		assertEquals(new RGBColor(1,1,1), myTree.evaluate(1, 0));
+		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(0, 1));
+		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(-1, 0));
+		assertEquals(new RGBColor(1,1,1), myTree.evaluate(0, -1));
+		assertEquals(new RGBColor(-2.5,-2.5,-2.5), myTree.evaluate(-2, 0.5)); //this test is accurate assuming the range clamping does not happen at this step.
 	}
 	// TODO: More tests of evaluation
 
