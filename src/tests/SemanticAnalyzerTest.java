@@ -22,6 +22,7 @@ import picasso.parser.tokens.operations.*;
  * helps to isolate where the problem is)
  * 
  * @author Sara Sprenkle
+ * @author Reese Nelson
  *
  */
 class SemanticAnalyzerTest {
@@ -47,6 +48,19 @@ class SemanticAnalyzerTest {
 		ExpressionTreeNode actual = semAnalyzer.generateExpressionTree(tokens);
 
 		assertEquals(new Addition(new X(), new Y()), actual);
+	}
+	
+	@Test
+	void testParseSubtraction() {
+
+		Stack<Token> tokens = new Stack<>();
+		tokens.push(new IdentifierToken("x"));
+		tokens.push(new IdentifierToken("y"));
+		tokens.push(new MinusToken());
+
+		ExpressionTreeNode actual = semAnalyzer.generateExpressionTree(tokens);
+
+		assertEquals(new Subtraction(new X(), new Y()), actual);
 	}
 	
 	@Test

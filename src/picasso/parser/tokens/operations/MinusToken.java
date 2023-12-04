@@ -6,6 +6,7 @@ import picasso.parser.tokens.chars.CharToken;
 /**
  * Represents the minus sign token
  * 
+ * @author Reese Nelson
  */
 public class MinusToken extends CharToken implements OperationInterface {
 	
