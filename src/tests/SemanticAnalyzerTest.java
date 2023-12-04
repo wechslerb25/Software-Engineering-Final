@@ -72,8 +72,6 @@ class SemanticAnalyzerTest {
 		ExpressionTreeNode actual = semAnalyzer.generateExpressionTree(tokens);
 		
 		assertEquals(new Sin(new X()), actual);
-		
-		
 	}
 
 }

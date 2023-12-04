@@ -14,12 +14,12 @@ public abstract class BinaryOperator extends ExpressionTreeNode{
 	
 	ExpressionTreeNode exp1;
 	ExpressionTreeNode exp2;
-	private String operator = "bop";
+	private String operator = "binop";
 
 	/**
 	 * 
-	 * @param exp1
-	 * @param param2
+	 * @param exp1 the first expression
+	 * @param exp2 the second expression
 	 */
 	public BinaryOperator(ExpressionTreeNode exp1, ExpressionTreeNode exp2) {
 		this.exp1 = exp1;
