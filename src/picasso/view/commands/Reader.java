@@ -32,14 +32,12 @@ public class Reader extends FileCommand<Pixmap> {
 		    int periodIndex = fileName.lastIndexOf(".");  //gets the index of the last occurrence of a period in the string
 		    String extension = fileName.substring(periodIndex + 1); //slices the string from the period to the end exclusively
 		    extension = extension.toLowerCase();
-		    System.out.println(extension);
-		    
 	    	if (extension.equals("exp")) {
 	    		System.out.println(fileName);
-	    		File file = new File("/Users/bwech/Documents/School_stuff/Software_Development/picasso-codecatalysts/sin(x).txt");
+	    		File file = new File(fileName);
 	    		Scanner scan = new Scanner(file);
 	    		StringBuilder expression = new StringBuilder();
-	    		expression.append(scan.nextLine());
+	    		System.out.println(expression.append(scan.nextLine()));
 	    		while (scan.hasNextLine()) {
 	    			expression.append(scan.nextLine());
 	    		}
