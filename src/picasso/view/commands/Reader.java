@@ -6,6 +6,7 @@ import picasso.model.Pixmap;
 import picasso.util.FileCommand;
 import java.util.Scanner;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 
 /**
@@ -35,14 +36,21 @@ public class Reader extends FileCommand<Pixmap> {
 	    	if (extension.equals("exp")) {
 	    		System.out.println(fileName);
 	    		File file = new File(fileName);
-	    		Scanner scan = new Scanner(file);
-	    		StringBuilder expression = new StringBuilder();
-	    		System.out.println(expression.append(scan.nextLine()));
-	    		while (scan.hasNextLine()) {
-	    			expression.append(scan.nextLine());
-	    		}
-	    		System.out.println(expression);
-	    		scan.close();
+	    		Scanner scan;
+				try {
+					scan = new Scanner(file);
+					StringBuilder expression = new StringBuilder();
+		    		System.out.println(expression.append(scan.nextLine()));
+		    		while (scan.hasNextLine()) {
+		    			expression.append(scan.nextLine());
+		    		}
+		    		System.out.println(expression);
+		    		scan.close();
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	    		
 	    	}
 	    	
 	    	else {
