@@ -17,8 +17,8 @@ public class Subtraction extends BinaryOperator{
 	/**
 	 * Create a subtraction expression that takes as a parameter the given expressions
 	 * 
-	 * @param exp1 the first expression to add
-	 * @param exp2 the second expression to add
+	 * @param exp1 the first expression to subtract
+	 * @param exp2 the second expression to subtract
 	 */
 	public Subtraction(ExpressionTreeNode exp1, ExpressionTreeNode exp2) {
 		super(exp1, exp2);
