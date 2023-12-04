@@ -90,6 +90,19 @@ class SemanticAnalyzerTest {
 	}
 	
 	@Test
+	void testParseExponent() {
+
+		Stack<Token> tokens = new Stack<>();
+		tokens.push(new IdentifierToken("x"));
+		tokens.push(new IdentifierToken("y"));
+		tokens.push(new CaretToken());
+
+		ExpressionTreeNode actual = semAnalyzer.generateExpressionTree(tokens);
+
+		assertEquals(new Exponentiate(new X(), new Y()), actual);
+	}
+	
+	@Test
 	void testSinFunction() {
 		Stack<Token> tokens = new Stack<>();
 		tokens.push(new IdentifierToken("x"));

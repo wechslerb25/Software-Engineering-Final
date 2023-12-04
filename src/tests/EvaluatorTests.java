@@ -189,6 +189,18 @@ public class EvaluatorTests {
 		assertEquals(new RGBColor(1,1,1), myTree.evaluate(-1, -1));
 		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(-0.5, 0.5));
 	}
+	
+	@Test
+	public void testExponentiateEvaluation() {
+		Exponentiate myTree = new Exponentiate(new X(), new Y());
+		
+		assertEquals(new RGBColor(2,2,2), myTree.evaluate(4, 0.5));
+		assertEquals(new RGBColor(0.25,0.25,0.25), myTree.evaluate(0.5, 2));
+		assertEquals(new RGBColor(1,1,1), myTree.evaluate(2, 0));
+		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(-1, 1));
+		assertEquals(new RGBColor(8,8,8), myTree.evaluate(2, 3));
+		assertEquals(new RGBColor(0.25,0.25,0.25), myTree.evaluate(4, -1));
+	}
 	// TODO: More tests of evaluation
 
 }
