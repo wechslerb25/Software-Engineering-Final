@@ -5,6 +5,8 @@ import javax.swing.JFileChooser;
 import picasso.model.Pixmap;
 import picasso.util.FileCommand;
 import java.util.Scanner;
+import java.io.File;
+import java.util.*;
 
 /**
  * Open the chosen image file and display in the Pixmap target.
@@ -27,15 +29,20 @@ public class Reader extends FileCommand<Pixmap> {
 	public void execute(Pixmap target) {
 		String fileName = getFileName();
 	    if (fileName != null) {
-		    int PeriodIndex = fileName.lastIndexOf(".");  //gets the index of the last occurrence of a period in the string
-		    String NewString = fileName.substring(PeriodIndex + 1); //slices the string from the period to the end exclusively
-		    NewString = NewString.toLowerCase();
-		    System.out.println(NewString);
+		    int periodIndex = fileName.lastIndexOf(".");  //gets the index of the last occurrence of a period in the string
+		    String extension = fileName.substring(periodIndex + 1); //slices the string from the period to the end exclusively
+		    extension = extension.toLowerCase();
+		    System.out.println(extension);
 		    
-	    	if (NewString.equals("txt")) {
+	    	if (extension.equals("txt")) {
 	    		System.out.println(fileName);
-	    		Scanner scan = new Scanner(fileName);
-	    		expression = scan.nextLine();
+	    		File file = new File("/Users/bwech/Documents/School_stuff/Software_Development/picasso-codecatalysts/sin(x).txt");
+	    		Scanner scan = new Scanner(file);
+	    		StringBuilder expression = new StringBuilder();
+	    		expression.append(scan.nextLine());
+	    		while (scan.hasNextLine()) {
+	    			expression.append(scan.nextLine());
+	    		}
 	    		System.out.println(expression);
 	    		scan.close();
 	    	}
