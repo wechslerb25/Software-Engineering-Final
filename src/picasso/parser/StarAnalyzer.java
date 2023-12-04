@@ -18,8 +18,8 @@ public class StarAnalyzer implements SemanticAnalyzerInterface {
 		tokens.pop(); // Remove the star token
 		// the parameters are the next tokens on the stack.
 		// But, they need to be processed
-		ExpressionTreeNode exp1 = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
 		ExpressionTreeNode exp2 = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
-		return new Multiplication(exp2, exp1);
+		ExpressionTreeNode exp1 = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
+		return new Multiplication(exp1, exp2);
 	}
 }
