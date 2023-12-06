@@ -20,7 +20,7 @@ import picasso.parser.tokens.operations.*;
 public class ExpressionTreeGenerator {
 
 	// TODO: Do these belong here?
-	private static final int CONSTANT = 0;
+	private static final int CONSTANT_OR_NEGATE = 0;
 	private static final int GROUPING = 1; // parentheses
 	private static final int EXPONENTIATE = 2;
 	private static final int ADD_OR_SUBTRACT = 3;
@@ -203,6 +203,6 @@ public class ExpressionTreeGenerator {
 			return EXPONENTIATE;
 		}
 		else
-			return CONSTANT;
+			return CONSTANT_OR_NEGATE;
 	}
 }
