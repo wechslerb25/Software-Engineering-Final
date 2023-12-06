@@ -14,8 +14,9 @@ public abstract class TernaryFunction extends ExpressionTreeNode {
 	ExpressionTreeNode param3;
 
 	/**
-	 * 
-	 * @param param
+	 * @param param1 the first parameter
+	 * @param param2 the second parameter
+	 * @param param3 the third parameter
 	 */
 	public TernaryFunction(ExpressionTreeNode param1, ExpressionTreeNode param2, ExpressionTreeNode param3) {
 		this.param1 = param1;
