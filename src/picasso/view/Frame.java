@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import picasso.model.Pixmap;
 import picasso.util.ThreadedCommand;
 import picasso.view.commands.*;
+import picasso.view.commands.Reader;
 
 /**
  * Main container for the Picasso application
@@ -27,9 +28,14 @@ public class Frame extends JFrame {
 		JTextField text = new JTextField("x+y", 20);
 		// add commands to test here
 		ButtonPanel commands = new ButtonPanel(canvas);
-		commands.add("Open", new Reader());
-		// Evaluator gets refrence to TextBox so it can call .getText() from it. 
-		commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas, new Evaluator(text)));
+		Evaluator evaluator = new Evaluator(text);
+		Reader read = new Reader(evaluator);
+		commands.add("Open", read);
+		//gets the expression from the reader class
+		// Evaluator gets refrence to TextBox so it can call .getText() from it.
+
+
+		commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas, evaluator));
 		commands.add("Save", new Writer());
 
 		// add our container to Frame and show it
