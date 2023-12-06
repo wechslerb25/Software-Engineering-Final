@@ -11,13 +11,12 @@ import picasso.parser.tokens.Token;
  * 
  * @author Reese Nelson
  */
-public class NegateAnalyzer implements SemanticAnalyzerInterface {
+public class BangAnalyzer implements SemanticAnalyzerInterface {
 
 	@Override
 	public ExpressionTreeNode generateExpressionTree(Stack<Token> tokens) {
 		tokens.pop(); // Remove the negate token
-		// the parameters are the next tokens on the stack.
-		// But, they need to be processed
+		// the parameter is the next token on the stack.
 		ExpressionTreeNode exp = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
 		return new Negate(exp);
 	}
