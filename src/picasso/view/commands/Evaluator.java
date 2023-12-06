@@ -22,15 +22,11 @@ public class Evaluator implements Command<Pixmap> {
 	// create the expression to evaluate just once
 	public Evaluator(JTextField text) {
 		this.text = text;
-		return;
 	}
 	/**
 	 * Evaluate an expression for each point in the image.
 	 */
-	public void execute(Pixmap target) {
-		
-		ExpressionTreeNode expr = createExpression(text.getText());
-		// evaluate it for each pixel
+	public void pixelEvaluator(Pixmap target, ExpressionTreeNode expr) {
 		Dimension size = target.getSize();
 		for (int imageY = 0; imageY < size.height; imageY++) {
 			double evalY = imageToDomainScale(imageY, size.height);
@@ -40,6 +36,15 @@ public class Evaluator implements Command<Pixmap> {
 				target.setColor(imageX, imageY, pixelColor);
 			}
 		}
+	}
+	public void execute(Pixmap target) {
+		ExpressionTreeNode expr = createExpression(text.getText());
+		pixelEvaluator(target, expr);
+		
+	}
+	public void execute(Pixmap target, String expression) {
+		ExpressionTreeNode expr = createExpression(expression);
+		pixelEvaluator(target, expr);
 	}
 
 	/**
@@ -65,5 +70,4 @@ public class Evaluator implements Command<Pixmap> {
 
 		// return new Multiply( new X(), new Y() );
 	}
-
 }
