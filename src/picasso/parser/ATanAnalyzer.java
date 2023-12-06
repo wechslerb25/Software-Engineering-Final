@@ -3,10 +3,10 @@ package picasso.parser;
 import java.util.Stack;
 
 import picasso.parser.language.ExpressionTreeNode;
-import picasso.parser.language.expressions.ArcTan;
+import picasso.parser.language.expressions.ATan;
 import picasso.parser.tokens.Token;
 
-public class ArcTanAnalyzer extends UnaryFunctionAnalyzer {
+public class ATanAnalyzer extends UnaryFunctionAnalyzer {
 	
 	
 	@Override
@@ -16,7 +16,7 @@ public class ArcTanAnalyzer extends UnaryFunctionAnalyzer {
 		// But, it needs to be processed
 		ExpressionTreeNode paramETN = SemanticAnalyzer.getInstance().generateExpressionTree(
 				tokens);
-		return new ArcTan(paramETN);
+		return new ATan(paramETN);
 	}
 
 }

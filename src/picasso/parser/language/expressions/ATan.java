@@ -2,9 +2,9 @@ package picasso.parser.language.expressions;
 
 import picasso.parser.language.ExpressionTreeNode;
 
-public class ArcTan extends UnaryFunction {
+public class ATan extends UnaryFunction {
 	
-	public ArcTan(ExpressionTreeNode param) {
+	public ATan(ExpressionTreeNode param) {
 		super(param);
 	}
 	

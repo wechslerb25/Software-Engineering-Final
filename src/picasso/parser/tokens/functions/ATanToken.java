@@ -1,8 +1,8 @@
 package picasso.parser.tokens.functions;
 
-public class ArcTanToken extends FunctionToken {
+public class ATanToken extends FunctionToken {
 
-	public ArcTanToken() {
+	public ATanToken() {
 		super("ATan Function Token");
 	}
 }
