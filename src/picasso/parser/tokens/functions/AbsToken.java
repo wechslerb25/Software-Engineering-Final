@@ -6,4 +6,3 @@ public class AbsToken extends FunctionToken {
 		super("Abs Function Token");
 	}
 }
-
