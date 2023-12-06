@@ -16,17 +16,21 @@ import java.util.*;
  */
 public class Reader extends FileCommand<Pixmap> {
 
+	private Evaluator eval;
 	/**
 	 * Creates a Reader object, which prompts users for image files to open
 	 */
 	public Reader() {
 		super(JFileChooser.OPEN_DIALOG);
 	}
+	public Reader(Evaluator eval) {
+		super(JFileChooser.OPEN_DIALOG);
+		this.eval = eval;
+	}
 
 	/**
 	 * Displays the image file on the given target.
 	 */
-	String expression = null;
 	public void execute(Pixmap target) {
 		String fileName = getFileName();
 	    if (fileName != null) {
@@ -34,22 +38,22 @@ public class Reader extends FileCommand<Pixmap> {
 		    String extension = fileName.substring(periodIndex + 1); //slices the string from the period to the end exclusively
 		    extension = extension.toLowerCase();
 	    	if (extension.equals("exp")) {
-	    		System.out.println(fileName);
 	    		File file = new File(fileName);
 	    		Scanner scan;
 				try {
 					scan = new Scanner(file);
 					StringBuilder expression = new StringBuilder();
-		    		System.out.println(expression.append(scan.nextLine()));
 		    		while (scan.hasNextLine()) {
 		    			expression.append(scan.nextLine());
 		    		}
-		    		System.out.println(expression);
+		    		eval.execute(target, expression.toString());
 		    		scan.close();
 				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
+					System.err.println("File not found. Running default expression... ");
+					eval.execute(target);
 					e.printStackTrace();
 				}
+				
 	    		
 	    	}
 	    	
@@ -57,8 +61,5 @@ public class Reader extends FileCommand<Pixmap> {
 	    		target.read(fileName);
 	    	}
 	    }
-	}
-	public String getExpression() {
-		return expression;
 	}
 }
