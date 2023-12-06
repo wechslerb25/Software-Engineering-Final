@@ -9,30 +9,30 @@ import picasso.parser.language.ExpressionTreeNode;
  */
 public abstract class TernaryFunction extends ExpressionTreeNode {
 
-	ExpressionTreeNode cond;
-	ExpressionTreeNode t;
-	ExpressionTreeNode f;
+	ExpressionTreeNode param1;
+	ExpressionTreeNode param2;
+	ExpressionTreeNode param3;
 
 	/**
 	 * 
 	 * @param param
 	 */
-	public TernaryFunction(ExpressionTreeNode cond, ExpressionTreeNode t, ExpressionTreeNode f) {
-		this.cond = cond;
-		this.t = t;
-		this.f = f;
+	public TernaryFunction(ExpressionTreeNode param1, ExpressionTreeNode param2, ExpressionTreeNode param3) {
+		this.param1 = param1;
+		this.param2 = param2;
+		this.param3 = param3;
 	}
 
 	/**
 	 * Returns the string representation of the function in the format 
-	 * "<ClassName>(<parameter>)"
+	 * "<ClassName>(<parameter1>, <parameter2>, <parameter3>)"
 	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
 		String classname = this.getClass().getName();
-		return classname.substring(classname.lastIndexOf(".") + 1).toLowerCase() + "(" + cond + ")";
+		return classname.substring(classname.lastIndexOf(".") + 1).toLowerCase() + "(" + param1 + ", " + param2 + ", " + param3 + ")";
 	}
 
 	@Override
@@ -54,7 +54,7 @@ public abstract class TernaryFunction extends ExpressionTreeNode {
 		TernaryFunction tf = (TernaryFunction) o;
 
 		// check if their parameters are equal
-		if (!this.cond.equals(tf.cond) && !this.t.equals(tf.t) && !this.f.equals(tf.f)) {
+		if (!this.param1.equals(tf.param1) && !this.param2.equals(tf.param2) && !this.param3.equals(tf.param3)) {
 			return false;
 		}
 		return true;
