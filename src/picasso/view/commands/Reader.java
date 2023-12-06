@@ -53,8 +53,6 @@ public class Reader extends FileCommand<Pixmap> {
 					eval.execute(target);
 					e.printStackTrace();
 				}
-				
-	    		
 	    	}
 	    	
 	    	else {

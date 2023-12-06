@@ -28,19 +28,14 @@ public class Frame extends JFrame {
 		JTextField text = new JTextField("x+y", 20);
 		// add commands to test here
 		ButtonPanel commands = new ButtonPanel(canvas);
-		Reader read = new Reader();
+		Evaluator evaluator = new Evaluator(text);
+		Reader read = new Reader(evaluator);
 		commands.add("Open", read);
 		//gets the expression from the reader class
-		String expression = read.getExpression();
 		// Evaluator gets refrence to TextBox so it can call .getText() from it.
-		if (expression == null) {
-			commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas, new Evaluator(text)));
-		}
-		else {
-			JTextField express = new JTextField(expression, 20);
-			commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas, new Evaluator(express)));
-		}
-		
+
+
+		commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas, evaluator));
 		commands.add("Save", new Writer());
 
 		// add our container to Frame and show it
