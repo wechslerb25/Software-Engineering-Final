@@ -3,7 +3,7 @@ package picasso.parser.language.expressions;
 import picasso.parser.language.ExpressionTreeNode;
 
 /**
- * Represents a function that takes one argument.
+ * Represents a function that takes three arguments.
  * 
  * @author Reese Nelson
  */
