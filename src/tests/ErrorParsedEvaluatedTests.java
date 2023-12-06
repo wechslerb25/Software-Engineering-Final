@@ -79,5 +79,12 @@ public class ErrorParsedEvaluatedTests {
 			parser.makeExpression("floor(x");
 		});
 	}
+	
+	@Test
+	public void errorMissingAssignmentVariableTest() {
+		assertThrows(ParseException.class, ()->{
+			parser.makeExpression("b");
+		});
+	}
 
 }

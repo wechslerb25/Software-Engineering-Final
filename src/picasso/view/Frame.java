@@ -32,7 +32,7 @@ public class Frame extends JFrame {
 		// Anonymous Function to Execute
 //		 executeEval = ()->{};
 		// Text Box
-		JTextField text = new JTextField("x+y", 20);
+		JTextField text = new JTextField("", 20);
 		text.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent action) {

@@ -8,6 +8,8 @@ import java.util.*;
 
 import picasso.parser.language.BuiltinFunctionsReader;
 import picasso.parser.language.ExpressionTreeNode;
+import picasso.parser.language.expressions.Variable;
+import picasso.parser.tokens.IdentifierToken;
 import picasso.parser.tokens.Token;
 import picasso.parser.tokens.TokenFactory;
 
@@ -39,6 +41,8 @@ public class SemanticAnalyzer implements SemanticAnalyzerInterface {
 		return ourInstance;
 	}
 
+
+
 	/**
 	 * 
 	 */
@@ -51,7 +55,7 @@ public class SemanticAnalyzer implements SemanticAnalyzerInterface {
 		// that can be read in. Separates business rules/syntax from the code.
 		// OR, is there a better alternative?
 
-		// add for constants
+		// Add for constants
 		String tokenName = TOKENS_PACKAGE_NAME + "NumberToken";
 		String parserName = PARSER_PACKAGE + "ConstantAnalyzer";
 		addSemanticAnalyzerMapping(tokenName, parserName);
@@ -155,6 +159,7 @@ public class SemanticAnalyzer implements SemanticAnalyzerInterface {
 
 		// Find the appropriate semantic analyzer for the token.
 		Token t = tokens.peek();
+		System.out.println(t.getClass());
 		SemanticAnalyzerInterface analyzer = tokenToSemAnalyzer.get(t.getClass());
 		if (analyzer == null) {
 			throw new ParseException("No semantic analyzer for " + t.getClass());
