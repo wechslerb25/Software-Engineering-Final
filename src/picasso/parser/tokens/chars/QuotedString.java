@@ -2,9 +2,9 @@ package picasso.parser.tokens.chars;
 
 import picasso.parser.language.CharConstants;
 
-public class QuoteToken extends CharToken {
+public class QuotedString extends CharToken {
 
-	public QuoteToken() {
+	public QuotedString() {
 		super(CharConstants.QUOTE);
 	}
 
