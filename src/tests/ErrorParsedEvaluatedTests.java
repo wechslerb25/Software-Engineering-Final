@@ -83,7 +83,7 @@ public class ErrorParsedEvaluatedTests {
 	@Test
 	public void errorMissingAssignmentVariableTest() {
 		assertThrows(ParseException.class, ()->{
-			parser.makeExpression("b");
+			parser.makeExpression("a = ");
 		});
 	}
 

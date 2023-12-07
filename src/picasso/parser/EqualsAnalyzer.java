@@ -23,11 +23,13 @@ public class EqualsAnalyzer implements SemanticAnalyzerInterface {
 	public ExpressionTreeNode generateExpressionTree(Stack<Token> tokens) {
 		Token t = tokens.pop();
 		ExpressionTreeNode exp1 = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
-		IdentifierToken it = (IdentifierToken) tokens.peek();
+		if(tokens.empty()) {
+			throw new ParseException("Empty Assignment. Assignment failed as expression assigned to nothing.");
+		}
+		IdentifierToken it = (IdentifierToken) tokens.pop();
 		if (it == null) {
 			throw new ParseException("Empty Assignment. Assignment failed as expression assigned to nothing.");
 		}
-		ExpressionTreeNode exp2 = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
 		IdentifierAnalyzer.idToExpression.put(it.getName(), exp1);
 		return exp1;
 	}

@@ -32,9 +32,9 @@ public class IdentifierAnalyzer implements SemanticAnalyzerInterface {
 		String id = t.getName();
 		ExpressionTreeNode mapped = idToExpression.get(t.getName());
 
-		// if(mapped == null){
-		// throw new ParseException("Error Unknown Identifier. Please assign to use.");
-		// }
+		 if(mapped == null){
+		 throw new ParseException("Error Unknown Identifier. Please assign to use.");
+		 }
 
 		return mapped;
 
