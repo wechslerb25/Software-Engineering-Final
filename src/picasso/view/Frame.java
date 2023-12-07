@@ -3,9 +3,15 @@ package picasso.view;
 import java.awt.BorderLayout;
 import javax.swing.JTextField;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 import javax.swing.JFrame;
 
 import picasso.model.Pixmap;
+import picasso.util.Command;
 import picasso.util.ThreadedCommand;
 import picasso.view.commands.*;
 import picasso.view.commands.Reader;
@@ -24,8 +30,19 @@ public class Frame extends JFrame {
 		// create GUI components
 		Canvas canvas = new Canvas(this);
 		canvas.setSize(size);
+		// Anonymous Function to Execute
+//		 executeEval = ()->{};
 		// Text Box
-		JTextField text = new JTextField("x+y", 20);
+		JTextField text = new JTextField("", 20);
+		text.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent action) {
+		         // Is there a way to refactor this so that I dont have to do it twice.
+		    	Command<Pixmap> a = new ThreadedCommand<Pixmap>(canvas, new Evaluator(text));
+		    	a.execute(canvas.getPixmap());
+		    	canvas.refresh();
+		    }
+		});
 		// add commands to test here
 		ButtonPanel commands = new ButtonPanel(canvas);
 		Evaluator evaluator = new Evaluator(text);

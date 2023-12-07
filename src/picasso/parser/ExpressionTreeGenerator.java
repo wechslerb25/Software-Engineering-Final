@@ -42,7 +42,6 @@ public class ExpressionTreeGenerator {
 			return null;
 		}
 
-		// System.out.println("Process postfix expression");
 		SemanticAnalyzer semAnalyzer = SemanticAnalyzer.getInstance();
 
 		ExpressionTreeNode root = semAnalyzer.generateExpressionTree(postfix);
@@ -65,7 +64,6 @@ public class ExpressionTreeGenerator {
 
 		Tokenizer tokenizer = new Tokenizer();
 		List<Token> tokens = tokenizer.parseTokens(infix);
-
 		return infixToPostfix(tokens);
 	}
 
@@ -159,10 +157,12 @@ public class ExpressionTreeGenerator {
 					postfixResult.push(operators.pop());
 				}
 
+			} else if (token instanceof EqualsToken) {
+				operators.push(token);
 			} else {
 				System.out.println("ERROR: No match: " + token);
 			}
-			// System.out.println("Postfix: " + postfixResult);
+			//System.out.println("Postfix: " + postfixResult);
 		}
 
 		while (!operators.isEmpty()) {
@@ -178,7 +178,7 @@ public class ExpressionTreeGenerator {
 			postfixResult.push(operators.pop());
 		}
 
-		// System.out.println(postfixResult);
+		System.out.println(postfixResult);
 		return postfixResult;
 
 	}
@@ -199,15 +199,15 @@ public class ExpressionTreeGenerator {
 			return ADD_OR_SUBTRACT;
 		else if (token instanceof StarToken || token instanceof SlashToken || token instanceof ModToken) {
 			return MULTIPLY_DIVIDE_OR_MOD;
-		}
-		else if (token instanceof CaretToken) {
+		} else if (token instanceof CaretToken) {
 			return EXPONENTIATE;
 		}
 		else if (token instanceof BangToken) {
 			return NEGATE;
 		}
-		else
+		else{
 			return CONSTANT;
+    }
 	}
 	
 	public static void main(String[] args) {

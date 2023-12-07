@@ -1,6 +1,7 @@
 package picasso.parser.language.expressions;
 
 import picasso.parser.language.ExpressionTreeNode;
+import picasso.parser.tokens.chars.CharToken;
 
 /**
  * Represents a variable
@@ -26,5 +27,20 @@ public class Variable extends ExpressionTreeNode {
 	public String getName() {
 		return name;
 	}
-
+	
+	@Override
+	public boolean equals(Object o) {
+		if (o == this) {
+			return true;
+		}
+		if (!(o instanceof Variable)) {
+			return false;
+		}
+		// Make sure the objects are the same type
+		if (o.getClass() != this.getClass()) {
+			return false;
+		}
+		Variable other = (Variable) o;
+		return this.name == other.name;
+	}
 }

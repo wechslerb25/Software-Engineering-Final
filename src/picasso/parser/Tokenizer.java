@@ -88,6 +88,7 @@ public class Tokenizer {
 	 */
 	protected Token nextToken() {
 		currToken = TokenFactory.parse(tokenizer);
+		System.out.print(currToken + "\n");
 		return currToken;
 	}
 
@@ -127,10 +128,11 @@ public class Tokenizer {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		String expression = "sin(floor(x + y)) //+ [ -1, 1, 1] /* test */";
+		String expression = "x + y";
 
 		Tokenizer tokenizer = new Tokenizer();
-		System.out.println("Tokens" + tokenizer.parseTokens(expression));
+		tokenizer.parseTokens(expression);
+		//System.out.println("Tokens" + tokenizer.parseTokens(expression));
 	}
 
 }

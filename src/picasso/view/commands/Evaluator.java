@@ -26,6 +26,7 @@ public class Evaluator implements Command<Pixmap> {
 	/**
 	 * Evaluate an expression for each point in the image.
 	 */
+
 	public void pixelEvaluator(Pixmap target, ExpressionTreeNode expr) {
 		Dimension size = target.getSize();
 		for (int imageY = 0; imageY < size.height; imageY++) {
@@ -34,7 +35,7 @@ public class Evaluator implements Command<Pixmap> {
 				double evalX = imageToDomainScale(imageX, size.width);
 				Color pixelColor = expr.evaluate(evalX, evalY).toJavaColor();
 				target.setColor(imageX, imageY, pixelColor);
-			}
+			} 
 		}
 	}
 	public void execute(Pixmap target) {

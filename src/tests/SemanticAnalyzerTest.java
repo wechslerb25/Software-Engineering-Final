@@ -10,6 +10,7 @@ import java.util.Stack;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import picasso.parser.IdentifierAnalyzer;
 import picasso.parser.SemanticAnalyzer;
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.language.expressions.*;
@@ -49,7 +50,7 @@ class SemanticAnalyzerTest {
 
 		assertEquals(new Addition(new X(), new Y()), actual);
 	}
-	
+
 	@Test
 	void testParseSubtraction() {
 
@@ -62,7 +63,7 @@ class SemanticAnalyzerTest {
 
 		assertEquals(new Subtraction(new X(), new Y()), actual);
 	}
-	
+
 	@Test
 	void testParseMultiplication() {
 
@@ -75,7 +76,7 @@ class SemanticAnalyzerTest {
 
 		assertEquals(new Multiplication(new X(), new Y()), actual);
 	}
-	
+
 	@Test
 	void testParseDivision() {
 
@@ -88,7 +89,7 @@ class SemanticAnalyzerTest {
 
 		assertEquals(new Division(new X(), new Y()), actual);
 	}
-	
+
 	@Test
 	void testParseModulo() {
 
@@ -101,7 +102,7 @@ class SemanticAnalyzerTest {
 
 		assertEquals(new Modulo(new X(), new Y()), actual);
 	}
-	
+
 	@Test
 	void testParseExponent() {
 
@@ -114,7 +115,7 @@ class SemanticAnalyzerTest {
 
 		assertEquals(new Exponentiate(new X(), new Y()), actual);
 	}
-	
+
 	@Test
 	void testParseNegate() {
 
@@ -134,10 +135,39 @@ class SemanticAnalyzerTest {
 		Stack<Token> tokens = new Stack<>();
 		tokens.push(new IdentifierToken("x"));
 		tokens.push(new SinToken());
-		
+
 		ExpressionTreeNode actual = semAnalyzer.generateExpressionTree(tokens);
-		
+
 		assertEquals(new Sin(new X()), actual);
 	}
+
+	@Test
+	void testTanFunction() {
+		Stack<Token> tokens = new Stack<>();
+		tokens.push(new IdentifierToken("x"));
+		tokens.push(new SinToken());
+
+		ExpressionTreeNode actual = semAnalyzer.generateExpressionTree(tokens);
+
+		assertEquals(new Sin(new X()), actual);
+	}
+
+	@Test
+	void testAssignment() {
+		// Test whether the assignment operator still returns the same expression as the one that is being 
+		// assigned.
+		Stack<Token> tokens = new Stack<>();
+		tokens.push(new IdentifierToken("a"));
+		tokens.push(new IdentifierToken("x"));
+		tokens.push(new EqualsToken());
+		ExpressionTreeNode actual = semAnalyzer.generateExpressionTree(tokens);
+		assertEquals(new X(), actual);
+		
+		
+		// Could not test static cache inside IdentifierAnalyzer using the Map.
+	}
+
+	
+
 
 }
