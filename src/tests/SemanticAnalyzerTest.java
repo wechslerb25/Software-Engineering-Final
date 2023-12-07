@@ -116,6 +116,20 @@ class SemanticAnalyzerTest {
 	}
 	
 	@Test
+	void testParseNegate() {
+
+		Stack<Token> tokens = new Stack<>();
+		tokens.push(new IdentifierToken("x"));
+		tokens.push(new IdentifierToken("y"));
+		tokens.push(new PlusToken());
+		tokens.push(new BangToken());
+
+		ExpressionTreeNode actual = semAnalyzer.generateExpressionTree(tokens);
+
+		assertEquals(new Negate(new X()), actual);
+	}
+	
+	@Test
 	void testSinFunction() {
 		Stack<Token> tokens = new Stack<>();
 		tokens.push(new IdentifierToken("x"));

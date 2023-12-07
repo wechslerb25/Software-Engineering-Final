@@ -41,6 +41,7 @@ public class CharTokenFactory {
 		tokenList[CharConstants.SLASH] = new SlashToken();
 		tokenList[CharConstants.MOD] = new ModToken();
 		tokenList[CharConstants.CARET] = new CaretToken();
+		tokenList[CharConstants.BANG] = new BangToken();
 
 		// TODO: What other tokens should be in here?
 		// TODO: Need to create the associated Token classes too.
