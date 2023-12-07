@@ -25,6 +25,7 @@ public class ExpressionTreeGenerator {
 	private static final int EXPONENTIATE = 2;
 	private static final int ADD_OR_SUBTRACT = 3;
 	private static final int MULTIPLY_DIVIDE_OR_MOD = 4;
+	private static final int NEGATE = 5;
 
 	/**
 	 * Converts the given string into expression tree for easier manipulation.
@@ -200,7 +201,18 @@ public class ExpressionTreeGenerator {
 			return MULTIPLY_DIVIDE_OR_MOD;
 		} else if (token instanceof CaretToken) {
 			return EXPONENTIATE;
-		} else
+		}
+		else if (token instanceof BangToken) {
+			return NEGATE;
+		}
+		else{
 			return CONSTANT;
+    }
+	}
+	
+	public static void main(String[] args) {
+		ExpressionTreeGenerator gen = new ExpressionTreeGenerator();
+		System.out.println(gen.infixToPostfix("!(x+y)+y"));
+		System.out.println(gen.infixToPostfix("!(x+y)"));
 	}
 }

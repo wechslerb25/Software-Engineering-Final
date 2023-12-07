@@ -22,6 +22,7 @@ public class Subtraction extends BinaryOperator{
 	 */
 	public Subtraction(ExpressionTreeNode exp1, ExpressionTreeNode exp2) {
 		super(exp1, exp2);
+		this.setOpLabel(operator);
 	}
 
 	@Override

@@ -213,6 +213,14 @@ public class EvaluatorTests {
 		assertEquals(new RGBColor(8,8,8), myTree.evaluate(2, 3));
 		assertEquals(new RGBColor(0.25,0.25,0.25), myTree.evaluate(4, -1));
 	}
+	
+	@Test
+	public void testNegateEvaluation() {
+		Negate myTree = new Negate(new X());
+		
+		assertEquals(new RGBColor(-4,-4,-4), myTree.evaluate(4,2));
+		assertEquals(new RGBColor(0.5,0.5,0.5), myTree.evaluate(-0.5,2));
+	}
 	// TODO: More tests of evaluation
 
 }
