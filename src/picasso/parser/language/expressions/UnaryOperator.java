@@ -14,7 +14,7 @@ public abstract class UnaryOperator extends ExpressionTreeNode{
 	
 	ExpressionTreeNode exp;
 	
-	private String operator = "unop";
+	private String operator;
 
 	/**
 	 * 
@@ -22,6 +22,15 @@ public abstract class UnaryOperator extends ExpressionTreeNode{
 	 */
 	public UnaryOperator(ExpressionTreeNode exp) {
 		this.exp = exp;
+		this.operator = "unop";
+	}
+	
+	/**
+	 * Sets the operator label for printing purposes.
+	 * @param label the symbol to represent the Unary Operator
+	 */
+	public void setOpLabel(String label) {
+		this.operator = label;
 	}
 	
 	/**

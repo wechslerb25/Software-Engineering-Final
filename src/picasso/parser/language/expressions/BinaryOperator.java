@@ -14,7 +14,7 @@ public abstract class BinaryOperator extends ExpressionTreeNode{
 	
 	ExpressionTreeNode exp1;
 	ExpressionTreeNode exp2;
-	private String operator = "binop";
+	private String operator;
 
 	/**
 	 * 
@@ -24,6 +24,11 @@ public abstract class BinaryOperator extends ExpressionTreeNode{
 	public BinaryOperator(ExpressionTreeNode exp1, ExpressionTreeNode exp2) {
 		this.exp1 = exp1;
 		this.exp2 = exp2;
+		this.operator = "binop";
+	}
+	
+	public void setOpLabel(String label) {
+		this.operator = label;
 	}
 	
 	/**

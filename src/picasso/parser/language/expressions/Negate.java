@@ -21,6 +21,7 @@ public class Negate extends UnaryOperator{
 	 */
 	public Negate(ExpressionTreeNode exp) {
 		super(exp);
+		this.setOpLabel(operator);
 	}
 
 	@Override

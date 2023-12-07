@@ -212,7 +212,7 @@ public class ExpressionTreeGenerator {
 	
 	public static void main(String[] args) {
 		ExpressionTreeGenerator gen = new ExpressionTreeGenerator();
-		System.out.println(gen.infixToPostfix("!x+y"));
+		System.out.println(gen.infixToPostfix("!(x+y)+y"));
 		System.out.println(gen.infixToPostfix("!(x+y)"));
 	}
 }
