@@ -88,7 +88,6 @@ public class Tokenizer {
 	 */
 	protected Token nextToken() {
 		currToken = TokenFactory.parse(tokenizer);
-		System.out.print(currToken + "\n");
 		return currToken;
 	}
 
