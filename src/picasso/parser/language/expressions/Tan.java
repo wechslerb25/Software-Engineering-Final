@@ -8,7 +8,7 @@ import picasso.parser.language.ExpressionTreeNode;
  * @author Janeet Bajracharya
  * 
  */
-public class Tan extends Function {
+public class Tan extends AbstractFunction {
 
 	/**
 	 * Create a Tan expression that takes as a parameter the given expression

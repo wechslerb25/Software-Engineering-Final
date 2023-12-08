@@ -2,7 +2,7 @@ package picasso.parser.language.expressions;
 
 import picasso.parser.language.ExpressionTreeNode;
 
-public class Cosine extends Function {
+public class Cosine extends AbstractFunction {
 	
 	public Cosine(ExpressionTreeNode param) {
 		super(param);

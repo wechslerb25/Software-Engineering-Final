@@ -10,7 +10,7 @@ import picasso.parser.language.ExpressionTreeNode;
  * 
  * @author
  */
-public class ImageWrap extends Function {
+public class ImageWrap extends AbstractFunction {
 
     /**
      * Create a multiplication expression that takes as a parameter the given

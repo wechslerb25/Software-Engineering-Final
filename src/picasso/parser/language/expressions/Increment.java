@@ -2,7 +2,7 @@ package picasso.parser.language.expressions;
 
 import picasso.parser.language.ExpressionTreeNode;
 
-public class Increment extends Function {
+public class Increment extends AbstractFunction {
 
 	public Increment(ExpressionTreeNode param) {
 		super(param);

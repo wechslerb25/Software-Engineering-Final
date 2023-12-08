@@ -2,7 +2,7 @@ package picasso.parser.language.expressions;
 
 import picasso.parser.language.ExpressionTreeNode;
 
-public class AbsoluteValue extends Function {
+public class AbsoluteValue extends AbstractFunction {
 	
 	public AbsoluteValue(ExpressionTreeNode param) {
 		super(param);

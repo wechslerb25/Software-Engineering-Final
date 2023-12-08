@@ -2,7 +2,7 @@ package picasso.parser.language.expressions;
 
 import picasso.parser.language.ExpressionTreeNode;
 
-public class Atan extends Function {
+public class Atan extends AbstractFunction {
 	
 	public Atan(ExpressionTreeNode param) {
 		super(param);

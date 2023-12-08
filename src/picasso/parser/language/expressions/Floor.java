@@ -6,7 +6,7 @@ import picasso.parser.language.ExpressionTreeNode;
  * Represents the exp function in the Picasso language.
  * @author AJ Thomas
  */
-public class Floor extends Function {
+public class Floor extends AbstractFunction {
 
 	/**
 	 * Create an floor expression that takes as a parameter the given expression

@@ -12,7 +12,7 @@ import picasso.parser.language.ExpressionTreeNode;
  * @author Ben Wechsler
  * 
  */
-public class Sin extends Function {
+public class Sin extends AbstractFunction {
 	/**
 	 * Create a Sin expression that takes as a parameter the given expression
 	 * 

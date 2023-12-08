@@ -2,7 +2,7 @@ package picasso.parser.language.expressions;
 
 import picasso.parser.language.ExpressionTreeNode;
 
-public class Log extends Function {
+public class Log extends AbstractFunction {
 	
 	public Log(ExpressionTreeNode param) {
 		super(param);

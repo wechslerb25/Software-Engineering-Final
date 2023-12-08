@@ -6,7 +6,7 @@ import picasso.parser.language.ExpressionTreeNode;
 * Represents the exp function in the Picasso language.
 * @author Reese Nelson
 */
-public class Conditional extends Function{
+public class Conditional extends AbstractFunction{
 	
 	/**
 	 * Create a conditional function that takes as a parameter the given expressions
