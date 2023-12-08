@@ -34,7 +34,7 @@ public class Tokenizer {
 	 * Parses the given string into a list of Picasso tokens (in order)
 	 * 
 	 * @param s
-	 *            the string to parse; may or may not be in valid format.
+	 *          the string to parse; may or may not be in valid format.
 	 * @return the list of Picasso tokens (in order) in the string
 	 */
 	public List<Token> parseTokens(String s) {
@@ -62,7 +62,6 @@ public class Tokenizer {
 
 		tokenizer.slashSlashComments(true);
 		tokenizer.slashStarComments(true);
-		
 
 		List<Token> tokens = new ArrayList<Token>();
 
@@ -113,7 +112,7 @@ public class Tokenizer {
 	 *            token being matched
 	 * @return the next read token
 	 * @throws ParseException
-	 *             if match fails
+	 *                        if match fails
 	 */
 	public Token match(Token rhs) {
 		Token result = getToken();
@@ -127,10 +126,12 @@ public class Tokenizer {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		String expression = "sin(floor(x + y)) //+ [ -1, 1, 1] /* test */";
+		// String expression = "imageWrap(\"file.png\", x+x, y)";
+		String expression = "\"images/foo.jpg\"";
 
 		Tokenizer tokenizer = new Tokenizer();
-		System.out.println("Tokens" + tokenizer.parseTokens(expression));
+		List<Token> lt = tokenizer.parseTokens(expression);
+		System.out.println("Tokens" + lt);
 	}
 
 }

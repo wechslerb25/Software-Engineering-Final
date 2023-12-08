@@ -22,6 +22,7 @@ public class Modulo extends BinaryOperator{
 	 */
 	public Modulo(ExpressionTreeNode exp1, ExpressionTreeNode exp2) {
 		super(exp1, exp2);
+		this.setOpLabel(operator);
 	}
 
 	@Override

@@ -6,44 +6,46 @@ package picasso.parser.language.expressions;
 import picasso.parser.language.ExpressionTreeNode;
 
 /**
- * Represents an operation that takes two expressions as arguments.
+ * Represents an operation that takes one expressions as an argument.
  * 
  * @author Reese Nelson
  */
-public abstract class BinaryOperator extends ExpressionTreeNode{
+public abstract class UnaryOperator extends ExpressionTreeNode{
 	
-	ExpressionTreeNode exp1;
-	ExpressionTreeNode exp2;
+	ExpressionTreeNode exp;
+	
 	private String operator;
 
 	/**
 	 * 
-	 * @param exp1 the first expression
-	 * @param exp2 the second expression
+	 * @param exp the expression
 	 */
-	public BinaryOperator(ExpressionTreeNode exp1, ExpressionTreeNode exp2) {
-		this.exp1 = exp1;
-		this.exp2 = exp2;
-		this.operator = "binop";
+	public UnaryOperator(ExpressionTreeNode exp) {
+		this.exp = exp;
+		this.operator = "unop";
 	}
 	
+	/**
+	 * Sets the operator label for printing purposes.
+	 * @param label the symbol to represent the Unary Operator
+	 */
 	public void setOpLabel(String label) {
 		this.operator = label;
 	}
 	
 	/**
 	 * Returns the string representation of the operation in the format 
-	 * "<exp1> <operator> <exp2>"
+	 * "<operator>(<exp>)"
 	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return exp1 + " " + operator + " " + exp2;
+		return operator + "(" + exp + ")";
 	}
 	
 	/*
-	 * Determines whether a BinaryOperator node is equal to another.
+	 * Determines whether a UnaryOperator node is equal to another.
 	 */
 	@Override
 	public boolean equals(Object o) {
@@ -51,7 +53,7 @@ public abstract class BinaryOperator extends ExpressionTreeNode{
 			return true;
 		}
 
-		if (!(o instanceof BinaryOperator)) {
+		if (!(o instanceof UnaryOperator)) {
 			return false;
 		}
 
@@ -61,10 +63,10 @@ public abstract class BinaryOperator extends ExpressionTreeNode{
 			return false;
 		}
 
-		BinaryOperator b = (BinaryOperator) o;
+		UnaryOperator b = (UnaryOperator) o;
 
 		// check if their parameters are equal
-		if (!this.exp1.equals(b.exp1) || !this.exp2.equals(b.exp2)) {
+		if (!this.exp.equals(b.exp)) {
 			return false;
 		}
 		return true;
