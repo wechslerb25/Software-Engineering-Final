@@ -41,13 +41,18 @@ public abstract class AbstractOperator extends ExpressionTreeNode{
 	
 	/**
 	 * Returns the string representation of the operation in the format 
-	 * "<exp1> <operator> <exp2>"
+	 * "<exp1> <unaryop>" or "<exp1> <binaryop> <exp2>"
 	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return exp1 + " " + operator + " " + exp2;
+		if (exp2 == null) {
+			return operator + "(" + exp1 + ")";
+		}
+		else {
+			return exp1 + " " + operator + " " + exp2;
+		}
 	}
 	
 	/*
