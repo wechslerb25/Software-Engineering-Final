@@ -8,7 +8,7 @@ import picasso.parser.language.ExpressionTreeNode;
  * @author Janeet Bajracharya
  * 
  */
-public class Tan extends UnaryFunction {
+public class Tan extends Function {
 
 	/**
 	 * Create a Tan expression that takes as a parameter the given expression
@@ -27,7 +27,7 @@ public class Tan extends UnaryFunction {
 	 */
 	@Override
 	public RGBColor evaluate(double x, double y) {
-		RGBColor result = param.evaluate(x, y);
+		RGBColor result = params.get(0).evaluate(x, y);
 		double red = Math.tan(result.getRed());
 		double green = Math.tan(result.getGreen());
 		double blue = Math.tan(result.getBlue());

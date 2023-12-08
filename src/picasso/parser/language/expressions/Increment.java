@@ -2,7 +2,7 @@ package picasso.parser.language.expressions;
 
 import picasso.parser.language.ExpressionTreeNode;
 
-public class Increment extends UnaryFunction {
+public class Increment extends Function {
 
 	public Increment(ExpressionTreeNode param) {
 		super(param);
@@ -10,7 +10,7 @@ public class Increment extends UnaryFunction {
 
 	@Override
 	public RGBColor evaluate(double x, double y) {
-		RGBColor result = param.evaluate(x, y);
+		RGBColor result = params.get(0).evaluate(x, y);
 		double red = result.getRed() + 1;
 		double green = result.getGreen() + 1;
 		double blue = result.getBlue() + 1;

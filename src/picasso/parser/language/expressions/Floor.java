@@ -6,7 +6,7 @@ import picasso.parser.language.ExpressionTreeNode;
  * Represents the exp function in the Picasso language.
  * @author AJ Thomas
  */
-public class Floor extends UnaryFunction {
+public class Floor extends Function {
 
 	/**
 	 * Create an floor expression that takes as a parameter the given expression
@@ -25,7 +25,7 @@ public class Floor extends UnaryFunction {
 	 */
 	@Override
 	public RGBColor evaluate(double x, double y) {
-		RGBColor result = param.evaluate(x, y);
+		RGBColor result = params.get(0).evaluate(x, y);
 		double red = Math.floor(result.getRed());
 		double green = Math.floor(result.getGreen());
 		double blue = Math.floor(result.getBlue());

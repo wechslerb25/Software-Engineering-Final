@@ -2,7 +2,7 @@ package picasso.parser.language.expressions;
 
 import picasso.parser.language.ExpressionTreeNode;
 
-public class Atan extends UnaryFunction {
+public class Atan extends Function {
 	
 	public Atan(ExpressionTreeNode param) {
 		super(param);
@@ -10,7 +10,7 @@ public class Atan extends UnaryFunction {
 	
 	@Override
 	public RGBColor evaluate(double x, double y) {
-		RGBColor result = param.evaluate(x, y);
+		RGBColor result = params.get(0).evaluate(x, y);
 		double red = Math.atan(result.getRed());
 		double green = Math.atan(result.getGreen());
 		double blue = Math.atan(result.getBlue());

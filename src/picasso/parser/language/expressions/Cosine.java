@@ -2,7 +2,7 @@ package picasso.parser.language.expressions;
 
 import picasso.parser.language.ExpressionTreeNode;
 
-public class Cosine extends UnaryFunction {
+public class Cosine extends Function {
 	
 	public Cosine(ExpressionTreeNode param) {
 		super(param);
@@ -10,7 +10,7 @@ public class Cosine extends UnaryFunction {
 	
 	@Override
 	public RGBColor evaluate(double x, double y) {
-		RGBColor result = param.evaluate(x, y);
+		RGBColor result = params.get(0).evaluate(x, y);
 		double red = Math.cos(result.getRed());
 		double green = Math.cos(result.getGreen());
 		double blue = Math.cos(result.getBlue());
