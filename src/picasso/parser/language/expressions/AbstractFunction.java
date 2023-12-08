@@ -89,14 +89,14 @@ public abstract class AbstractFunction extends ExpressionTreeNode {
 			return false;
 		}
 
-		AbstractFunction uf = (AbstractFunction) o;
+		AbstractFunction f = (AbstractFunction) o;
 
 		// check if their parameters are equal
-		if (this.params.size() != uf.params.size()) {
+		if (this.params.size() != f.params.size()) {
 			return false;
 		}
 		for (int i = 0; i < params.size(); i++) {
-			if (!this.params.get(i).equals(uf.params.get(i))) {
+			if (!this.params.get(i).equals(f.params.get(i))) {
 				return false;
 			}
 		}
