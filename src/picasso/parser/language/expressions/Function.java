@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import picasso.parser.language.ExpressionTreeNode;
 
 /**
- * Represents a function that takes one argument.
+ * Represents a function that takes one or more arguments.
  * 
  * @author Reese Nelson
  */
