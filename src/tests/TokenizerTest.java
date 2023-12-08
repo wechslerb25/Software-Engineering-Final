@@ -10,9 +10,15 @@ import org.junit.jupiter.api.Test;
 
 import picasso.parser.ParseException;
 import picasso.parser.Tokenizer;
+import picasso.parser.language.expressions.Sin;
+import picasso.parser.language.expressions.Variable;
+import picasso.parser.language.expressions.X;
+import picasso.parser.language.expressions.Y;
 import picasso.parser.tokens.*;
 import picasso.parser.tokens.chars.*;
 import picasso.parser.tokens.functions.*;
+import picasso.parser.tokens.operations.EqualsToken;
+import picasso.parser.tokens.operations.PlusToken;
 
 /**
  * Tests that the tokenizer tokens as expected. 
@@ -61,6 +67,19 @@ public class TokenizerTest {
 		tokens = tokenizer.parseTokens(expression);
 		assertEquals(new NumberToken(-1.2), tokens.get(0));
 	}
+	
+//	@Test
+//	public void testTokenizeAssignment() {
+//		String expression_1 = "a = x";
+//		tokens = tokenizer.parseTokens(expression_1);
+//		assertEquals(new EqualsToken(), tokens.get(1));
+//		assertEquals(new Variable("x"), tokens.get(2));
+//		assertEquals(new IdentifierToken("a"), tokens.get(0));
+//		
+//
+//	
+//	}
+//	
 
 	@Test
 	public void testTokenizeColor() {
