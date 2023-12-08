@@ -14,7 +14,7 @@ public class StringClass extends ExpressionTreeNode {
     private Dimension dim;
 
     public StringClass(String file_name) {
-        this.file_name = "/Users/janeetbajracharya/Desktop/Code/2023F/CSCI209/hw/picasso-codecatalysts/images/AmoebaMorris.png";
+        this.file_name = file_name.replace(" -", "-");
         pixmap = new Pixmap();
         pixmap.read(this.file_name);
         dim = this.pixmap.getSize();
