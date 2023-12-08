@@ -20,7 +20,7 @@ public class ErrorWindow {
         return numerator / denominator;
     }
     // window that shows error message
-    private static void showErrorPopup(String errorMessage) {
+    public static void showErrorPopup(String errorMessage) {
         JOptionPane.showMessageDialog(null, errorMessage, "Error", JOptionPane.ERROR_MESSAGE);
     }
 }
