@@ -10,7 +10,7 @@ import java.util.HashMap;
 import picasso.parser.ParseException;
 import picasso.parser.language.BuiltinFunctionsReader;
 import picasso.parser.tokens.chars.CommaToken;
-import picasso.parser.tokens.chars.LeftBracketToken;
+
 import picasso.parser.tokens.chars.RightBracketToken;
 
 /**
@@ -26,37 +26,44 @@ public class TokenFactory {
 	public static Token parse(StreamTokenizer tokenizer) {
 		try {
 			int result = tokenizer.nextToken();
-
+			System.out.println(result);
 			switch (result) {
-			case StreamTokenizer.TT_EOF:
-				return EOFToken.getInstance();
-			case StreamTokenizer.TT_NUMBER:
-				return new NumberToken(tokenizer.nval);
-			case StreamTokenizer.TT_WORD:
+				case StreamTokenizer.TT_EOF:
+					return EOFToken.getInstance();
+				case StreamTokenizer.TT_NUMBER:
+					return new NumberToken(tokenizer.nval);
+				case StreamTokenizer.TT_WORD:
 
-				Token t = tokenNameToToken.get(tokenizer.sval);
+					Token t = tokenNameToToken.get(tokenizer.sval);
 
-				// If there is no token with a function name, the token must be
-				// an identifier
-				if (t == null) {
-					return new IdentifierToken(tokenizer.sval);
-				}
-				return t;
-			case '[':
-				// parse a color token if it starts with a [
-				return parseColorToken(tokenizer);
-			default:
-				Token ct = CharTokenFactory.getToken(result);
+					// If there is no token with a function name, the token must be
+					// an identifier
+					if (t == null) {
+						return new IdentifierToken(tokenizer.sval);
+					}
+					return t;
+				case '[':
+					// parse a color token if it starts with a [
+					return parseColorToken(tokenizer);
 
-				return ct;
+				case '"':
+					return parseStringToken(tokenizer);
+				default:
+					Token ct = CharTokenFactory.getToken(result);
+
+					return ct;
 			}
-			
+
 			// TODO: Handle quoted strings
 			// Others?
 
 		} catch (IOException io) {
 			throw new ParseException("io problem " + io);
 		}
+	}
+
+	private static StringToken parseStringToken(StreamTokenizer tokenizer) {
+		return new StringToken(tokenizer.sval);
 	}
 
 	/**
