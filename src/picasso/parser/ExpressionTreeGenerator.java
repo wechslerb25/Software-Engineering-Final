@@ -64,6 +64,7 @@ public class ExpressionTreeGenerator {
 
 		Tokenizer tokenizer = new Tokenizer();
 		List<Token> tokens = tokenizer.parseTokens(infix);
+		System.out.println("List of Tokens: " + tokens);
 		return infixToPostfix(tokens);
 	}
 
@@ -159,10 +160,19 @@ public class ExpressionTreeGenerator {
 
 			} else if (token instanceof EqualsToken) {
 				operators.push(token);
+			} else if (token instanceof QuotationToken) {
+				if (!operators.empty() && operators.peek() instanceof QuotationToken) {
+					operators.pop();
+				} else {
+					operators.add(token);
+				}
+
+			} else if (token instanceof StringToken) {
+				postfixResult.push(token);
 			} else {
 				System.out.println("ERROR: No match: " + token);
 			}
-			//System.out.println("Postfix: " + postfixResult);
+			System.out.println("Postfix: " + postfixResult);
 		}
 
 		while (!operators.isEmpty()) {
@@ -178,7 +188,7 @@ public class ExpressionTreeGenerator {
 			postfixResult.push(operators.pop());
 		}
 
-		//System.out.println(postfixResult);
+		// System.out.println(postfixResult);
 		return postfixResult;
 
 	}
@@ -201,18 +211,17 @@ public class ExpressionTreeGenerator {
 			return MULTIPLY_DIVIDE_OR_MOD;
 		} else if (token instanceof CaretToken) {
 			return EXPONENTIATE;
-		}
-		else if (token instanceof BangToken) {
+		} else if (token instanceof BangToken) {
 			return NEGATE;
-		}
-		else{
+		} else {
 			return CONSTANT;
-    }
+		}
 	}
-	
+
 	public static void main(String[] args) {
 		ExpressionTreeGenerator gen = new ExpressionTreeGenerator();
-		System.out.println(gen.infixToPostfix("!(x+y)+y"));
-		System.out.println(gen.infixToPostfix("!(x+y)"));
+		// System.out.println(gen.infixToPostfix("!(x+y)+y"));
+		// System.out.println(gen.infixToPostfix("!(x+y)"));
+		System.out.println(gen.infixToPostfix("\"mage\""));
 	}
 }

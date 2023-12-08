@@ -10,8 +10,7 @@ import java.util.HashMap;
 import picasso.parser.ParseException;
 import picasso.parser.language.BuiltinFunctionsReader;
 import picasso.parser.tokens.chars.CommaToken;
-import picasso.parser.tokens.chars.LeftBracketToken;
-import picasso.parser.tokens.chars.QuotationToken;
+
 import picasso.parser.tokens.chars.RightBracketToken;
 
 /**
@@ -46,6 +45,9 @@ public class TokenFactory {
 				case '[':
 					// parse a color token if it starts with a [
 					return parseColorToken(tokenizer);
+
+				case '"':
+					return parseStringToken(tokenizer);
 				default:
 					Token ct = CharTokenFactory.getToken(result);
 
@@ -58,6 +60,10 @@ public class TokenFactory {
 		} catch (IOException io) {
 			throw new ParseException("io problem " + io);
 		}
+	}
+
+	private static StringToken parseStringToken(StreamTokenizer tokenizer) {
+		return new StringToken(tokenizer.sval);
 	}
 
 	/**
@@ -120,16 +126,6 @@ public class TokenFactory {
 		}
 
 		return new ColorToken(red.value(), green.value(), blue.value());
-	}
-
-	private static Token parseStringToken(StreamTokenizer tokenizer) throws IOException {
-		Token it = parse(tokenizer);
-		int qt = tokenizer.nextToken();
-		if (qt != '"') {
-			throw new ParseException("Did not find corresponding ending quotation.");
-		}
-		return it;
-
 	}
 
 	/**

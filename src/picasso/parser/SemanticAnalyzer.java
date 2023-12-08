@@ -41,8 +41,6 @@ public class SemanticAnalyzer implements SemanticAnalyzerInterface {
 		return ourInstance;
 	}
 
-
-
 	/**
 	 * 
 	 */
@@ -70,6 +68,10 @@ public class SemanticAnalyzer implements SemanticAnalyzerInterface {
 		parserName = PARSER_PACKAGE + "ColorAnalyzer";
 		addSemanticAnalyzerMapping(tokenName, parserName);
 
+		// String Mapping
+		tokenName = TOKENS_PACKAGE_NAME + "StringToken";
+		parserName = PARSER_PACKAGE + "StringAnalyzer";
+		addSemanticAnalyzerMapping(tokenName, parserName);
 		// TODO: Are there any others that should be added?
 		// Is there a better way to create this mapping?
 	}
@@ -159,6 +161,7 @@ public class SemanticAnalyzer implements SemanticAnalyzerInterface {
 
 		// Find the appropriate semantic analyzer for the token.
 		Token t = tokens.peek();
+		System.out.println(tokens);
 		SemanticAnalyzerInterface analyzer = tokenToSemAnalyzer.get(t.getClass());
 		if (analyzer == null) {
 			throw new ParseException("No semantic analyzer for " + t.getClass());

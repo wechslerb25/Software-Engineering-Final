@@ -6,17 +6,15 @@ package picasso.parser.language.expressions;
 import java.awt.Color;
 import java.awt.Dimension;
 
-import picasso.model.Pixmap;    
+import picasso.model.Pixmap;
 import picasso.parser.language.ExpressionTreeNode;
 
 /**
  * Represents the ImageWrap Function
  * 
- * @author 
+ * @author
  */
 public class ImageWrap extends TernaryFunction {
-
-    public static Pixmap pixmap;
 
     /**
      * Create a multiplication expression that takes as a parameter the given
@@ -34,17 +32,8 @@ public class ImageWrap extends TernaryFunction {
     public RGBColor evaluate(double x, double y) {
         RGBColor result2 = param2.evaluate(x, y);
         RGBColor result3 = param3.evaluate(x, y);
-        if (pixmap == null) {
-            pixmap = new Pixmap(param1.toString());
-        }
-        Dimension size = pixmap.getSize();
-
-        return new RGBColor(pixmap.getColor(domainToImage(result2.getRed(), size.getWidth()),
-                domainToImage(result3.getRed(), size.getHeight())));
-    }
-
-    private int domainToImage(double x, double size) {
-        return ((int) (x * size));
+        RGBColor result1 = param1.evaluate(result2.getBlue(), result3.getBlue());
+        return result1;
     }
 
 }

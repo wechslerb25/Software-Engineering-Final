@@ -127,7 +127,7 @@ public class Tokenizer {
 	 */
 	public static void main(String[] args) {
 		// String expression = "imageWrap(\"file.png\", x+x, y)";
-		String expression = "\"image.png\"";
+		String expression = "\"images/foo.jpg\"";
 
 		Tokenizer tokenizer = new Tokenizer();
 		List<Token> lt = tokenizer.parseTokens(expression);
