@@ -17,7 +17,15 @@ public abstract class AbstractOperator extends ExpressionTreeNode{
 	private String operator;
 
 	/**
-	 * 
+	 * Creates an operator.
+	 * @param exp the expression
+	 */
+	public AbstractOperator(ExpressionTreeNode exp) {
+		this.exp1 = exp;
+		this.operator = "unop";
+	}
+	/**
+	 * Creates an operator.
 	 * @param exp1 the first expression
 	 * @param exp2 the second expression
 	 */
@@ -61,10 +69,13 @@ public abstract class AbstractOperator extends ExpressionTreeNode{
 			return false;
 		}
 
-		AbstractOperator b = (AbstractOperator) o;
+		AbstractOperator op = (AbstractOperator) o;
 
 		// check if their parameters are equal
-		if (!this.exp1.equals(b.exp1) || !this.exp2.equals(b.exp2)) {
+		if (!(this.exp2 == null && op.exp2 == null)) {
+			return false;
+		}
+		if (!this.exp1.equals(op.exp1) || !this.exp2.equals(op.exp2)) {
 			return false;
 		}
 		return true;
