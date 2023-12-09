@@ -18,6 +18,9 @@ public class BangAnalyzer implements SemanticAnalyzerInterface {
 		tokens.pop(); // Remove the negate token
 		// the parameter is the next token on the stack.
 		ExpressionTreeNode exp = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
+		if (tokens.empty()) {
+			throw new ParseException("Invalid expression. Negate must come before valid expression or operator.");
+		}
 		return new Negate(exp);
 	}
 }
