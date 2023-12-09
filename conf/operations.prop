@@ -6,3 +6,5 @@
 ^=Caret
 \==Equals
 \!=Bang
+<=Less
+>=Greater
