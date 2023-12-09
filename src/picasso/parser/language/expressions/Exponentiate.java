@@ -10,7 +10,7 @@ import picasso.parser.language.ExpressionTreeNode;
  * Represents the exponentiate binary operator in the Picasso language.
  * @author Reese Nelson
  */
-public class Exponentiate extends BinaryOperator{
+public class Exponentiate extends AbstractOperator{
 	
 	String operator = "" + CharConstants.CARET;
 

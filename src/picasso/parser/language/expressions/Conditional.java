@@ -6,7 +6,7 @@ import picasso.parser.language.ExpressionTreeNode;
 * Represents the exp function in the Picasso language.
 * @author Reese Nelson
 */
-public class Conditional extends TernaryFunction{
+public class Conditional extends AbstractFunction{
 	
 	/**
 	 * Create a conditional function that takes as a parameter the given expressions
@@ -21,9 +21,9 @@ public class Conditional extends TernaryFunction{
 
 	@Override
 	public RGBColor evaluate(double x, double y) {
-		RGBColor resultCond = param1.evaluate(x, y);
-		RGBColor resultT = param2.evaluate(x, y);
-		RGBColor resultF = param3.evaluate(x, y);
+		RGBColor resultCond = params.get(0).evaluate(x, y);
+		RGBColor resultT = params.get(1).evaluate(x, y);
+		RGBColor resultF = params.get(2).evaluate(x, y);
 		
 		
 		/*double red = Math.exp(result.getRed());

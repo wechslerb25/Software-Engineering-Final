@@ -10,7 +10,7 @@ import picasso.parser.language.ExpressionTreeNode;
  * Represents the division binary operator in the Picasso language.
  * @author Reese Nelson
  */
-public class Division extends BinaryOperator{
+public class Division extends AbstractOperator{
 	
 	String operator = "" + CharConstants.SLASH;
 

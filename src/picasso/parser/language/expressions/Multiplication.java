@@ -10,7 +10,7 @@ import picasso.parser.language.ExpressionTreeNode;
  * Represents the multiplication binary operator in the Picasso language.
  * @author Reese Nelson
  */
-public class Multiplication extends BinaryOperator{
+public class Multiplication extends AbstractOperator{
 	
 	String operator = "" + CharConstants.PLUS;
 
