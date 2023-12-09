@@ -32,6 +32,8 @@ public class ImageWrap extends TernaryFunction {
     public RGBColor evaluate(double x, double y) {
         RGBColor result2 = param2.evaluate(x, y);
         RGBColor result3 = param3.evaluate(x, y);
+        result2.wrap();
+        result3.wrap();
         RGBColor result1 = param1.evaluate(result2.getBlue(), result3.getBlue());
         return result1;
     }
