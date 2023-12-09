@@ -1,9 +1,6 @@
 package picasso.parser.language.expressions;
 
 import java.awt.Dimension;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
 
 import picasso.model.Pixmap;
 import picasso.parser.language.ExpressionTreeNode;
@@ -26,7 +23,7 @@ public class StringClass extends ExpressionTreeNode {
     }
 
     private int domainToImage(double x, double size) {
-        return (int) (((x + 1) / 2) * size);
+        return (int) (((x + 1) / 2) * (size - 1));
     }
 
 }
