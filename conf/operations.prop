@@ -4,7 +4,8 @@
 /=Slash
 %=Mod
 ^=Caret
-\==Equals
+\==Assign
 \!=Bang
-<=Less
->=Greater
+\<=Less
+\>=Greater
+\:=Equals

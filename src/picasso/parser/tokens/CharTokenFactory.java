@@ -33,7 +33,8 @@ public class CharTokenFactory {
 		tokenList[CharConstants.RIGHT_PAREN] = new RightParenToken();
 		tokenList[CharConstants.LEFT_BRACKET] = new LeftBracketToken();
 		tokenList[CharConstants.RIGHT_BRACKET] = new RightBracketToken();
-		tokenList[CharConstants.EQUAL] = new EqualsToken();
+		tokenList[CharConstants.COLON] = new EqualsToken();
+		tokenList[CharConstants.EQUAL] = new AssignToken();
 		tokenList[CharConstants.COMMA] = new CommaToken();
 		tokenList[CharConstants.PLUS] = new PlusToken();
 		tokenList[CharConstants.MINUS] = new MinusToken();
@@ -43,6 +44,8 @@ public class CharTokenFactory {
 		tokenList[CharConstants.CARET] = new CaretToken();
 		tokenList[CharConstants.BANG] = new BangToken();
 		tokenList[CharConstants.QUOTE] = new QuotationToken();
+		tokenList[CharConstants.LESS] = new LessToken();
+		tokenList[CharConstants.GREATER] = new GreaterToken();
 
 		// TODO: What other tokens should be in here?
 		// TODO: Need to create the associated Token classes too.

@@ -43,10 +43,14 @@ public class LessThan extends AbstractOperator{
 
 		//true represented by [1,1,1]. false represented by [-1,-1,-1].
 		if (val1 < val2) {
-			return new RGBColor(1,1,1);
+			return new RGBColor(-1,-1,-1);
+		}
+		//checks equals case b/c double comparison will not get it.
+		else if (Math.abs(val1 - val2) < error) {
+			return new RGBColor(-1,-1,-1);
 		}
 		else {
-			return new RGBColor(-1,-1,-1);
+			return new RGBColor(1,1,1);
 		}
 	}
 

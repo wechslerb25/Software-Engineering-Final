@@ -28,4 +28,6 @@ public class CharConstants {
 	public static final char TILDE = '~';
 	public static final char LESS = '<';
 	public static final char GREATER = '>';
+	public static final char COLON = ':';
+	public static final char SEMICOLON = ';';
 }

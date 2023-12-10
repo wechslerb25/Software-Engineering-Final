@@ -22,10 +22,11 @@ public class ExpressionTreeGenerator {
 	// TODO: Do these belong here?
 	private static final int CONSTANT = 0;
 	private static final int GROUPING = 1; // parentheses
-	private static final int EXPONENTIATE = 2;
-	private static final int ADD_OR_SUBTRACT = 3;
-	private static final int MULTIPLY_DIVIDE_OR_MOD = 4;
-	private static final int NEGATE = 5;
+	private static final int ADD_OR_SUBTRACT = 2;
+	private static final int MULTIPLY_DIVIDE_OR_MOD = 3;
+	private static final int EXPONENTIATE = 4;
+	private static final int COMPARISON = 5;
+	private static final int NEGATE = 6;
 
 	/**
 	 * Converts the given string into expression tree for easier manipulation.
@@ -47,9 +48,9 @@ public class ExpressionTreeGenerator {
 		ExpressionTreeNode root = semAnalyzer.generateExpressionTree(postfix);
 
 		// Is this the best place to put this check?
-		if (!postfix.isEmpty()) {
+		/*if (!postfix.isEmpty()) {
 			throw new ParseException("Extra operands without operators or functions");
-		}
+		}*/
 		return root;
 	}
 
@@ -158,7 +159,7 @@ public class ExpressionTreeGenerator {
 					postfixResult.push(operators.pop());
 				}
 
-			} else if (token instanceof EqualsToken) {
+			} else if (token instanceof EqualsToken || token instanceof LessToken || token instanceof GreaterToken) {
 				operators.push(token);
 			} else if (token instanceof QuotationToken) {
 				if (!operators.empty() && operators.peek() instanceof QuotationToken) {
@@ -213,6 +214,8 @@ public class ExpressionTreeGenerator {
 			return EXPONENTIATE;
 		} else if (token instanceof BangToken) {
 			return NEGATE;
+		} else if (token instanceof LessToken || token instanceof GreaterToken || token instanceof EqualsToken) {
+			return COMPARISON;
 		} else {
 			return CONSTANT;
 		}
