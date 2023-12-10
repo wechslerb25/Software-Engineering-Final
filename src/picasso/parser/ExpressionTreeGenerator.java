@@ -159,6 +159,8 @@ public class ExpressionTreeGenerator {
 					postfixResult.push(operators.pop());
 				}
 
+			} else if (token instanceof AssignToken) {
+				operators.push(token);
 			} else if (token instanceof EqualsToken || token instanceof LessToken || token instanceof GreaterToken) {
 				operators.push(token);
 			} else if (token instanceof QuotationToken) {
