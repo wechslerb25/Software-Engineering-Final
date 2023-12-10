@@ -35,7 +35,7 @@ public class LessThan extends AbstractOperator{
 		if ((Math.abs(result1.getBlue() - result1.getGreen()) > error) || (Math.abs(result1.getGreen() - result1.getRed()) > error)) {
 			throw new ParseException("Invalid Comparison. Comparison failed as compared values are not grayscale.");
 		}
-		else if ((Math.abs(result1.getBlue() - result1.getGreen()) > error) || (Math.abs(result1.getGreen() - result1.getRed()) > error)) {
+		else if ((Math.abs(result2.getBlue() - result2.getGreen()) > error) || (Math.abs(result2.getGreen() - result2.getRed()) > error)) {
 			throw new ParseException("Invalid Comparison. Comparison failed as compared values are not grayscale.");
 		}
 		double val1 = result1.getRed();
