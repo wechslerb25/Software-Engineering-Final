@@ -30,4 +30,6 @@ public class CharConstants {
 	public static final char GREATER = '>';
 	public static final char COLON = ':';
 	public static final char SEMICOLON = ';';
+	public static final char AND = '&';
+	public static final char OR = '|';
 }

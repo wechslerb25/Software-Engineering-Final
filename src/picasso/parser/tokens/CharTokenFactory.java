@@ -47,6 +47,8 @@ public class CharTokenFactory {
 		tokenList[CharConstants.QUOTE] = new QuotationToken();
 		tokenList[CharConstants.LESS] = new LessToken();
 		tokenList[CharConstants.GREATER] = new GreaterToken();
+		tokenList[CharConstants.AND] = new AndToken();
+		tokenList[CharConstants.OR] = new OrToken();
 
 		// TODO: What other tokens should be in here?
 		// TODO: Need to create the associated Token classes too.
