@@ -47,7 +47,7 @@ public class Tokenizer {
 		s = s.replace("-", " -");
 		//makes assignments more reliable when comparison is not same symbol as assign.
 		s = s.replace("==", ":");
-		s = s.replace("!=", "!:");
+		s = s.replace("!=", ";");
 		s = s.replace(">=", ">:");
 		s = s.replace("<=", "<:");
 

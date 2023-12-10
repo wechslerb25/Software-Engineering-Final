@@ -8,7 +8,7 @@ import picasso.parser.tokens.chars.CharToken;
  * 
  * @author Reese Nelson
  */
-public class LessToken extends CharToken {
+public class LessToken extends CharToken implements OperationInterface {
 	public LessToken() {
 		super(CharConstants.LESS);
 	}

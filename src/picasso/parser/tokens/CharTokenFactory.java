@@ -34,6 +34,7 @@ public class CharTokenFactory {
 		tokenList[CharConstants.LEFT_BRACKET] = new LeftBracketToken();
 		tokenList[CharConstants.RIGHT_BRACKET] = new RightBracketToken();
 		tokenList[CharConstants.COLON] = new EqualsToken();
+		tokenList[CharConstants.SEMICOLON] = new NotEqualsToken();
 		tokenList[CharConstants.EQUAL] = new AssignToken();
 		tokenList[CharConstants.COMMA] = new CommaToken();
 		tokenList[CharConstants.PLUS] = new PlusToken();

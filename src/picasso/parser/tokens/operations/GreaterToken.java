@@ -8,7 +8,7 @@ import picasso.parser.tokens.chars.CharToken;
  * 
  * @author Reese Nelson
  */
-public class GreaterToken extends CharToken {
+public class GreaterToken extends CharToken implements OperationInterface {
 	public GreaterToken() {
 		super(CharConstants.GREATER);
 	}
