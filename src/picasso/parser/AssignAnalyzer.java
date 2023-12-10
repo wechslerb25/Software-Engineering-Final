@@ -10,7 +10,7 @@ import picasso.parser.tokens.IdentifierToken;
 import picasso.parser.tokens.Token;
 
 /**
- * SemanticAnalyzer for an Assign Token.
+ * SemanticAnalyzer for an Equals Token.
  * 
  * @author Sara Sprenkle
  * 
@@ -24,9 +24,15 @@ public class AssignAnalyzer implements SemanticAnalyzerInterface {
 		if (tokens.empty()) {
 			throw new ParseException("Empty Assignment. Assignment failed as expression assigned to nothing.");
 		}
+		if(!(tokens.peek() instanceof IdentifierToken)) {
+			throw new ParseException("Cannot assign non-Identifier Type.");
+		}
 		IdentifierToken it = (IdentifierToken) tokens.pop();
 		if (it == null) {
 			throw new ParseException("Empty Assignment. Assignment failed as expression assigned to nothing.");
+		}
+		if(it.getName().equals("x") || it.getName().equals("y")  ) {
+			throw new ParseException("Cannot assign reserved Identifiers.");
 		}
 		IdentifierAnalyzer.idToExpression.put(it.getName(), exp1);
 		return exp1;
