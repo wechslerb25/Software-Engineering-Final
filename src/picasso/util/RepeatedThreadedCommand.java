@@ -12,7 +12,8 @@ import javax.swing.JComponent;
  * @author Reese Nelson - added repeated command functionality
  */
 public class RepeatedThreadedCommand<T> implements Command<T> {
-	private static final int DELAY = 100; // in milliseconds (10 fps)
+	private static final int DRAW_DELAY = 50; // in milliseconds
+	private static final int RUN_DELAY = 50; // in milliseconds (20 fps)
 
 	private Command<T> myCommand;
 	private JComponent myView;
@@ -42,7 +43,7 @@ public class RepeatedThreadedCommand<T> implements Command<T> {
 					try {
 						while(!isDone) {
 							myCommand.execute(target);
-							Thread.sleep(DELAY);
+							Thread.sleep(RUN_DELAY);
 						}
 					} catch (InterruptedException e){
 						e.printStackTrace();
@@ -56,7 +57,7 @@ public class RepeatedThreadedCommand<T> implements Command<T> {
 				public void run() {
 					try {
 						while (!isDone) {
-							Thread.sleep(DELAY);
+							Thread.sleep(DRAW_DELAY);
 							myView.repaint();
 						}
 					} catch (InterruptedException e) {
