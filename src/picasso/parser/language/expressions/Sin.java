@@ -12,7 +12,7 @@ import picasso.parser.language.ExpressionTreeNode;
  * @author Ben Wechsler
  * 
  */
-public class Sin extends UnaryFunction {
+public class Sin extends AbstractFunction {
 	/**
 	 * Create a Sin expression that takes as a parameter the given expression
 	 * 
@@ -31,7 +31,7 @@ public class Sin extends UnaryFunction {
 	 */
 	@Override
 	public RGBColor evaluate(double x, double y) {
-		RGBColor result = param.evaluate(x, y);
+		RGBColor result = params.get(0).evaluate(x, y);
 		double red = Math.sin(result.getRed());
 		double green = Math.sin(result.getGreen());
 		double blue = Math.sin(result.getBlue());

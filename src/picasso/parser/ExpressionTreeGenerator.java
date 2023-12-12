@@ -21,11 +21,14 @@ public class ExpressionTreeGenerator {
 
 	// TODO: Do these belong here?
 	private static final int CONSTANT = 0;
-	private static final int GROUPING = 1; // parentheses
-	private static final int EXPONENTIATE = 2;
-	private static final int ADD_OR_SUBTRACT = 3;
-	private static final int MULTIPLY_DIVIDE_OR_MOD = 4;
-	private static final int NEGATE = 5;
+	private static final int COMPARISON = 1;
+	private static final int AND_OR = 2;
+	private static final int EQUIVALENCE = 3;
+	private static final int GROUPING = 4; // parentheses
+	private static final int ADD_OR_SUBTRACT = 5;
+	private static final int MULTIPLY_DIVIDE_OR_MOD = 6;
+	private static final int EXPONENTIATE = 7;
+	private static final int NEGATE = 8;
 
 	/**
 	 * Converts the given string into expression tree for easier manipulation.
@@ -47,9 +50,9 @@ public class ExpressionTreeGenerator {
 		ExpressionTreeNode root = semAnalyzer.generateExpressionTree(postfix);
 
 		// Is this the best place to put this check?
-		if (!postfix.isEmpty()) {
+		/*if (!postfix.isEmpty()) {
 			throw new ParseException("Extra operands without operators or functions");
-		}
+		}*/
 		return root;
 	}
 
@@ -158,8 +161,9 @@ public class ExpressionTreeGenerator {
 					postfixResult.push(operators.pop());
 				}
 
-			} else if (token instanceof EqualsToken) {
+			} else if (token instanceof AssignToken) {
 				operators.push(token);
+				
 			} else if (token instanceof QuotationToken) {
 				if (!operators.empty() && operators.peek() instanceof QuotationToken) {
 					operators.pop();
@@ -205,14 +209,20 @@ public class ExpressionTreeGenerator {
 		// TODO: DISCUSS: Is it better to have a method in the OperatorToken
 		// class that gives the order of operation?
 
-		if (token instanceof PlusToken || token instanceof MinusToken)
+		if (token instanceof PlusToken || token instanceof MinusToken) {
 			return ADD_OR_SUBTRACT;
-		else if (token instanceof StarToken || token instanceof SlashToken || token instanceof ModToken) {
+		} else if (token instanceof StarToken || token instanceof SlashToken || token instanceof ModToken) {
 			return MULTIPLY_DIVIDE_OR_MOD;
 		} else if (token instanceof CaretToken) {
 			return EXPONENTIATE;
 		} else if (token instanceof BangToken) {
 			return NEGATE;
+		} else if (token instanceof LessToken || token instanceof GreaterToken) {
+			return COMPARISON;
+		} else if (token instanceof EqualsToken || token instanceof NotEqualsToken) {
+			return EQUIVALENCE;
+		} else if (token instanceof AndToken || token instanceof OrToken) {
+			return AND_OR;
 		} else {
 			return CONSTANT;
 		}
@@ -222,6 +232,8 @@ public class ExpressionTreeGenerator {
 		ExpressionTreeGenerator gen = new ExpressionTreeGenerator();
 		// System.out.println(gen.infixToPostfix("!(x+y)+y"));
 		// System.out.println(gen.infixToPostfix("!(x+y)"));
-		System.out.println(gen.infixToPostfix("\"mage\""));
+		// System.out.println(gen.infixToPostfix("\"mage\""));
+		// System.out.println(gen.infixToPostfix("!x+y!=0"));
+		System.out.println(gen.infixToPostfix("x<y | y")); //might need to restructure order of ops
 	}
 }

@@ -1,9 +1,6 @@
 package picasso.parser.language.expressions;
 
 import java.awt.Dimension;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
 
 import picasso.model.Pixmap;
 import picasso.parser.language.ExpressionTreeNode;
@@ -14,7 +11,7 @@ public class StringClass extends ExpressionTreeNode {
     private Dimension dim;
 
     public StringClass(String file_name) {
-        this.file_name = "/Users/janeetbajracharya/Desktop/Code/2023F/CSCI209/hw/picasso-codecatalysts/images/AmoebaMorris.png";
+        this.file_name = file_name.replace(" -", "-");
         pixmap = new Pixmap();
         pixmap.read(this.file_name);
         dim = this.pixmap.getSize();
@@ -26,7 +23,7 @@ public class StringClass extends ExpressionTreeNode {
     }
 
     private int domainToImage(double x, double size) {
-        return (int) (((x + 1) / 2) * size);
+        return (int) (((x + 1) / 2) * (size - 1));
     }
 
 }

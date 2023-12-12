@@ -6,8 +6,8 @@ import picasso.parser.tokens.chars.CharToken;
 /**
  * Represents the equals sign for comparisons in the Picasso programming language
  */
-public class EqualsToken extends CharToken implements OperationInterface {
-	public EqualsToken() {
-		super(CharConstants.COLON);
+public class NotEqualsToken extends CharToken implements OperationInterface {
+	public NotEqualsToken() {
+		super(CharConstants.SEMICOLON);
 	}
 }

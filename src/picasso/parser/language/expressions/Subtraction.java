@@ -10,7 +10,7 @@ import picasso.parser.language.ExpressionTreeNode;
  * Represents the subtraction binary operator in the Picasso language.
  * @author Reese Nelson
  */
-public class Subtraction extends BinaryOperator{
+public class Subtraction extends AbstractOperator{
 	
 		String operator = "" + CharConstants.MINUS;
 

@@ -26,4 +26,10 @@ public class CharConstants {
 	public static final char BACK_SLASH = '\\';
 	public static final char QUESTION = '?';
 	public static final char TILDE = '~';
+	public static final char LESS = '<';
+	public static final char GREATER = '>';
+	public static final char COLON = ':';
+	public static final char SEMICOLON = ';';
+	public static final char AND = '&';
+	public static final char OR = '|';
 }
