@@ -17,12 +17,12 @@ public class Player implements Command<Pixmap> {
 	
 	private static Player ourInstance;
 	private final Evaluator evaluator;
-	private Duration playTime;
+	private static Duration playTime;
 	private Instant startTime;
 //threaded command here not in frame
 	private Player(Evaluator evaluator) {
 		this.evaluator = evaluator;
-		this.playTime = Duration.ZERO;
+		playTime = Duration.ZERO;
 		this.startTime = Instant.now();
 	}
 
@@ -32,7 +32,7 @@ public class Player implements Command<Pixmap> {
 			evaluator.execute(target);
 	}
 	
-	public Duration getPlayTime() {
+	public static Duration getPlayTime() {
 		return playTime;
 	}
 	
