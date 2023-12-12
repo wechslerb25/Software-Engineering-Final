@@ -35,7 +35,6 @@ public class Reader extends FileCommand<Pixmap> {
 	 */
 	public void execute(Pixmap target) {
 		String fileName = getFileName();
-		System.out.print(fileName);
 		if (fileName != null) {
 			int periodIndex = fileName.lastIndexOf("."); // gets the index of the last occurrence of a period in the
 															// string

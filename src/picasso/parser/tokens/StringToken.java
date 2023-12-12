@@ -10,7 +10,6 @@ public class StringToken extends Token {
         super("String Token");
         this.data = data;
         this.pixmap = new Pixmap(data);
-        System.out.println(this.data);
     }
 
     @Override

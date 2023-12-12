@@ -8,7 +8,6 @@ public class ErrorWindow {
         try {
             // code that might throw an exception; placeholder for final implementation 
             int result = divide(10, 0);
-            System.out.println("Result: " + result);
         } catch (Exception e) {
             // display the error in a pop-up window
             showErrorPopup("Error: " + e.getMessage());
