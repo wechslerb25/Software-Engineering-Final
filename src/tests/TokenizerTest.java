@@ -68,18 +68,18 @@ public class TokenizerTest {
 		assertEquals(new NumberToken(-1.2), tokens.get(0));
 	}
 	
-//	@Test
-//	public void testTokenizeAssignment() {
-//		String expression_1 = "a = x";
-//		tokens = tokenizer.parseTokens(expression_1);
-//		assertEquals(new EqualsToken(), tokens.get(1));
-//		assertEquals(new Variable("x"), tokens.get(2));
-//		assertEquals(new IdentifierToken("a"), tokens.get(0));
-//		
-//
-//	
-//	}
-//	
+	@Test
+	public void testTokenizeAssignment() {
+		String expression_1 = "a = x";
+		tokens = tokenizer.parseTokens(expression_1);
+		assertEquals(new EqualsToken(), tokens.get(1));
+		assertEquals(new Variable("x"), tokens.get(2));
+		assertEquals(new IdentifierToken("a"), tokens.get(0));
+		
+
+	
+	}
+	
 
 	@Test
 	public void testTokenizeColor() {
