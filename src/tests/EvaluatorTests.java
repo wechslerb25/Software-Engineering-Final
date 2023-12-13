@@ -214,5 +214,4 @@ public class EvaluatorTests {
 		assertEquals(new RGBColor(-1.0,-1.0,-1.0), myTree.evaluate(-2.4,-20));
 	}
 	// TODO: More tests of evaluation
-
 }
