@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,6 +20,7 @@ import picasso.parser.tokens.chars.*;
 import picasso.parser.tokens.functions.*;
 import picasso.parser.tokens.operations.EqualsToken;
 import picasso.parser.tokens.operations.PlusToken;
+import picasso.util.ErrorWindow;
 
 /**
  * Tests that the tokenizer tokens as expected. 
@@ -28,6 +30,11 @@ public class TokenizerTest {
 
 	Tokenizer tokenizer;
 	List<Token> tokens;
+	
+	@BeforeAll
+	public void disablePopups() {
+		ErrorWindow.setSilenced(true);
+	}
 
 	@BeforeEach
 	public void setUp() throws Exception {
