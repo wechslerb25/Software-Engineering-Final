@@ -114,7 +114,8 @@ public class EvaluatorTests {
 			assertEquals(0, myTree.evaluate(-i,-i).getBlue(), 0.01);
 		}
 	}
-
+	
+	@Test
 	public void testTanEvaluation() {
 		Tan myTree = new Tan(new X());
 		double vals[] = { -1.0, 0.12, 1.0, 0.5, 0, Math.PI / 2};
@@ -229,8 +230,15 @@ public class EvaluatorTests {
 		assertEquals(new RGBColor(-4,-4,-4), myTree.evaluate(4,2));
 		assertEquals(new RGBColor(0.5,0.5,0.5), myTree.evaluate(-0.5,2));
 	}
-	
+
+	@Test
+	public void testClampFunction() {
+		Clamp myTree = new Clamp(new X());
+		
+		assertEquals(new RGBColor(1.0,1.0,1.0), myTree.evaluate(1.5,4.0));
+		assertEquals(new RGBColor(-1.0,-1.0,-1.0), myTree.evaluate(-2.4,-20));
+	}
 	
 	// TODO: More tests of evaluation
-
+	
 }
