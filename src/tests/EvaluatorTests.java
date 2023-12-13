@@ -191,6 +191,24 @@ public class EvaluatorTests {
 		assertEquals(new RGBColor(1,1,1), myTree.evaluate(7, 3));
 		assertEquals(new RGBColor(0,0,0), myTree.evaluate(4, -2));
 	}
+
+	
+	
+	@Test
+	public void testWrapEvaluation() {
+		Wrap myTree = new Wrap(new X());
+		
+		assertEquals(new RGBColor(-0.5,-0.5,-0.5), myTree.evaluate(1.5,2.0));
+		assertEquals(new RGBColor(0.75,0.75,0.75), myTree.evaluate(2.75,2.0));
+		assertEquals(0.2, myTree.evaluate(-1.8, 2).getRed(), 0.01);
+		assertEquals(0.2, myTree.evaluate(-1.8, 2).getGreen(), 0.01);
+		assertEquals(0.2, myTree.evaluate(-1.8, 2).getBlue(), 0.01);
+		assertEquals(-0.6, myTree.evaluate(-2.6, 2).getRed(), 0.01);
+		assertEquals(-0.6, myTree.evaluate(-2.6, 2).getGreen(), 0.01);
+		assertEquals(-0.6, myTree.evaluate(-2.6, 2).getBlue(), 0.01);
+		
+	}
+	
 	
 	@Test
 	public void testExponentiateEvaluation() {
@@ -211,6 +229,8 @@ public class EvaluatorTests {
 		assertEquals(new RGBColor(-4,-4,-4), myTree.evaluate(4,2));
 		assertEquals(new RGBColor(0.5,0.5,0.5), myTree.evaluate(-0.5,2));
 	}
+	
+	
 	// TODO: More tests of evaluation
 
 }
