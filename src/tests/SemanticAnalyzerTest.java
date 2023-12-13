@@ -166,7 +166,7 @@ class SemanticAnalyzerTest {
 		Stack<Token> tokens = new Stack<>();
 		tokens.push(new IdentifierToken("a"));
 		tokens.push(new IdentifierToken("x"));
-		tokens.push(new EqualsToken());
+		tokens.push(new AssignToken());
 		ExpressionTreeNode actual = semAnalyzer.generateExpressionTree(tokens);
 		assertEquals(new X(), actual);
 		
