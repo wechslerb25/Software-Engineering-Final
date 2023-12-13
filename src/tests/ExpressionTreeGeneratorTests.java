@@ -81,6 +81,21 @@ public class ExpressionTreeGeneratorTests {
 		e = parser.makeExpression("![1,1,1]");
 		assertEquals(new Negate(new RGBColor(1,1,1)), e);
 	}
+	
+	@Test
+	public void comparisonExpressionTests() {
+		ExpressionTreeNode e = parser.makeExpression("x < y");
+		assertEquals(new LessThan(new X(), new Y()), e);
+
+		e = parser.makeExpression("x > y & y <= [0,0,0]");
+		assertEquals(new And(new GreaterThan(new X(), new Y()), new LessEquals(new Y(), new RGBColor(0,0,0))), e);
+
+		e = parser.makeExpression("x < 0 == y");
+		assertEquals(new Equals(new LessThan(new X(), new RGBColor(0,0,0)), new Y()), e);
+
+		e = parser.makeExpression("x < y | y > x + 0.5");
+		assertEquals(new Or(new LessThan(new X(), new Y()), new GreaterThan(new Y(), new Addition(new X(), new RGBColor(0.5,0.5,0.5)))), e);
+	}
 
 	@Test
 	public void parenthesesExpressionTests() {

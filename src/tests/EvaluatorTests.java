@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import picasso.parser.ParseException;
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.language.expressions.*;
 import picasso.util.ErrorWindow;
@@ -104,7 +105,7 @@ public class EvaluatorTests {
 	@Test
 	public void testSinEvaluation() {
 		Sin myTree = new Sin(new X());
-    assertEquals(0, myTree.evaluate(-Math.PI,-Math.PI).getRed(), 0.01);
+		assertEquals(0, myTree.evaluate(-Math.PI,-Math.PI).getRed(), 0.01);
 		assertEquals(0, myTree.evaluate(-Math.PI,-Math.PI).getGreen(), 0.01);
 		assertEquals(0, myTree.evaluate(-Math.PI,-Math.PI).getBlue(), 0.01);
 		
@@ -172,13 +173,14 @@ public class EvaluatorTests {
 	@Test
 	public void testDivisionEvaluation() {
 		Division myTree = new Division(new X(), new Y());
-		
+
 		assertEquals(new RGBColor(4,4,4), myTree.evaluate(2, 0.5));
 		assertEquals(new RGBColor(0.25,0.25,0.25), myTree.evaluate(0.5, 2));
-		//TODO: assertThrows(new RGBColor(0,0,0), myTree.evaluate(1, 0));
+		assertTrue(Double.isInfinite(myTree.evaluate(1, 0).getRed()));
 		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(-1, 1));
 		assertEquals(new RGBColor(1,1,1), myTree.evaluate(-1, -1));
 		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(-0.5, 0.5));
+		
 	}
 	
 	@Test
@@ -187,10 +189,21 @@ public class EvaluatorTests {
 		
 		assertEquals(new RGBColor(0,0,0), myTree.evaluate(4, 0.5));
 		assertEquals(new RGBColor(0.5,0.5,0.5), myTree.evaluate(0.5, 2));
-		//TODO: assertThrows(new RGBColor(0,0,0), myTree.evaluate(1, 0));
+		assertTrue(Double.isNaN(myTree.evaluate(1, 0).getRed()));
 		assertEquals(new RGBColor(0,0,0), myTree.evaluate(-1, 1));
 		assertEquals(new RGBColor(1,1,1), myTree.evaluate(7, 3));
 		assertEquals(new RGBColor(0,0,0), myTree.evaluate(4, -2));
+	}
+	
+	@Test
+	public void testExponentialEvaluation() {
+		Exponentiate myTree = new Exponentiate(new X(), new Y());
+		
+		assertEquals(new RGBColor(1,1,1), myTree.evaluate(1, 0.5));
+		assertEquals(new RGBColor(0.5,0.5,0.5), myTree.evaluate(0.5, 1));
+		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(-1, 1));
+		assertEquals(new RGBColor(1,1,1), myTree.evaluate(1, -1));
+		assertEquals(new RGBColor(0,0,0), myTree.evaluate(0, 0.5));
 	}
 
 	
@@ -229,6 +242,84 @@ public class EvaluatorTests {
 		
 		assertEquals(new RGBColor(-4,-4,-4), myTree.evaluate(4,2));
 		assertEquals(new RGBColor(0.5,0.5,0.5), myTree.evaluate(-0.5,2));
+	}
+	
+	@Test
+	public void testLessThanEvaluation() {
+		LessThan myTree = new LessThan(new X(), new Y());
+
+		assertEquals(new RGBColor(1,1,1), myTree.evaluate(0.5,1));
+		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(0.7,-0.1));
+		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(0,0));
+	}
+	
+	@Test
+	public void testLessEqualsToEvaluation() {
+		LessEquals myTree = new LessEquals(new X(), new Y());
+		
+		assertEquals(new RGBColor(1,1,1), myTree.evaluate(0.5,1));
+		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(0.7,-0.1));
+		assertEquals(new RGBColor(1,1,1), myTree.evaluate(0,0));
+	}
+	
+	@Test
+	public void testGreaterThanEvaluation() {
+		GreaterThan myTree = new GreaterThan(new X(), new Y());
+
+		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(0.5,1));
+		assertEquals(new RGBColor(1,1,1), myTree.evaluate(0.7,-0.1));
+		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(0,0));
+	}
+	
+	@Test
+	public void testGreaterEqualsToEvaluation() {
+		GreaterEquals myTree = new GreaterEquals(new X(), new Y());
+		
+		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(0.5,1));
+		assertEquals(new RGBColor(1,1,1), myTree.evaluate(0.7,-0.1));
+		assertEquals(new RGBColor(1,1,1), myTree.evaluate(0,0));
+	}
+	
+	@Test
+	public void testEqualsEvaluation() {
+		Equals myTree = new Equals(new X(), new Y());
+		
+		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(0.5,1));
+		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(0.7,-0.1));
+		assertEquals(new RGBColor(1,1,1), myTree.evaluate(0,0));
+	}
+	
+	@Test
+	public void testNotEqualsEvaluation() {
+		NotEquals myTree = new NotEquals(new X(), new Y());
+		
+		assertEquals(new RGBColor(1,1,1), myTree.evaluate(0.5,1));
+		assertEquals(new RGBColor(1,1,1), myTree.evaluate(0.7,-0.1));
+		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(0,0));
+	}
+	
+	@Test
+	public void testAndEvaluation() {
+		And myTree = new And(new X(), new Y());
+		
+		assertEquals(new RGBColor(1,1,1), myTree.evaluate(1,1));
+		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(1,-1));
+		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(-1,-1));
+		assertThrows(ParseException.class, () -> {
+			myTree.evaluate(0, 0.5);
+		});
+	}
+	
+	@Test
+	public void testOrEvaluation() {
+		Or myTree = new Or(new X(), new Y());
+		
+		assertEquals(new RGBColor(1,1,1), myTree.evaluate(1,1));
+		assertEquals(new RGBColor(1,1,1), myTree.evaluate(1,-1));
+		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(-1,-1));
+		assertThrows(ParseException.class, () -> {
+			myTree.evaluate(0, 0.5);
+		});
 	}
 
 	@Test
