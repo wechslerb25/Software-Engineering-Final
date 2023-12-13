@@ -1,13 +1,28 @@
 package picasso.view.commands;
 
 import java.util.Random;
+
 import javax.swing.JTextField;
 import picasso.model.Pixmap;
 import picasso.util.Command;
 
+/**
+ * Generates a random expression
+ * 
+ * @author Tyler Halliday
+ */
+
 public class RandomExpression implements Command<Pixmap> {
 	private final JTextField textField;
 	static Random random = new Random();
+
+	private static double getRandomConstant(double min, double max) {
+		return min + (max - min) * random.nextDouble();
+	}
+
+	private static String formatConstant(double constant) {
+		return constant < 0 ? "(" + constant + ")" : String.valueOf(constant);
+	}
 
 	public RandomExpression(JTextField textField) {
 		this.textField = textField;
@@ -35,6 +50,9 @@ public class RandomExpression implements Command<Pixmap> {
 		return expression;
 	}
 
+	/*
+	 * Generates a random binaryOperator
+	 */
 	public static String generateBinaryOperator() {
 
 		char binaryOperator = 0;
@@ -58,18 +76,41 @@ public class RandomExpression implements Command<Pixmap> {
 
 		return generateRandomExpression() + " " + binaryOperator + " " + generateRandomExpression();
 	}
+
 	/*
-	 * Generates either x, y, constants, or colors
+	 * Generates either x, y, constants, or colors randomly
+	 * 
 	 */
 	public static String generateLeafNode() {
-		String variable = random.nextBoolean() ? "x" : "y";
+		String variable = "";
+		int variableType = random.nextInt(4);
+
+		switch (variableType) {
+		case 0:
+			variable = "x";
+			break;
+		case 1:
+			variable = "y";
+			break;
+		case 2:
+			double red = getRandomConstant(-1, 1);
+			double green = getRandomConstant(-1, 1);
+			double blue = getRandomConstant(-1, 1);
+			variable = String.format("[%.2f, %.2f, %.2f]", red, green, blue);
+			break;
+		case 3:
+			double variable1 = getRandomConstant(-1, 1);
+			variable = formatConstant(variable1);
+			break;
+		}
 		return variable;
 	}
+
 	/*
-	 * Change from 0,1 to sin cos
+	 * Generates a random unary function
 	 */
 	public static String generateUnaryFunction() {
-		String[] unaryFunction = { "sin", "cos" };
+		String[] unaryFunction = { "sin", "cos", "floor", "ceil", "abs", "tan", "atan", "exp", "log" };
 		int unaryFuncIndex = random.nextInt(unaryFunction.length);
 		String selectUnaryFunc = unaryFunction[unaryFuncIndex];
 		return selectUnaryFunc + "(" + generateRandomExpression() + ")";
@@ -79,7 +120,6 @@ public class RandomExpression implements Command<Pixmap> {
 	@Override
 	public void execute(Pixmap target) {
 		String expression = generateRandomExpression();
-		System.out.println(expression);
 
 		textField.setText(expression);
 
