@@ -67,7 +67,7 @@ public class ExpressionTreeGenerator {
 
 		Tokenizer tokenizer = new Tokenizer();
 		List<Token> tokens = tokenizer.parseTokens(infix);
-		System.out.println("List of Tokens: " + tokens);
+		// System.out.println("List of Tokens: " + tokens);
 		return infixToPostfix(tokens);
 	}
 
@@ -176,7 +176,7 @@ public class ExpressionTreeGenerator {
 			} else {
 				System.out.println("ERROR: No match: " + token);
 			}
-			System.out.println("Postfix: " + postfixResult);
+			// System.out.println("Postfix: " + postfixResult);
 		}
 
 		while (!operators.isEmpty()) {

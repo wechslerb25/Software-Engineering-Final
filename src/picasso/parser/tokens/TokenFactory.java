@@ -26,7 +26,6 @@ public class TokenFactory {
 	public static Token parse(StreamTokenizer tokenizer) {
 		try {
 			int result = tokenizer.nextToken();
-			System.out.println(result);
 			switch (result) {
 				case StreamTokenizer.TT_EOF:
 					return EOFToken.getInstance();
