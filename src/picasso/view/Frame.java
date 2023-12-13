@@ -55,9 +55,9 @@ public class Frame extends JFrame {
 
 		commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas, evaluator));
 		commands.add("Save", new Writer());
-		// Player player = Player.getInstance(evaluator);
-		// commands.add("Play", new RepeatedThreadedCommand<Pixmap>(canvas, player));
-		// commands.getComponent(3).setName("Stop");
+		Player player = Player.getInstance(evaluator);
+		commands.add("Play", new RepeatedThreadedCommand<Pixmap>(canvas, player));
+		commands.getComponent(3).setName("Stop");
 
 		// add our container to Frame and show it
 	    getContentPane().add(text, BorderLayout.SOUTH);
