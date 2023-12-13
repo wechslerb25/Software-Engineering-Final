@@ -5,20 +5,17 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import picasso.parser.ParseException;
 import picasso.parser.Tokenizer;
-import picasso.parser.language.expressions.Sin;
-import picasso.parser.language.expressions.Variable;
-import picasso.parser.language.expressions.X;
-import picasso.parser.language.expressions.Y;
 import picasso.parser.tokens.*;
 import picasso.parser.tokens.chars.*;
 import picasso.parser.tokens.functions.*;
-import picasso.parser.tokens.operations.EqualsToken;
-import picasso.parser.tokens.operations.PlusToken;
+import picasso.parser.tokens.operations.AssignToken;
+import picasso.util.ErrorWindow;
 
 /**
  * Tests that the tokenizer tokens as expected. 
@@ -28,6 +25,11 @@ public class TokenizerTest {
 
 	Tokenizer tokenizer;
 	List<Token> tokens;
+	
+	@BeforeAll
+	public static void disablePopups() {
+		ErrorWindow.setSilenced(true);
+	}
 
 	@BeforeEach
 	public void setUp() throws Exception {
@@ -68,18 +70,18 @@ public class TokenizerTest {
 		assertEquals(new NumberToken(-1.2), tokens.get(0));
 	}
 	
-//	@Test
-//	public void testTokenizeAssignment() {
-//		String expression_1 = "a = x";
-//		tokens = tokenizer.parseTokens(expression_1);
-//		assertEquals(new EqualsToken(), tokens.get(1));
-//		assertEquals(new Variable("x"), tokens.get(2));
-//		assertEquals(new IdentifierToken("a"), tokens.get(0));
-//		
-//
-//	
-//	}
-//	
+	@Test
+	public void testTokenizeAssignment() {
+		String expression_1 = "a = x";
+		tokens = tokenizer.parseTokens(expression_1);
+		assertEquals(new AssignToken(), tokens.get(1));
+		assertEquals(new IdentifierToken("x"), tokens.get(2));
+		assertEquals(new IdentifierToken("a"), tokens.get(0));
+		
+
+	
+	}
+	
 
 	@Test
 	public void testTokenizeColor() {

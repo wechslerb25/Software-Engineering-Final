@@ -3,6 +3,7 @@ package picasso.view;
 import java.awt.BorderLayout;
 import javax.swing.JTextField;
 import java.awt.Dimension;
+import javax.swing.BoxLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -11,11 +12,14 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 
 import picasso.model.Pixmap;
+import picasso.parser.IdentifierAnalyzer;
 import picasso.util.Command;
 import picasso.util.ThreadedCommand;
 import picasso.util.RepeatedThreadedCommand;
 import picasso.view.commands.*;
 import picasso.view.commands.Reader;
+import picasso.parser.IdentifierAnalyzer;
+import picasso.parser.language.expressions.*;
 
 /**
  * Main container for the Picasso application
@@ -46,6 +50,8 @@ public class Frame extends JFrame {
 		});
 		// add commands to test here
 		ButtonPanel commands = new ButtonPanel(canvas);
+		ExpressionPanel expanel = new ExpressionPanel();
+		expanel.setLayout(new BoxLayout(expanel,BoxLayout.Y_AXIS));
 		Evaluator evaluator = new Evaluator(text);
 		Reader read = new Reader(evaluator);
 		commands.add("Open", read);
@@ -58,11 +64,22 @@ public class Frame extends JFrame {
 		Player player = Player.getInstance(evaluator);
 		commands.add("Play", new RepeatedThreadedCommand<Pixmap>(canvas, player));
 		commands.getComponent(3).setName("Stop");
-
+		String str = text.toString();
+		/*if (str != null) {
+			if (str.indexOf('=')) {
+				getContentPane().add(expanel, BorderLayout.EAST);
+			}
+		}
+		*/
+		//IdentifierAnalyzer.idToExpression.put("z", new Constant(1.0));
+		//ExpressionPanel expanel1 = new ExpressionPanel();
+		RandomExpression random = new RandomExpression(text);
+		commands.add("Random", new ThreadedCommand<Pixmap>(canvas, random));
 		// add our container to Frame and show it
 	    getContentPane().add(text, BorderLayout.SOUTH);
 		getContentPane().add(canvas, BorderLayout.CENTER);
 		getContentPane().add(commands, BorderLayout.NORTH);
+		getContentPane().add(expanel, BorderLayout.EAST);
 
 		pack();
 	}

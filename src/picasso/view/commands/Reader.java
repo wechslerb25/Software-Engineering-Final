@@ -56,6 +56,7 @@ public class Reader extends FileCommand<Pixmap> {
 					System.err.println("File not found. Running default expression... ");
 					eval.execute(target);
 					e.printStackTrace();
+					
 				}
 			}
 
