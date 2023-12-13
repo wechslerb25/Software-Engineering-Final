@@ -58,6 +58,8 @@ public class Frame extends JFrame {
 		Player player = Player.getInstance(evaluator);
 		commands.add("Play", new RepeatedThreadedCommand<Pixmap>(canvas, player));
 		commands.getComponent(3).setName("Stop");
+		RandomExpression random = new RandomExpression(text);
+		commands.add("Random", new ThreadedCommand<Pixmap>(canvas, random));
 
 		// add our container to Frame and show it
 	    getContentPane().add(text, BorderLayout.SOUTH);
