@@ -13,7 +13,15 @@ import picasso.parser.language.ExpressionTreeNode;
 public abstract class AbstractFunction extends ExpressionTreeNode {
 
 	List<ExpressionTreeNode> params;
-
+	/**
+	 * Creates a function with no parameters
+	 */
+	public AbstractFunction() {
+	}
+	/**
+	\begin{}
+		
+	\end{}
 	/**
 	 * Creates a function
 	 * @param param1 ExpressionTreeNode to evaluate

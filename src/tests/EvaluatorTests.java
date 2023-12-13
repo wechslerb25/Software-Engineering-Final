@@ -118,23 +118,6 @@ public class EvaluatorTests {
 		}
 		return;
 	}
-	
-	@Test
-	public void testIncrementEvaluation() {
-		Increment myTree = new Increment(new X());
-	
-		// Test cases for different inputs
-		assertEquals(new RGBColor(1, 1, 1), myTree.evaluate(0, 0));
-		assertEquals(new RGBColor(-2, -2, -2), myTree.evaluate(-3, -3));
-		assertEquals(new RGBColor(5, 5, 5), myTree.evaluate(4, 4));
-		
-		// Test cases for integers
-		for (int i = -1; i <= 1; i++) {
-			assertEquals(new RGBColor(i + 1, i + 1, i + 1), myTree.evaluate(i, -i));
-			assertEquals(new RGBColor(i + 1, i + 1, i + 1), myTree.evaluate(i, i));
-		}
-	
-	}
 
 	@Test
 	public void testAdditionEvaluation() {

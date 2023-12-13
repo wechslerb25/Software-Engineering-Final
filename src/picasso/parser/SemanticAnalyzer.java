@@ -161,7 +161,7 @@ public class SemanticAnalyzer implements SemanticAnalyzerInterface {
 
 		// Find the appropriate semantic analyzer for the token.
 		Token t = tokens.peek();
-		System.out.println(tokens);
+		// System.out.println(tokens);
 		SemanticAnalyzerInterface analyzer = tokenToSemAnalyzer.get(t.getClass());
 		if (analyzer == null) {
 			throw new ParseException("No semantic analyzer for " + t.getClass());
