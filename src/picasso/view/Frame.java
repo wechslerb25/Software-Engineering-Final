@@ -46,6 +46,7 @@ public class Frame extends JFrame {
 		});
 		// add commands to test here
 		ButtonPanel commands = new ButtonPanel(canvas);
+		ExpressionPanel expanel = new ExpressionPanel();
 		Evaluator evaluator = new Evaluator(text);
 		Reader read = new Reader(evaluator);
 		commands.add("Open", read);
@@ -65,6 +66,7 @@ public class Frame extends JFrame {
 	    getContentPane().add(text, BorderLayout.SOUTH);
 		getContentPane().add(canvas, BorderLayout.CENTER);
 		getContentPane().add(commands, BorderLayout.NORTH);
+		getContentPane().add(expanel, BorderLayout.EAST);
 
 		pack();
 	}
