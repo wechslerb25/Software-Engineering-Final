@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Stack;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
 import picasso.parser.ExpressionTreeGenerator;
@@ -15,6 +16,7 @@ import picasso.parser.tokens.IdentifierToken;
 import picasso.parser.tokens.Token;
 import picasso.parser.tokens.operations.PlusToken;
 import picasso.parser.tokens.operations.StarToken;
+import picasso.util.ErrorWindow;
 
 /**
  * Tests of creating an expression tree from a string expression. Will have
@@ -26,6 +28,11 @@ import picasso.parser.tokens.operations.StarToken;
 public class ExpressionTreeGeneratorTests {
 
 	private ExpressionTreeGenerator parser;
+	
+	@BeforeAll
+	public static void disablePopups() {
+		ErrorWindow.setSilenced(true);
+	}
 
 	@BeforeEach
 	public void setUp() throws Exception {

@@ -4,9 +4,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
 import picasso.parser.ParseException;
+import picasso.util.ErrorWindow;
 import picasso.parser.ExpressionTreeGenerator;
 
 /**
@@ -18,6 +20,11 @@ import picasso.parser.ExpressionTreeGenerator;
 public class ErrorParsedEvaluatedTests {
 
 	private ExpressionTreeGenerator parser;
+	
+	@BeforeAll
+	public static void disablePopups() {
+		ErrorWindow.setSilenced(true);
+	}
 
 	@BeforeEach
 	public void setUp() throws Exception {

@@ -25,7 +25,7 @@ public class TestsEvaluator {
 	private static final String TESTS_PACKAGE = "tests";
 	private static final String[] TEST_FILE_NAMES = {
 			"ErrorParsedEvaluatedTests", "EvaluatorTests",
-			"ExpressionTreeGeneratorTests", "ParserDriver",
+			"ExpressionTreeGeneratorTests",
 			"SemanticAnalyzerTest", "TokenizerTest"};
 	
 	public static void main(String[] args) {

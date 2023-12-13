@@ -73,6 +73,8 @@ public class Frame extends JFrame {
 		*/
 		//IdentifierAnalyzer.idToExpression.put("z", new Constant(1.0));
 		//ExpressionPanel expanel1 = new ExpressionPanel();
+		RandomExpression random = new RandomExpression(text);
+		commands.add("Random", new ThreadedCommand<Pixmap>(canvas, random));
 		// add our container to Frame and show it
 	    getContentPane().add(text, BorderLayout.SOUTH);
 		getContentPane().add(canvas, BorderLayout.CENTER);

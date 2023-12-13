@@ -5,11 +5,13 @@ package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.language.expressions.*;
+import picasso.util.ErrorWindow;
 
 /**
  * Tests of the evaluation of expression trees
@@ -18,6 +20,11 @@ import picasso.parser.language.expressions.*;
  * 
  */
 public class EvaluatorTests {
+	
+	@BeforeAll
+	public static void disablePopups() {
+		ErrorWindow.setSilenced(true);
+	}
 
 	/**
 	 * @throws java.lang.Exception
