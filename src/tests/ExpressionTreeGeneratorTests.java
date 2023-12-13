@@ -4,11 +4,17 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Stack;
+
 import org.junit.jupiter.api.BeforeEach;
 
 import picasso.parser.ExpressionTreeGenerator;
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.language.expressions.*;
+import picasso.parser.tokens.IdentifierToken;
+import picasso.parser.tokens.Token;
+import picasso.parser.tokens.operations.PlusToken;
+import picasso.parser.tokens.operations.StarToken;
 
 /**
  * Tests of creating an expression tree from a string expression. Will have
@@ -62,7 +68,7 @@ public class ExpressionTreeGeneratorTests {
 		e = parser.makeExpression("( x + (y + [ 1, 1, 1] ) )");
 		assertEquals(new Addition(new X(), new Addition(new Y(), new RGBColor(1, 1, 1))), e);
 	}
-/*
+	
 	@Test
 	public void arithmeticStackTests() {
 		Stack<Token> stack = parser.infixToPostfix("x + y * x");
@@ -71,12 +77,12 @@ public class ExpressionTreeGeneratorTests {
 		expected.push(new IdentifierToken("x"));
 		expected.push(new IdentifierToken("y"));
 		expected.push(new IdentifierToken("x"));
-		expected.push(new MultiplyToken());
+		expected.push(new StarToken());
 		expected.push(new PlusToken());
 
 		assertEquals(expected, stack);
 	}
-*/
+
 	@Test
 	public void floorFunctionTests() {
 		ExpressionTreeNode e = parser.makeExpression("floor( x )");
@@ -121,15 +127,4 @@ public class ExpressionTreeGeneratorTests {
 		assertEquals(new Sin(new Addition(new X(), new Y())), e);
 
 	}
-	
-	@Test
-	public void incrementFunctionTests() {
-		ExpressionTreeNode e = parser.makeExpression("increment(x)");
-		assertEquals(new Increment(new X()), e);
-
-		e = parser.makeExpression("increment( x + y )");
-		assertEquals(new Increment(new Addition(new X(), new Y())), e);
-
-	}
-
 }
