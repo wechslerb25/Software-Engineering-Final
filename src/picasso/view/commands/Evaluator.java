@@ -1,5 +1,6 @@
 package picasso.view.commands;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 
@@ -8,7 +9,8 @@ import picasso.parser.ExpressionTreeGenerator;
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.language.expressions.CS;
 import picasso.util.Command;
-
+import picasso.view.ExpressionPanel;
+import javax.swing.JFrame;
 import javax.swing.JTextField;
 
 /**
@@ -25,6 +27,14 @@ public class Evaluator implements Command<Pixmap> {
 	// create the expression to evaluate just once
 	public Evaluator(JTextField text) {
 		this.text = text;
+		String str = text.toString();
+		if (str != null) {
+			if (str.indexOf('=')> 0) {
+				System.out.println("Recognized Assignment");
+				ExpressionPanel expanel = new ExpressionPanel();
+				//getContentPane().add(expanel, BorderLayout.EAST);
+			}
+		}
 	}
 
 	/**
