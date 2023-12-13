@@ -22,7 +22,7 @@ import picasso.util.ErrorWindow;
 public class EvaluatorTests {
 	
 	@BeforeAll
-	public void disablePopups() {
+	public static void disablePopups() {
 		ErrorWindow.setSilenced(true);
 	}
 

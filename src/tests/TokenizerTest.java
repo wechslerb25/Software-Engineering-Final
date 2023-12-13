@@ -32,7 +32,7 @@ public class TokenizerTest {
 	List<Token> tokens;
 	
 	@BeforeAll
-	public void disablePopups() {
+	public static void disablePopups() {
 		ErrorWindow.setSilenced(true);
 	}
 

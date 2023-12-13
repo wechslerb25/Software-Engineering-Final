@@ -22,7 +22,7 @@ public class ErrorParsedEvaluatedTests {
 	private ExpressionTreeGenerator parser;
 	
 	@BeforeAll
-	public void disablePopups() {
+	public static void disablePopups() {
 		ErrorWindow.setSilenced(true);
 	}
 
