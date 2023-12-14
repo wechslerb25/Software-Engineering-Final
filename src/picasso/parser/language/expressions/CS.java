@@ -1,7 +1,9 @@
 package picasso.parser.language.expressions;
 
 import picasso.model.Pixmap;
+import picasso.parser.ParseException;
 import picasso.parser.language.ExpressionTreeNode;
+import picasso.view.commands.Evaluator;
 
 /**
  * Represents the current state in a Picasso expression
@@ -17,8 +19,9 @@ public class CS extends ExpressionTreeNode {
      */
     @Override
     public RGBColor evaluate(double x, double y) {
-
-        return new RGBColor(y, y, y);
+        int x_coordinate = Evaluator.domainScaleToImage(x, (int) current_state.getSize().getWidth());
+        int y_coordinate = Evaluator.domainScaleToImage(y, (int) current_state.getSize().getHeight());
+        return new RGBColor(current_state.getColor(x_coordinate, y_coordinate));
     }
 
     public static void setCurrentState(Pixmap cs) {
@@ -27,6 +30,9 @@ public class CS extends ExpressionTreeNode {
     }
 
     public static Pixmap getCurrentState() {
+        if (current_state == null) {
+            throw new ParseException("Invalid Use of State Aware Function! State has not been set.");
+        }
         return current_state;
     }
 
