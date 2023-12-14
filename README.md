@@ -26,3 +26,7 @@ The `images` directory contains some sample images generated from Picasso.  Some
 ## Code Base History
 
 This code base originated as a project in a course at Duke University.  The professors realized that the code could be designed better and refactored.  This code base has some code leftover from the original version.
+
+##Extensions
+#####Assignments Side Bar - Ben
+For this extension, I thought that it would be interesting to add a Matlab style assignments tab to the GUI. Utilizing JFrame and JTable, I created an extension of the GUI to the right side of the display window that consists of a table of assigned values.
