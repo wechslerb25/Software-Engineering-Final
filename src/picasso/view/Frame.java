@@ -41,11 +41,16 @@ public class Frame extends JFrame {
 //		 executeEval = ()->{};
 		// Text Box
 		JTextField text = new JTextField("", 20);
+		ExpressionPanel expanel = new ExpressionPanel(); 
+		expanel.setLayout(new BoxLayout(expanel,BoxLayout.Y_AXIS));
+		
+		Evaluator evaluator = new Evaluator(text, expanel);
+		
 		text.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent action) {
 		         // Is there a way to refactor this so that I dont have to do it twice.
-		    	Command<Pixmap> a = new ThreadedCommand<Pixmap>(canvas, new Evaluator(text));
+		    	Command<Pixmap> a = new ThreadedCommand<Pixmap>(canvas, evaluator);
 		    	a.execute(canvas.getPixmap());
 		    	canvas.refresh();
 		    }
@@ -53,12 +58,7 @@ public class Frame extends JFrame {
 		// add commands to test here
 		ButtonPanel commands = new ButtonPanel(canvas);
 		
-		IdentifierAnalyzer.idToExpression.put("z", new Constant(1.0));
 		
-		ExpressionPanel expanel = new ExpressionPanel();
-		JTable table = expanel.exptable;
-		expanel.setLayout(new BoxLayout(expanel,BoxLayout.Y_AXIS));
-		Evaluator evaluator = new Evaluator(text);
 		
 		//Reader read = new Reader(evaluator);
 		Reader read = new Reader(evaluator, text);
@@ -71,7 +71,6 @@ public class Frame extends JFrame {
 		commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas, evaluator));
 		
 		//Want to make a command that when evaluate is pressed, directly call updatePanel
-		//commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas, ExpressionPanel.updatePanel(table)));
 		commands.add("Save", new Writer());
 		Player player = Player.getInstance(evaluator);
 		commands.add("Play", new RepeatedThreadedCommand<Pixmap>(canvas, player));
