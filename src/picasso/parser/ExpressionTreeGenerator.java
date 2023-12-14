@@ -20,15 +20,6 @@ import picasso.parser.tokens.operations.*;
 public class ExpressionTreeGenerator {
 
 	// TODO: Do these belong here?
-	/*private static final int CONSTANT = 0;
-	private static final int GROUPING = 1; // parentheses
-	private static final int COMPARISON = 4;
-	private static final int EQUIVALENCE = 3;
-	private static final int AND_OR = 2;
-	private static final int ADD_OR_SUBTRACT = 5;
-	private static final int MULTIPLY_DIVIDE_OR_MOD = 6;
-	private static final int EXPONENTIATE = 7;
-	private static final int NEGATE = 8;*/
 	
 	private static final int CONSTANT = 0;
 	private static final int GROUPING = 1; // parentheses
