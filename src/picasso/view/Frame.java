@@ -38,57 +38,52 @@ public class Frame extends JFrame {
 		Canvas canvas = new Canvas(this);
 		canvas.setSize(size);
 		// Anonymous Function to Execute
-//		 executeEval = ()->{};
+		// executeEval = ()->{};
 		// Text Box
 		JTextField text = new JTextField("", 20);
-		text.addActionListener(new ActionListener() {
-		    @Override
-		    public void actionPerformed(ActionEvent action) {
-		         // Is there a way to refactor this so that I dont have to do it twice.
-		    	Command<Pixmap> a = new ThreadedCommand<Pixmap>(canvas, new Evaluator(text));
-		    	a.execute(canvas.getPixmap());
-		    	canvas.refresh();
-		    }
-		});
+
 		// add commands to test here
 		ButtonPanel commands = new ButtonPanel(canvas);
-		
+
 		IdentifierAnalyzer.idToExpression.put("z", new Constant(1.0));
-		
+
 		ExpressionPanel expanel = new ExpressionPanel();
 		JTable table = expanel.exptable;
-		expanel.setLayout(new BoxLayout(expanel,BoxLayout.Y_AXIS));
+		expanel.setLayout(new BoxLayout(expanel, BoxLayout.Y_AXIS));
 		Evaluator evaluator = new Evaluator(text);
-		
-		Reader read = new Reader(evaluator);
-		Reader read = new Reader(evaluator, text);
 
+		// Reader read = new Reader(evaluator);
+		Reader read = new Reader(evaluator, text);
+		text.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent action) {
+				// Is there a way to refactor this so that I dont have to do it twice.
+				Command<Pixmap> a = new ThreadedCommand<Pixmap>(canvas, new Evaluator(text));
+				a.execute(canvas.getPixmap());
+				expanel.updatePanel(table);
+				canvas.refresh();
+
+			}
+		});
 		commands.add("Open", read);
-		//gets the expression from the reader class
+		// gets the expression from the reader class
 		// Evaluator gets refrence to TextBox so it can call .getText() from it.
 
-
 		commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas, evaluator));
-		
-		//Want to make a command that when evaluate is pressed, directly call updatePanel
-		//commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas, ExpressionPanel.updatePanel(table)));
+
+		// Want to make a command that when evaluate is pressed, directly call
+		// updatePanel
+		// commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas,
+		// ExpressionPanel.updatePanel(table)));
 		commands.add("Save", new Writer());
 		Player player = Player.getInstance(evaluator);
 		commands.add("Play", new RepeatedThreadedCommand<Pixmap>(canvas, player));
 		commands.getComponent(3).setName("Stop");
-		String str = text.toString();
-		/*if (str != null) {
-			if (str.indexOf('=')) {
-				getContentPane().add(expanel, BorderLayout.EAST);
-			}
-		}
-		*/
-		
-	
+
 		RandomExpression random = new RandomExpression(text);
 		commands.add("Random", new ThreadedCommand<Pixmap>(canvas, random));
 		// add our container to Frame and show it
-	    getContentPane().add(text, BorderLayout.SOUTH);
+		getContentPane().add(text, BorderLayout.SOUTH);
 		getContentPane().add(canvas, BorderLayout.CENTER);
 		getContentPane().add(commands, BorderLayout.NORTH);
 		getContentPane().add(expanel, BorderLayout.EAST);

@@ -11,8 +11,9 @@ public class StringClass extends ExpressionTreeNode {
     private Dimension dim;
 
     public StringClass(String file_name) {
-        this.file_name = file_name.replace(" -", "-");
+        this.file_name = System.getProperty("user.dir") +"/" +  file_name.replace(" -", "-");
         pixmap = new Pixmap();
+        System.out.println(this.file_name);
         pixmap.read(this.file_name);
         dim = this.pixmap.getSize();
     }
