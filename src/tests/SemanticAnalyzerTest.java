@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Stack;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,6 +18,7 @@ import picasso.parser.language.expressions.*;
 import picasso.parser.tokens.*;
 import picasso.parser.tokens.functions.SinToken;
 import picasso.parser.tokens.operations.*;
+import picasso.util.ErrorWindow;
 
 /**
  * Test the parsing from the Stack (not as easy as using a String as input, but
@@ -29,7 +31,12 @@ import picasso.parser.tokens.operations.*;
 class SemanticAnalyzerTest {
 
 	private SemanticAnalyzer semAnalyzer;
-
+	
+	@BeforeAll
+	public static void disablePopups() {
+		ErrorWindow.setSilenced(true);
+	}
+	
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -127,7 +134,7 @@ class SemanticAnalyzerTest {
 
 		ExpressionTreeNode actual = semAnalyzer.generateExpressionTree(tokens);
 
-		assertEquals(new Negate(new X()), actual);
+		assertEquals(new Negate(new Addition(new X(), new Y())), actual);
 	}
 	
 	@Test
@@ -159,7 +166,7 @@ class SemanticAnalyzerTest {
 		Stack<Token> tokens = new Stack<>();
 		tokens.push(new IdentifierToken("a"));
 		tokens.push(new IdentifierToken("x"));
-		tokens.push(new EqualsToken());
+		tokens.push(new AssignToken());
 		ExpressionTreeNode actual = semAnalyzer.generateExpressionTree(tokens);
 		assertEquals(new X(), actual);
 		

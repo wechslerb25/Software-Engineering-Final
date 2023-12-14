@@ -3,6 +3,7 @@ package picasso.view;
 import java.awt.BorderLayout;
 import javax.swing.JTextField;
 import java.awt.Dimension;
+import javax.swing.BoxLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -10,13 +11,17 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JTable;
 
 import picasso.model.Pixmap;
+import picasso.parser.IdentifierAnalyzer;
 import picasso.util.Command;
 import picasso.util.ThreadedCommand;
 import picasso.util.RepeatedThreadedCommand;
 import picasso.view.commands.*;
 import picasso.view.commands.Reader;
+import picasso.parser.IdentifierAnalyzer;
+import picasso.parser.language.expressions.*;
 
 /**
  * Main container for the Picasso application
@@ -47,22 +52,51 @@ public class Frame extends JFrame {
 		});
 		// add commands to test here
 		ButtonPanel commands = new ButtonPanel(canvas);
+		
+		IdentifierAnalyzer.idToExpression.put("z", new Constant(1.0));
+		
+		ExpressionPanel expanel = new ExpressionPanel();
+		JTable table = expanel.exptable;
+		expanel.setLayout(new BoxLayout(expanel,BoxLayout.Y_AXIS));
 		Evaluator evaluator = new Evaluator(text);
+		
 		Reader read = new Reader(evaluator);
+		Reader read = new Reader(evaluator, text);
+
 		commands.add("Open", read);
 		//gets the expression from the reader class
 		// Evaluator gets refrence to TextBox so it can call .getText() from it.
 
 
 		commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas, evaluator));
+		
+		//Want to make a command that when evaluate is pressed, directly call updatePanel
+		//commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas, ExpressionPanel.updatePanel(table)));
 		commands.add("Save", new Writer());
 		Player player = Player.getInstance(evaluator);
+<<<<<<< HEAD
 		commands.add("Play",new RepeatedThreadedCommand<Pixmap>(canvas, player));
 
+=======
+		commands.add("Play", new RepeatedThreadedCommand<Pixmap>(canvas, player));
+		commands.getComponent(3).setName("Stop");
+		String str = text.toString();
+		/*if (str != null) {
+			if (str.indexOf('=')) {
+				getContentPane().add(expanel, BorderLayout.EAST);
+			}
+		}
+		*/
+		
+	
+		RandomExpression random = new RandomExpression(text);
+		commands.add("Random", new ThreadedCommand<Pixmap>(canvas, random));
+>>>>>>> 776960adaa696d7d2658d97ad821a6df096dd7bb
 		// add our container to Frame and show it
 	    getContentPane().add(text, BorderLayout.SOUTH);
 		getContentPane().add(canvas, BorderLayout.CENTER);
 		getContentPane().add(commands, BorderLayout.NORTH);
+		getContentPane().add(expanel, BorderLayout.EAST);
 
 		pack();
 	}

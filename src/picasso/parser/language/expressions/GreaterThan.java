@@ -42,15 +42,15 @@ public class GreaterThan extends AbstractOperator{
 		double val2 = result2.getRed();
 
 		//true represented by [1,1,1]. false represented by [-1,-1,-1].
-		if (val1 > val2) {
+		//checks equals case b/c double comparison will not get it.
+		if (Math.abs(val1 - val2) < error) {
 			return new RGBColor(-1,-1,-1);
 		}
-		//checks equals case b/c double comparison will not get it.
-		else if (Math.abs(val1 - val2) < error) {
-			return new RGBColor(-1,-1,-1);
+		else if (val1 > val2) {
+			return new RGBColor(1,1,1);
 		}
 		else {
-			return new RGBColor(1,1,1);
+			return new RGBColor(-1,-1,-1);
 		}
 	}
 

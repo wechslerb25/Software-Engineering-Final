@@ -76,11 +76,16 @@ public abstract class AbstractOperator extends ExpressionTreeNode{
 
 		AbstractOperator op = (AbstractOperator) o;
 
-		// check if their parameters are equal
-		if (!(this.exp2 == null && op.exp2 == null)) {
+		// check if their parameters are equal (have to make sure .equals does not get called on null object.)
+		if (this.exp2 == null || op.exp2 == null) {
+			if (this.exp2 == null && op.exp2 == null) {
+				if (this.exp1.equals(op.exp1)) {
+					return true;
+				}
+			}
 			return false;
 		}
-		if (!this.exp1.equals(op.exp1) || !this.exp2.equals(op.exp2)) {
+		if (!this.exp1.equals(op.exp1) && !this.exp2.equals(op.exp2)) {
 			return false;
 		}
 		return true;
