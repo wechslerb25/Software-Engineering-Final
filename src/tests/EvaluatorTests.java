@@ -251,6 +251,10 @@ public class EvaluatorTests {
 		assertEquals(new RGBColor(1,1,1), myTree.evaluate(0.5,1));
 		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(0.7,-0.1));
 		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(0,0));
+		LessThan myTree2 = new LessThan(new X(), new RGBColor(0,1,0.5));
+		assertThrows(ParseException.class, () -> {
+			myTree2.evaluate(0, 0.5);
+		});
 	}
 	
 	@Test
@@ -260,6 +264,10 @@ public class EvaluatorTests {
 		assertEquals(new RGBColor(1,1,1), myTree.evaluate(0.5,1));
 		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(0.7,-0.1));
 		assertEquals(new RGBColor(1,1,1), myTree.evaluate(0,0));
+		LessEquals myTree2 = new LessEquals(new X(), new RGBColor(0,1,0.5));
+		assertThrows(ParseException.class, () -> {
+			myTree2.evaluate(0, 0.5);
+		});
 	}
 	
 	@Test
@@ -269,6 +277,10 @@ public class EvaluatorTests {
 		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(0.5,1));
 		assertEquals(new RGBColor(1,1,1), myTree.evaluate(0.7,-0.1));
 		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(0,0));
+		GreaterThan myTree2 = new GreaterThan(new X(), new RGBColor(0,1,0.5));
+		assertThrows(ParseException.class, () -> {
+			myTree2.evaluate(0, 0.5);
+		});
 	}
 	
 	@Test
@@ -278,6 +290,10 @@ public class EvaluatorTests {
 		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(0.5,1));
 		assertEquals(new RGBColor(1,1,1), myTree.evaluate(0.7,-0.1));
 		assertEquals(new RGBColor(1,1,1), myTree.evaluate(0,0));
+		GreaterEquals myTree2 = new GreaterEquals(new X(), new RGBColor(0,1,0.5));
+		assertThrows(ParseException.class, () -> {
+			myTree2.evaluate(0, 0.5);
+		});
 	}
 	
 	@Test
@@ -287,6 +303,10 @@ public class EvaluatorTests {
 		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(0.5,1));
 		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(0.7,-0.1));
 		assertEquals(new RGBColor(1,1,1), myTree.evaluate(0,0));
+		Equals myTree2 = new Equals(new X(), new RGBColor(0,1,0.5));
+		assertThrows(ParseException.class, () -> {
+			myTree2.evaluate(0, 0.5);
+		});
 	}
 	
 	@Test
@@ -296,6 +316,10 @@ public class EvaluatorTests {
 		assertEquals(new RGBColor(1,1,1), myTree.evaluate(0.5,1));
 		assertEquals(new RGBColor(1,1,1), myTree.evaluate(0.7,-0.1));
 		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(0,0));
+		NotEquals myTree2 = new NotEquals(new X(), new RGBColor(0,1,0.5));
+		assertThrows(ParseException.class, () -> {
+			myTree2.evaluate(0, 0.5);
+		});
 	}
 	
 	@Test
@@ -308,6 +332,10 @@ public class EvaluatorTests {
 		assertThrows(ParseException.class, () -> {
 			myTree.evaluate(0, 0.5);
 		});
+		And myTree2 = new And(new X(), new RGBColor(0,1,0.5));
+		assertThrows(ParseException.class, () -> {
+			myTree2.evaluate(0, 0.5);
+		});
 	}
 	
 	@Test
@@ -319,6 +347,10 @@ public class EvaluatorTests {
 		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(-1,-1));
 		assertThrows(ParseException.class, () -> {
 			myTree.evaluate(0, 0.5);
+		});
+		Or myTree2 = new Or(new X(), new RGBColor(0,1,0.5));
+		assertThrows(ParseException.class, () -> {
+			myTree2.evaluate(0, 0.5);
 		});
 	}
 
