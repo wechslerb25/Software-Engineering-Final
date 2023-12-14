@@ -74,10 +74,6 @@ public class Frame extends JFrame {
 		//commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas, ExpressionPanel.updatePanel(table)));
 		commands.add("Save", new Writer());
 		Player player = Player.getInstance(evaluator);
-<<<<<<< HEAD
-		commands.add("Play",new RepeatedThreadedCommand<Pixmap>(canvas, player));
-
-=======
 		commands.add("Play", new RepeatedThreadedCommand<Pixmap>(canvas, player));
 		commands.getComponent(3).setName("Stop");
 		String str = text.toString();
@@ -91,7 +87,6 @@ public class Frame extends JFrame {
 	
 		RandomExpression random = new RandomExpression(text);
 		commands.add("Random", new ThreadedCommand<Pixmap>(canvas, random));
->>>>>>> 776960adaa696d7d2658d97ad821a6df096dd7bb
 		// add our container to Frame and show it
 	    getContentPane().add(text, BorderLayout.SOUTH);
 		getContentPane().add(canvas, BorderLayout.CENTER);
