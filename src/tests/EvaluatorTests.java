@@ -196,6 +196,17 @@ public class EvaluatorTests {
 	}
 	
 	@Test
+	public void testClampEvaluation() {
+		Clamp myTree = new Clamp(new X());
+		
+		assertEquals(new RGBColor(1,1,1), myTree.evaluate(1.9,2.0));
+		assertEquals(new RGBColor(1,1,1), myTree.evaluate(5.0,2.0));
+		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(-1.9,2.0));
+		assertEquals(new RGBColor(-1,-1,-1), myTree.evaluate(-12.9,-2.0));
+		
+	}
+  
+  @Test
 	public void testExponentialEvaluation() {
 		Exponentiate myTree = new Exponentiate(new X(), new Y());
 		
@@ -206,7 +217,6 @@ public class EvaluatorTests {
 		assertEquals(new RGBColor(0,0,0), myTree.evaluate(0, 0.5));
 	}
 
-	
 	
 	@Test
 	public void testWrapEvaluation() {
@@ -244,6 +254,8 @@ public class EvaluatorTests {
 		assertEquals(new RGBColor(0.5,0.5,0.5), myTree.evaluate(-0.5,2));
 	}
 	
+	
+	// TODO: More tests of evaluation
 	@Test
 	public void testLessThanEvaluation() {
 		LessThan myTree = new LessThan(new X(), new Y());
