@@ -57,32 +57,17 @@ public class Frame extends JFrame {
 		});
 		// add commands to test here
 		ButtonPanel commands = new ButtonPanel(canvas);
-		
-		
-		
-		//Reader read = new Reader(evaluator);
 		Reader read = new Reader(evaluator, text);
-
 		commands.add("Open", read);
 		//gets the expression from the reader class
 		// Evaluator gets refrence to TextBox so it can call .getText() from it.
 
 
 		commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas, evaluator));
-		
-		//Want to make a command that when evaluate is pressed, directly call updatePanel
 		commands.add("Save", new Writer());
 		Player player = Player.getInstance(evaluator);
 		commands.add("Play", new RepeatedThreadedCommand<Pixmap>(canvas, player));
 		commands.getComponent(3).setName("Stop");
-		String str = text.toString();
-		/*if (str != null) {
-			if (str.indexOf('=')) {
-				getContentPane().add(expanel, BorderLayout.EAST);
-			}
-		}
-		*/
-		
 	
 		RandomExpression random = new RandomExpression(text);
 		commands.add("Random", new ThreadedCommand<Pixmap>(canvas, random));
