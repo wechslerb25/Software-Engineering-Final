@@ -34,6 +34,7 @@ public class TokenizerTest {
 	@BeforeEach
 	public void setUp() throws Exception {
 		tokenizer = new Tokenizer();
+		ErrorWindow.setSilenced(true);
 	}
 	
 	/**

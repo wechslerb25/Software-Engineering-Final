@@ -39,11 +39,11 @@ public class LessAnalyzer implements SemanticAnalyzerInterface {
 			if (tokens.empty()) {
 				throw new ParseException("Invalid Comparison. Comparison failed as right expression is empty.");
 			}
-			ExpressionTreeNode exp1 = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
+			ExpressionTreeNode exp2 = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
 			if (tokens.empty()) {
 				throw new ParseException("Invalid Comparison. Comparison failed as right expression is empty.");
 			}
-			ExpressionTreeNode exp2 = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
+			ExpressionTreeNode exp1 = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
 			return new LessThan(exp1, exp2);
 		}
 	}

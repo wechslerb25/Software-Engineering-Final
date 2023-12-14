@@ -29,6 +29,7 @@ public class ErrorParsedEvaluatedTests {
 	@BeforeEach
 	public void setUp() throws Exception {
 		parser = new ExpressionTreeGenerator();
+		ErrorWindow.setSilenced(true);
 	}
 
 	@Test
