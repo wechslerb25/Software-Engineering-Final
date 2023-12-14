@@ -26,7 +26,6 @@ public class ExpressionPanel extends JPanel {
 	String expression = "";
 	
 	public ExpressionPanel() {
-		
 		JLabel label = new JLabel("                  Assignments        ");
 		add(label);
 		JLabel title = new JLabel("Variable                        Expression");
