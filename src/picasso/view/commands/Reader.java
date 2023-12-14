@@ -6,8 +6,10 @@ import javax.swing.JTextField;
 import picasso.model.Pixmap;
 import picasso.util.FileCommand;
 import java.util.Scanner;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.*;
 
 /**
@@ -53,9 +55,9 @@ public class Reader extends FileCommand<Pixmap> {
 					StringBuilder expression = new StringBuilder();
 					while (scan.hasNextLine()) {
 						expression.append(scan.nextLine());
+						eval.execute(target, expression.toString());
+						textField.setText(expression.toString()); //set the text field to have the expression
 					}
-					eval.execute(target, expression.toString());
-					textField.setText(expression.toString()); //set the text field to have the expression
 					scan.close();
 				} catch (FileNotFoundException e) {
 					System.err.println("File not found. Running default expression... ");
