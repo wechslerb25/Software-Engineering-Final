@@ -10,6 +10,7 @@ import picasso.parser.language.expressions.CS;
 import picasso.util.Command;
 import picasso.view.ExpressionPanel;
 
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 /**
@@ -22,20 +23,26 @@ public class Evaluator implements Command<Pixmap> {
 	public static final double DOMAIN_MIN = -1;
 	public static final double DOMAIN_MAX = 1;
 	private JTextField text;
-
 	// create the expression to evaluate just once
 	public Evaluator(JTextField text) {
 		this.text = text;
-		String str = text.toString();
+		
+	}
+	
+	/*
+	public void updatePanel(JTextField text, JTable expanel) {
+		System.out.println(this.text);
+		String str = this.text.toString();
 		if (str != null) {
 			if (str.indexOf('=')> 0) {
 				System.out.println("Recognized Assignment");
-				ExpressionPanel expanel = new ExpressionPanel();
+				//expanel.pack();
 				//getContentPane().add(expanel, BorderLayout.EAST);
 			}
 		}
 	}
-
+	*/
+	
 	/**
 	 * Evaluate an expression for each point in the image.
 	 */

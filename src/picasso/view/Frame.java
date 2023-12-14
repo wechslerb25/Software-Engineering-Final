@@ -10,6 +10,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
+import javax.swing.JTable;
 
 import picasso.model.Pixmap;
 import picasso.parser.IdentifierAnalyzer;
@@ -50,9 +51,14 @@ public class Frame extends JFrame {
 		});
 		// add commands to test here
 		ButtonPanel commands = new ButtonPanel(canvas);
+		
+		IdentifierAnalyzer.idToExpression.put("z", new Constant(1.0));
+		
 		ExpressionPanel expanel = new ExpressionPanel();
+		JTable table = expanel.exptable;
 		expanel.setLayout(new BoxLayout(expanel,BoxLayout.Y_AXIS));
 		Evaluator evaluator = new Evaluator(text);
+		
 		Reader read = new Reader(evaluator);
 		commands.add("Open", read);
 		//gets the expression from the reader class
@@ -60,6 +66,9 @@ public class Frame extends JFrame {
 
 
 		commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas, evaluator));
+		
+		//Want to make a command that when evaluate is pressed, directly call updatePanel
+		//commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas, ExpressionPanel.updatePanel(table)));
 		commands.add("Save", new Writer());
 		Player player = Player.getInstance(evaluator);
 		commands.add("Play", new RepeatedThreadedCommand<Pixmap>(canvas, player));
@@ -71,8 +80,8 @@ public class Frame extends JFrame {
 			}
 		}
 		*/
-		//IdentifierAnalyzer.idToExpression.put("z", new Constant(1.0));
-		//ExpressionPanel expanel1 = new ExpressionPanel();
+		
+	
 		RandomExpression random = new RandomExpression(text);
 		commands.add("Random", new ThreadedCommand<Pixmap>(canvas, random));
 		// add our container to Frame and show it
