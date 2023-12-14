@@ -60,7 +60,7 @@ public class Frame extends JFrame {
 		expanel.setLayout(new BoxLayout(expanel,BoxLayout.Y_AXIS));
 		Evaluator evaluator = new Evaluator(text);
 		
-		Reader read = new Reader(evaluator);
+		//Reader read = new Reader(evaluator);
 		Reader read = new Reader(evaluator, text);
 
 		commands.add("Open", read);
