@@ -48,8 +48,8 @@ public class Tokenizer {
 		//makes assignments more reliable when comparison is not same symbol as assign.
 		s = s.replace("==", ":");
 		s = s.replace("!=", ";");
-		s = s.replace(">=", ">:");
-		s = s.replace("<=", "<:");
+		s = s.replace(">=", "`"); //not the most elegant solution, but I couldn't get unicode to work
+		s = s.replace("<=", "~");
 
 		tokenizer = new StreamTokenizer(new StringReader(s));
 		tokenizer.quoteChar(CharConstants.QUOTE);

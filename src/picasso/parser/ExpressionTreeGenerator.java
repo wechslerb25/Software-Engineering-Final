@@ -20,15 +20,18 @@ import picasso.parser.tokens.operations.*;
 public class ExpressionTreeGenerator {
 
 	// TODO: Do these belong here?
+	
 	private static final int CONSTANT = 0;
-	private static final int COMPARISON = 1;
-	private static final int AND_OR = 2;
-	private static final int EQUIVALENCE = 3;
-	private static final int GROUPING = 4; // parentheses
+	private static final int GROUPING = 1; // parentheses
+	private static final int OR = 2;
+	private static final int AND = 3;
+	private static final int COMPARISON = 4;
+	private static final int EQUIVALENCE = 4;
 	private static final int ADD_OR_SUBTRACT = 5;
 	private static final int MULTIPLY_DIVIDE_OR_MOD = 6;
 	private static final int EXPONENTIATE = 7;
 	private static final int NEGATE = 8;
+
 
 	/**
 	 * Converts the given string into expression tree for easier manipulation.
@@ -217,12 +220,14 @@ public class ExpressionTreeGenerator {
 			return EXPONENTIATE;
 		} else if (token instanceof BangToken) {
 			return NEGATE;
-		} else if (token instanceof LessToken || token instanceof GreaterToken) {
+		} else if (token instanceof LessToken || token instanceof GreaterToken || token instanceof LessEqualsToken || token instanceof GreaterEqualsToken) {
 			return COMPARISON;
 		} else if (token instanceof EqualsToken || token instanceof NotEqualsToken) {
 			return EQUIVALENCE;
-		} else if (token instanceof AndToken || token instanceof OrToken) {
-			return AND_OR;
+		} else if (token instanceof AndToken) {
+			return AND;
+		} else if (token instanceof OrToken) {
+			return OR;
 		} else {
 			return CONSTANT;
 		}
@@ -234,6 +239,7 @@ public class ExpressionTreeGenerator {
 		// System.out.println(gen.infixToPostfix("!(x+y)"));
 		// System.out.println(gen.infixToPostfix("\"mage\""));
 		// System.out.println(gen.infixToPostfix("!x+y!=0"));
-		System.out.println(gen.infixToPostfix("x<y | y")); //might need to restructure order of ops
+		// System.out.println(gen.infixToPostfix("x<y | y"));
+		System.out.println(gen.infixToPostfix("x<=y"));
 	}
 }

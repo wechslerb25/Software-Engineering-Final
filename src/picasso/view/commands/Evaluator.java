@@ -5,8 +5,10 @@ import java.awt.Dimension;
 
 import picasso.model.Pixmap;
 import picasso.parser.ExpressionTreeGenerator;
+import picasso.parser.IdentifierAnalyzer;
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.language.expressions.CS;
+import picasso.parser.language.expressions.Constant;
 import picasso.util.Command;
 import picasso.view.ExpressionPanel;
 
@@ -40,6 +42,9 @@ public class Evaluator implements Command<Pixmap> {
 				//getContentPane().add(expanel, BorderLayout.EAST);
 			}
 		}
+		//set time variables so animated expression will not get error if run statically.
+		IdentifierAnalyzer.idToExpression.put("r", new Constant(-1));
+		IdentifierAnalyzer.idToExpression.put("b", new Constant(1));
 	}
 	*/
 	

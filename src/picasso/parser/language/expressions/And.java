@@ -40,6 +40,10 @@ public class And extends AbstractOperator{
 		}
 		double val1 = result1.getRed();
 		double val2 = result2.getRed();
+		//must be -1 or 1
+		if(Math.abs(Math.abs(val1) - 1) > error || Math.abs(Math.abs(val2) - 1) > error) {
+			throw new ParseException("Invalid Comparison. Comparison failed as compared values are not -1 or 1.");
+		}
 
 		//true represented by [1,1,1]. false represented by [-1,-1,-1].
 		if ((Math.abs(val1 - 1) < error) && (Math.abs(val2 - 1) < error)) {

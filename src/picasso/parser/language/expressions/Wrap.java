@@ -35,5 +35,3 @@ public class Wrap extends AbstractFunction {
 		return new RGBColor(red, green, blue);
 	}
 }
-
-		

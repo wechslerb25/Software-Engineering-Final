@@ -60,6 +60,8 @@ public class Frame extends JFrame {
 		Evaluator evaluator = new Evaluator(text);
 		
 		Reader read = new Reader(evaluator);
+		Reader read = new Reader(evaluator, text);
+
 		commands.add("Open", read);
 		//gets the expression from the reader class
 		// Evaluator gets refrence to TextBox so it can call .getText() from it.
