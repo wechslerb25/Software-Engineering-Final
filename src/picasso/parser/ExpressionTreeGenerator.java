@@ -35,11 +35,11 @@ public class ExpressionTreeGenerator {
 	private static final int OR = 2;
 	private static final int AND = 3;
 	private static final int COMPARISON = 4;
-	private static final int EQUIVALENCE = 5; //technically this should be the same as comparison, but if it is, then the current double symbol system messes up.
-	private static final int ADD_OR_SUBTRACT = 6;
-	private static final int MULTIPLY_DIVIDE_OR_MOD = 7;
-	private static final int EXPONENTIATE = 8;
-	private static final int NEGATE = 9;
+	private static final int EQUIVALENCE = 4;
+	private static final int ADD_OR_SUBTRACT = 5;
+	private static final int MULTIPLY_DIVIDE_OR_MOD = 6;
+	private static final int EXPONENTIATE = 7;
+	private static final int NEGATE = 8;
 
 
 	/**
@@ -229,7 +229,7 @@ public class ExpressionTreeGenerator {
 			return EXPONENTIATE;
 		} else if (token instanceof BangToken) {
 			return NEGATE;
-		} else if (token instanceof LessToken || token instanceof GreaterToken) {
+		} else if (token instanceof LessToken || token instanceof GreaterToken || token instanceof LessEqualsToken || token instanceof GreaterEqualsToken) {
 			return COMPARISON;
 		} else if (token instanceof EqualsToken || token instanceof NotEqualsToken) {
 			return EQUIVALENCE;

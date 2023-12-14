@@ -90,9 +90,11 @@ public class ExpressionTreeGeneratorTests {
 		e = parser.makeExpression("x > y & y <= [0,0,0]");
 		assertEquals(new And(new GreaterThan(new X(), new Y()), new LessEquals(new Y(), new RGBColor(0,0,0))), e);
 
-		e = parser.makeExpression("x < ([0,0,0] == y)");
-		System.out.println(parser.infixToPostfix("x < ([0,0,0] == y)"));
+		e = parser.makeExpression("x < [0,0,0] == y");
 		assertEquals(new Equals(new LessThan(new X(), new RGBColor(0,0,0)), new Y()), e);
+		
+		e = parser.makeExpression("x + y <= [0,0,0]");
+		assertEquals(new LessEquals(new Addition(new X(), new Y()), new RGBColor(0,0,0)), e);
 
 		e = parser.makeExpression("x < y | y > x + 0.5");
 		assertEquals(new Or(new LessThan(new X(), new Y()), new GreaterThan(new Y(), new Addition(new X(), new RGBColor(0.5,0.5,0.5)))), e);
