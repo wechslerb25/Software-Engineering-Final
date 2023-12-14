@@ -91,7 +91,5 @@ public class Evaluator implements Command<Pixmap> {
 
 		ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
 		return expTreeGen.makeExpression(expression);
-
-		// return new Multiply( new X(), new Y() );
 	}
 }
