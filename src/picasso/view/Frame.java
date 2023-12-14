@@ -38,7 +38,7 @@ public class Frame extends JFrame {
 		Canvas canvas = new Canvas(this);
 		canvas.setSize(size);
 		// Anonymous Function to Execute
-//		 executeEval = ()->{};
+		// executeEval = ()->{};
 		// Text Box
 		JTextField text = new JTextField("", 20);
 		ExpressionPanel expanel = new ExpressionPanel(); 
@@ -59,9 +59,8 @@ public class Frame extends JFrame {
 		ButtonPanel commands = new ButtonPanel(canvas);
 		Reader read = new Reader(evaluator, text);
 		commands.add("Open", read);
-		//gets the expression from the reader class
+		// gets the expression from the reader class
 		// Evaluator gets refrence to TextBox so it can call .getText() from it.
-
 
 		commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas, evaluator));
 		commands.add("Save", new Writer());
@@ -72,7 +71,7 @@ public class Frame extends JFrame {
 		RandomExpression random = new RandomExpression(text);
 		commands.add("Random", new ThreadedCommand<Pixmap>(canvas, random));
 		// add our container to Frame and show it
-	    getContentPane().add(text, BorderLayout.SOUTH);
+		getContentPane().add(text, BorderLayout.SOUTH);
 		getContentPane().add(canvas, BorderLayout.CENTER);
 		getContentPane().add(commands, BorderLayout.NORTH);
 		getContentPane().add(expanel, BorderLayout.EAST);

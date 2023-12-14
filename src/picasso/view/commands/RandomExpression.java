@@ -110,7 +110,7 @@ public class RandomExpression implements Command<Pixmap> {
 	 * Generates a random unary function
 	 */
 	public static String generateUnaryFunction() {
-		String[] unaryFunction = { "sin", "cos", "floor", "ceil", "abs", "tan", "atan", "exp", "log" };
+		String[] unaryFunction = { "sin", "cos", "floor", "ceil", "abs", "tan", "atan", "exp", "log", "wrap", "clamp" };
 		int unaryFuncIndex = random.nextInt(unaryFunction.length);
 		String selectUnaryFunc = unaryFunction[unaryFuncIndex];
 		return selectUnaryFunc + "(" + generateRandomExpression() + ")";
