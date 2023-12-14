@@ -46,7 +46,9 @@ public class CharTokenFactory {
 		tokenList[CharConstants.BANG] = new BangToken();
 		tokenList[CharConstants.QUOTE] = new QuotationToken();
 		tokenList[CharConstants.LESS] = new LessToken();
+		tokenList[CharConstants.LESS_EQUALS] = new LessEqualsToken();
 		tokenList[CharConstants.GREATER] = new GreaterToken();
+		tokenList[CharConstants.GREATER_EQUALS] = new GreaterEqualsToken();
 		tokenList[CharConstants.AND] = new AndToken();
 		tokenList[CharConstants.OR] = new OrToken();
 
