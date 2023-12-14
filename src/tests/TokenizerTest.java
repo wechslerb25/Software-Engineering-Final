@@ -19,6 +19,7 @@ import picasso.parser.tokens.chars.*;
 import picasso.parser.tokens.functions.*;
 import picasso.parser.tokens.operations.EqualsToken;
 import picasso.parser.tokens.operations.PlusToken;
+import picasso.util.ErrorWindow;
 
 /**
  * Tests that the tokenizer tokens as expected. 
@@ -32,6 +33,7 @@ public class TokenizerTest {
 	@BeforeEach
 	public void setUp() throws Exception {
 		tokenizer = new Tokenizer();
+		ErrorWindow.setSilenced(true);
 	}
 	
 	/**

@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import picasso.model.Pixmap;
@@ -56,8 +57,7 @@ public class Frame extends JFrame {
 		commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas, evaluator));
 		commands.add("Save", new Writer());
 		Player player = Player.getInstance(evaluator);
-		commands.add("Play", new RepeatedThreadedCommand<Pixmap>(canvas, player));
-		commands.getComponent(3).setName("Stop");
+		commands.add("Play",new RepeatedThreadedCommand<Pixmap>(canvas, player));
 
 		// add our container to Frame and show it
 	    getContentPane().add(text, BorderLayout.SOUTH);

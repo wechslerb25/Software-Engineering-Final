@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 
 import picasso.parser.ParseException;
+import picasso.util.ErrorWindow;
 import picasso.parser.ExpressionTreeGenerator;
 
 /**
@@ -22,6 +23,7 @@ public class ErrorParsedEvaluatedTests {
 	@BeforeEach
 	public void setUp() throws Exception {
 		parser = new ExpressionTreeGenerator();
+		ErrorWindow.setSilenced(true);
 	}
 
 	@Test
