@@ -1,7 +1,7 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/1EiKHzOV)
 ###### Ben Wechsler, Reese Nelson, Janeet Bajracharya, Tyler Halliday, A.J Thomas
 
-##Extensions
+## Extensions
 
 #### Assignments Side Bar - Ben
 For this extension, I thought that it would be interesting to add a Matlab style assignments tab to the GUI. Utilizing JFrame and JTable, I created an extension of the GUI to the right side of the display window that consists of a table of assigned values.
