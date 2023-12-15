@@ -14,7 +14,7 @@ public class IfAnalyzer implements SemanticAnalyzerInterface {
 
 	@Override
 	public ExpressionTreeNode generateExpressionTree(Stack<Token> tokens) {
-		tokens.pop(); // Need to remove the exp token
+		tokens.pop(); // Need to remove the token
 		// the parameter is the next token(s) on the stack.
 		// But, it needs to be processed
 		ExpressionTreeNode param3 = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
