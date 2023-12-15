@@ -103,6 +103,15 @@ public class EvaluatorTests {
 		assertEquals(e, myTree.evaluate(1, 0).getGreen(), 0.01);
 		assertEquals(e, myTree.evaluate(1, 0).getBlue(), 0.01);
 	}
+	
+	@Test
+	public void testAbsEvaluation() {
+		AbsoluteValue myTree = new AbsoluteValue(new X());
+
+		assertEquals(new RGBColor(0, 0, 0), myTree.evaluate(0, 0));
+		assertEquals(new RGBColor(0.5, 0.5, 0.5), myTree.evaluate(0.5, 0.5));
+		assertEquals(new RGBColor(0.5, 0.5, 0.5), myTree.evaluate(-0.5, -0.5));
+	}
 
 	@Test
 	public void testSinEvaluation() {
