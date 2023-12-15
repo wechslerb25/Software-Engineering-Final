@@ -57,7 +57,9 @@ public class Reader extends FileCommand<Pixmap> {
 						expression.append(scan.nextLine());
 						eval.execute(target, expression.toString());
 						textField.setText(expression.toString()); //set the text field to have the expression
+						expression.setLength(0);
 					}
+					
 					scan.close();
 				} catch (FileNotFoundException e) {
 					System.err.println("File not found. Running default expression... ");
