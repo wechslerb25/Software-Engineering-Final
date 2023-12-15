@@ -2,6 +2,10 @@ package picasso.parser.language.expressions;
 
 import picasso.parser.language.ExpressionTreeNode;
 
+/**
+* Represents the RgbToYCrCb function in the Picasso language.
+* @author Reese Nelson
+*/
 public class RgbToYCrCb extends AbstractFunction {
 	
 	public RgbToYCrCb(ExpressionTreeNode param) {
@@ -13,20 +17,9 @@ public class RgbToYCrCb extends AbstractFunction {
 	public RGBColor evaluate(double x, double y) {
 		RGBColor result = params.get(0).evaluate(x, y);
 		
-		double yValue = 0.299 * result.getRed() + 0.587 * result.getGreen() + 0.114 * result.getBlue();
-		double cbValue = -0.169 * result.getRed() - 0.331 * result.getGreen() + 0.5 * result.getBlue();
-		double crValue = 0.5 * result.getRed() - 0.419 * result.getGreen() - 0.081 * result.getBlue();
-		
-		yValue = clamp(yValue, -1.0, 1.0);
-        cbValue = clamp(cbValue, -1.0, 1.0);
-        crValue = clamp(crValue, -1.0, 1.0);
-
-        return new RGBColor(yValue, cbValue, crValue);
-		
-		
-		
-	}
-	private double clamp(double value, double min, double max) {
-        return Math.max(min, Math.min(value, max));
+		double red = result.getRed() * 0.2989 + result.getGreen() * 0.5866 + result.getBlue() * 0.1145;
+		double green = result.getRed() * -0.1687 + result.getGreen() * -0.3312 + result.getBlue() * 0.5;
+		double blue = result.getRed() * 0.5000 + result.getGreen() * -0.4183 + result.getBlue() * -0.0816;
+		return new RGBColor(red, green, blue);
 	}
 }

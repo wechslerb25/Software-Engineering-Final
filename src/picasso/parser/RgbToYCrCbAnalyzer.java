@@ -6,7 +6,7 @@ import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.language.expressions.RgbToYCrCb;
 import picasso.parser.tokens.Token;
 
-public class RgbToYCrCBAnalyzer implements SemanticAnalyzerInterface {
+public class RgbToYCrCbAnalyzer implements SemanticAnalyzerInterface {
 	
 	
 	@Override
