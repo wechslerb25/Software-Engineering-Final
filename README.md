@@ -31,3 +31,5 @@ This code base originated as a project in a course at Duke University.  The prof
 #####Assignments Side Bar - Ben
 For this extension, I thought that it would be interesting to add a Matlab style assignments tab to the GUI. Utilizing JFrame and JTable, I created an extension of the GUI to the right side of the display window that consists of a table of assigned values.
 
+##### Random Expression Generator - Tyler
+For this extension, it allows the user to click a button in the GUI named random and it will generate a random expression with either a unary function like sin or cos, a binary operator like + or -, or a leaf node like x, y, a constant, or a color.
