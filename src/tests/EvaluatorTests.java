@@ -103,6 +103,40 @@ public class EvaluatorTests {
 		assertEquals(e, myTree.evaluate(1, 0).getGreen(), 0.01);
 		assertEquals(e, myTree.evaluate(1, 0).getBlue(), 0.01);
 	}
+	
+	@Test
+	public void testAbsEvaluation() {
+		AbsoluteValue myTree = new AbsoluteValue(new X());
+
+		assertEquals(new RGBColor(0, 0, 0), myTree.evaluate(0, 0));
+		assertEquals(new RGBColor(0.5, 0.5, 0.5), myTree.evaluate(0.5, 0.5));
+		assertEquals(new RGBColor(0.5, 0.5, 0.5), myTree.evaluate(-0.5, -0.5));
+	}
+	
+	@Test
+	public void testAtanEvaluation() {
+		Atan myTree = new Atan(new X());
+		double pi = Math.PI;
+		
+		assertEquals(pi/4, myTree.evaluate(1, 1).getRed(), 0.001);
+	}
+	
+	@Test
+	public void testCeilEvaluation() {
+		Ceil myTree = new Ceil(new X());
+
+		assertEquals(new RGBColor(1, 1, 1), myTree.evaluate(0.5, 0.5));
+		assertEquals(new RGBColor(0, 0, 0), myTree.evaluate(0, 0));
+		assertEquals(new RGBColor(0, 0, 0), myTree.evaluate(-0.5, -0.5));
+	}
+	
+	@Test
+	public void testLogEvaluation() {
+		Log myTree = new Log(new X());
+		double e = Math.E;
+
+		assertEquals(1, myTree.evaluate(e, e).getRed(),0.001);
+	}
 
 	@Test
 	public void testSinEvaluation() {

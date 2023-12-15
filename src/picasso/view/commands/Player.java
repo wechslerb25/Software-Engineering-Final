@@ -9,7 +9,7 @@ import picasso.parser.language.expressions.Constant;
 import picasso.util.Command;
 
 /**
- * Repeatedly evaluate the expression while updating the time variable.
+ * Evaluate the expression while updating the time variable. Meant to be executed by a RepeatedThreadedCommand.
  * 
  * @author Reese Nelson
  */
@@ -19,7 +19,7 @@ public class Player implements Command<Pixmap> {
 	private final Evaluator evaluator;
 	private static Duration playTime;
 	private Instant startTime;
-//threaded command here not in frame
+
 	private Player(Evaluator evaluator) {
 		this.evaluator = evaluator;
 		playTime = Duration.ZERO;
@@ -41,10 +41,7 @@ public class Player implements Command<Pixmap> {
 		double t = ((double) playTime.toMillis() / 10000);
 	    double l = (Math.round((t % 2) * 100) / 100.0) - 1;
 	    double b = Math.round(Math.cos(t * Math.PI) * 100) / 100.0;
-		//System.out.println(t);
-		//System.out.println(l);
-		//System.out.println(b);
-		//IdentifierAnalyzer.idToExpression.put("t", new Constant(t));
+		
 		IdentifierAnalyzer.idToExpression.put("r", new Constant(l));
 		IdentifierAnalyzer.idToExpression.put("b", new Constant(b));
 	}
