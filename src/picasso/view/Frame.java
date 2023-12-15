@@ -59,11 +59,11 @@ public class Frame extends JFrame {
 		ButtonPanel commands = new ButtonPanel(canvas);
 		Reader read = new Reader(evaluator, text);
 		commands.add("Open", read);
+		commands.add("Save", new Writer());
 		// gets the expression from the reader class
 		// Evaluator gets refrence to TextBox so it can call .getText() from it.
-
 		commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas, evaluator));
-		commands.add("Save", new Writer());
+
 		Player player = Player.getInstance(evaluator);
 		commands.add("Play/Pause", new RepeatedThreadedCommand<Pixmap>(canvas, player));
 	
