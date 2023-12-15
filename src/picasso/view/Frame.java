@@ -65,8 +65,7 @@ public class Frame extends JFrame {
 		commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas, evaluator));
 		commands.add("Save", new Writer());
 		Player player = Player.getInstance(evaluator);
-		commands.add("Play", new RepeatedThreadedCommand<Pixmap>(canvas, player));
-		commands.getComponent(3).setName("Stop");
+		commands.add("Play/Pause", new RepeatedThreadedCommand<Pixmap>(canvas, player));
 	
 		RandomExpression random = new RandomExpression(text);
 		commands.add("Random", new ThreadedCommand<Pixmap>(canvas, random));
