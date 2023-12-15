@@ -17,7 +17,7 @@ Allows for conditional evaluation of pixels. Comes with comparison operators (<,
 Adds a "Play/Pause" toggle button to the menu. The text input is repeatedly evaluated at a rate of about 20 fps (unless the expression is too complex). The extension automatically updates time-based variables "r" and "b" every frame.
 <br>r: repeated loop from -1 --> 1
 <br>b: boomerage from -1 --> 1 --> -1 (sinusoidal wave behavior)
-These variables are in the form of grayscale RGBColors (i.e. [1,1,1]). This extension is best used (in my opinion) within the condition parameter of if statements.
+These variables are in the form of grayscale RGBColors (i.e. [1,1,1]). The variables are best used (in my opinion) within the condition parameter of if statements.
 
 #### Game Of Life - Janeet
 This extension is a collection of a bunch of other smaller extensions such as the avg function that takes the average of the Von Neuuman Neighborhood of the pixels during the last generation, also implements the pixel token that when evaluated, returns the pixel value of the current positon during (t-1) where the pixmap of the previous generation is stored in a singleton cache. It also comes with a rand(lower_bound,upper_bound) function that populates the image with random values in that range. Composing these with the standard rule set : First: rand(0,1) and Second: if((pixel):[1,1,1],if((avg)<0.25,[0,0,0],if((avg) >0.75, [0,0,0],[1,1,1])),if((avg)>0.5,[1,1,1],[0,0,0])) we have the game of life.
